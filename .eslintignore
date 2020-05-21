@@ -1,0 +1,12 @@
+coverage/*
+dist/*
+flow-typed/*
+lib/*
+node_modules/*
+coverage/*
+**/node_modules/*
+*.d.ts
+*.docz
+serviceWorker.js
+rollup.*
+config/*

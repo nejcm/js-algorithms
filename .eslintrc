@@ -1,0 +1,60 @@
+{
+  "parser": "@typescript-eslint/parser",
+  "extends": [
+    "eslint:recommended",
+    "react-app",
+    "kentcdodds",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended"
+  ],
+  "env": {
+    "browser": true,
+    "es6": true,
+    "jest": true
+  },
+  "ignorePatterns": ["dist/", "build/"],
+  "plugins": ["@typescript-eslint"],
+  "parserOptions": {
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "extensions": [".js", ".jsx", ".ts", ".tsx"],
+        "moduleDirectory": ["node_modules", "src/"]
+      }
+    }
+  },
+  "rules": {
+    "react/jsx-boolean-value": 0,
+    "react/no-adjacent-inline-elements": "off",
+    "no-multiple-empty-lines": [
+      "error",
+      {
+        "max": 3
+      }
+    ],
+    "max-lines-per-function": ["error", 500],
+    "complexity": ["error", 15],
+    "valid-jsdoc": ["warn", {"requireReturn": false}],
+    "no-bitwise": "off",
+    "consistent-return": "off",
+    "no-negated-condition": "off",
+    "arrow-parens": "error",
+    "generator-star-spacing": "off",
+    "no-console": "warn",
+    "no-eval": "error",
+    "no-debugger": "warn",
+    "no-unused-vars": "error",
+    "eqeqeq": "off",
+    "import/no-useless-path-segments": "off",
+    "max-lines": "off",
+    "no-eq-null": "off",
+    "react/jsx-indent": "off",
+    "jsx-a11y/label-has-for": "off",
+    "jsx-a11y/label-has-associated-control": "off"
+  }
+}
