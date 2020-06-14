@@ -1,5 +1,9 @@
 # 🎓 Js algorithms
-<blockquote>Algorithms implemented in JS.</blockquote>
+<blockquote>Algorithms, data structures and other programming problems implemented in JavaScript with documentation.</blockquote>
+
+<br />
+
+⚠️ This package is still under development! New algorithms are being added and existing ones refactored to improve code quality.
 
 <br />
 
@@ -46,8 +50,8 @@
 # Clone repo
 $ git clone https://github.com/nejcm/js-algorithms.git my-project
 
-# Install dependencies
-$ npm install
+# Install dependencies and run lint and tests
+$ npm setup
 
 # Run project
 $ npm run start
@@ -56,9 +60,9 @@ $ npm run start
 
 ## Docs & Examples
 
-Each algorithm has his own README.md file. Also check the docs page:
+Each algorithm is described on the docs website.
 
-> [**Docs & Examples**][docs-link]
+> [**Docs website**][docs-link]
 
 
 ## Issues
