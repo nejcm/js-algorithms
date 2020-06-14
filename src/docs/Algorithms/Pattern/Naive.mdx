@@ -1,0 +1,29 @@
+---
+name: Naive algorithm
+route: /algorithms/pattern/naive-algorithm
+menu: Pattern
+---
+
+# Naive algorithm
+
+The naive approach to the string matching problem is walking through the source
+starting from the beginning and checking at each position if the resulting
+substring equals the query pattern. While being inefficient, it may be
+beneficial to use it in cases where the speed advantage of another algorithm is
+neglegible or does not outhweigh the additional setup needed (for example if
+your source and query pattern are really short). (Source: Wikipedia)
+
+## Complexity
+
+| Name            | Preprocessing | Average |   Worst    | Space | Comments |
+| --------------- | :-----------: | :-----: | :--------: | :---: | :------- |
+| Naive algorithm |     none      |  n\*m   | m\*(n-m+1) | none  |          |
+
+\* Where n = length of the source; m = length of the query pattern; k = size of
+the Alphabet
+
+## References
+
+- [Geeksforgeeks](https://www.geeksforgeeks.org/naive-algorithm-for-pattern-searching/)
+- [Wikipedia](https://en.wikipedia.org/wiki/String-searching_algorithm)
+- [YouTube](https://www.youtube.com/watch?v=nK7SLhXcqRo&ab_channel=GeeksforGeeks)

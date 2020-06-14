@@ -1,6 +1,6 @@
 import {lessThan} from '../../../helpers/comparator';
 import {run} from '../../../helpers/function';
-import algorithm, {Algorithm, AlgorithmProps, Options} from '../../Algorithm';
+import algorithm, {Algorithm, AlgorithmProps, Options} from '../Algorithm';
 
 const selectionSort = <T>(options?: Options<T>): Algorithm<T> => {
   const algoOptions: Options<T> = {

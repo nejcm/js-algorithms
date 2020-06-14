@@ -1,5 +1,8 @@
 # Backlog
 
+- [] Document code
+- [] Improve docs
+
 # In progress
 
 # Testing

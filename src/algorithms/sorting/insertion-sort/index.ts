@@ -2,7 +2,7 @@ import {lessThan} from '../../../helpers/comparator';
 import {run} from '../../../helpers/function';
 import algorithm, {Algorithm, AlgorithmProps, Options} from '../Algorithm';
 
-const bubbleSort = <T>(options?: Options<T>): Algorithm<T> => {
+const insertionSort = <T>(options?: Options<T>): Algorithm<T> => {
   const algoOptions: Options<T> = {
     compareFunction: lessThan,
     ...options,
@@ -17,28 +17,19 @@ const bubbleSort = <T>(options?: Options<T>): Algorithm<T> => {
           result: values,
         };
       }
-      let swapped = false;
 
       for (let i = 1; i < len; i++) {
-        swapped = false;
         run(algoOptions.visitingCallback, [array[i]]);
-
-        for (let j = 0; j < len - i; j++) {
-          run(algoOptions.visitingCallback, [array[j]]);
-
-          if (run(algoOptions.compareFunction, [array[j + 1], array[j]])) {
-            [array[j], array[j + 1]] = [array[j + 1], array[j]];
-            swapped = true;
+        let j = i;
+        while (j > 0) {
+          run(algoOptions.visitingCallback, [array[j - 1]]);
+          if (!run(algoOptions.compareFunction, [array[j], array[j - 1]])) {
+            break;
           }
-        }
-
-        if (!swapped) {
-          return {
-            result: array,
-          };
+          [array[j], array[j - 1]] = [array[j - 1], array[j]];
+          j--;
         }
       }
-
       return {
         result: array,
       };
@@ -48,4 +39,4 @@ const bubbleSort = <T>(options?: Options<T>): Algorithm<T> => {
   return algorithm(algoProps);
 };
 
-export default bubbleSort;
+export default insertionSort;

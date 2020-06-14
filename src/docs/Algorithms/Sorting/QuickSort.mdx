@@ -1,0 +1,43 @@
+---
+name: Quick sort
+route: /algorithms/sorting/quick-sort
+menu: Sorting
+---
+
+# Quick Sort
+
+Quicksort (sometimes called partition-exchange sort) is an efficient sorting
+algorithm. When implemented well, it can be about two or three times faster than
+its main competitors, merge sort and heapsort.
+
+Quicksort is a divide-and-conquer algorithm. It works by selecting a 'pivot'
+element from the array and partitioning the other elements into two sub-arrays,
+according to whether they are less than or greater than the pivot. The
+sub-arrays are then sorted recursively. This can be done in-place, requiring
+small additional amounts of memory to perform the sorting.
+
+Quicksort is a comparison sort, meaning that it can sort items of any type for
+which a "less-than" relation (formally, a total order) is defined. Efficient
+implementations of Quicksort are not a stable sort, meaning that the relative
+order of equal sort items is not preserved.
+
+Animated visualization of the quicksort algorithm. The horizontal lines are
+pivot values.
+
+![Quicksort](https://upload.wikimedia.org/wikipedia/commons/6/6a/Sorting_quicksort_anim.gif)
+
+## Complexity
+
+| Name       |     Best      |    Average    |     Worst     | Memory | Stable | Comments                                                      |
+| ---------- | :-----------: | :-----------: | :-----------: | :----: | :----: | :------------------------------------------------------------ |
+| Quick sort | n&nbsp;log(n) | n&nbsp;log(n) | n<sup>2</sup> | log(n) |   No   | Quicksort is usually done in-place with O(log(n)) stack space |
+
+## References
+
+- [Geeksforgeeks](https://www.geeksforgeeks.org/quick-sort/)
+- [Wikipedia](https://en.wikipedia.org/wiki/Quicksort)
+- [YouTube](https://www.youtube.com/watch?v=SLauY6PpjW4)
+- [Programiz](https://www.programiz.com/dsa/quick-sort)
+- [Algomation](http://www.algomation.com/player?algorithm=58bb2ef75b2b830400b05118)
+- [Hackerearth](https://www.hackerearth.com/practice/algorithms/sorting/quick-sort/tutorial/)
+- [Tutorialspoint](https://www.tutorialspoint.com/data_structures_algorithms/quick_sort_algorithm.htm)

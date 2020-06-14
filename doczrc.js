@@ -12,23 +12,44 @@ export default {
     'Installation',
     {
       name: 'Data Structures',
-      menu: ['Overview'],
-    },
-    {
-      name: 'Algorithms',
-      menu: ['Overview'],
+      menu: [],
     },
   ],
+  menuDisplayName: {
+    Algorithms: 'Overview',
+    'Data Structures': 'Overview',
+    Other: 'Overview',
+  },
+  groups: {
+    '': [],
+    Algorithms: ['Algorithms', 'Sorting', 'Searching', 'Pattern', 'String'],
+    'Data Structures': [
+      'Bloom filter',
+      'Data Structures',
+      'Disjoint-set',
+      'Doubly linked list',
+      'Graph',
+      'Hash table',
+      'Heap',
+      'Linked list',
+      'Priority queue',
+      'Queue',
+      'Stack',
+      'Tree',
+      'Trie',
+    ],
+    Other: ['Other'],
+  },
   themeConfig: {
     footer: {
-      navigation: true
+      navigation: true,
     },
     menu: {
       headings: {
         rightSide: true,
         scrollspy: true,
-        depth: 3
-      }
-    }
+        depth: 3,
+      },
+    },
   },
 };

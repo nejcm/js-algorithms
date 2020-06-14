@@ -1,0 +1,28 @@
+---
+name: Knuth Morris Pratt
+route: /algorithms/pattern/knuth-morris-pratt
+menu: Pattern
+---
+
+# Knuth Morris Pratt
+
+Knuth–Morris–Pratt string-searching algorithm (or KMP algorithm) searches for
+occurrences of a "word" W within a main "text string" S by employing the
+observation that when a mismatch occurs, the word itself embodies sufficient
+information to determine where the next match could begin, thus bypassing
+re-examination of previously matched characters. (Source: Wikipedia)
+
+## Complexity
+
+| Name               | Preprocessing | Average | Worst | Space | Comments |
+| ------------------ | :-----------: | :-----: | :---: | :---: | :------- |
+| Knuth Morris Pratt |       m       |  n + m  | n + m |   m   |          |
+
+\* Where n = length of the source; m = length of the query pattern; k = size of
+the Alphabet
+
+## References
+
+- [Geeksforgeeks](https://www.geeksforgeeks.org/kmp-algorithm-for-pattern-searching/)
+- [Wikipedia](https://en.wikipedia.org/wiki/Knuth%E2%80%93Morris%E2%80%93Pratt_algorithm)
+- [YouTube](https://www.youtube.com/watch?v=nK7SLhXcqRo&ab_channel=GeeksforGeeks)
