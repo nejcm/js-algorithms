@@ -27,6 +27,7 @@ const naiveAlgorithm = (options?: Options): Algorithm => {
       }
 
       if (j === m) {
+        // match found
         return i;
       }
     }

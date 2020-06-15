@@ -16,10 +16,10 @@ const boyerMoore = (options?: boyerMooreOptions): Algorithm => {
 
   const buildBadCharHeuristic = (seek: string, m: number): number[] => {
     const badChar = [];
-    // Initialize all occurrences as -1
+    // initialize all occurrences as -1
     // Array(algoOptions.chars).fill(-1);
     for (let i = 0; i < algoOptions.chars; i++) badChar.push(-1);
-    // Fill the actual value of last occurrence of a character
+    // fill the actual value of last occurrence of a character
     for (let i = 0; i < m; i++) badChar[seek.charCodeAt(i)] = i;
 
     return badChar;
@@ -43,9 +43,9 @@ const boyerMoore = (options?: boyerMooreOptions): Algorithm => {
       let j = m - 1;
       while (j >= 0 && seek[j] === text[s + j]) j--;
       if (j < 0) {
-        // found at s
+        // match found at s
         return s;
-        //s += s + m < n ? m - badChar[text.charCodeAt(s + m)] : 1;
+        // s += s + m < n ? m - badChar[text.charCodeAt(s + m)] : 1;
       } else {
         s += max(1, j - badChar[text.charCodeAt(s + j)]);
       }

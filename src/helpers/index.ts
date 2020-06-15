@@ -17,3 +17,26 @@ export const getMinMax = (array: number[]): [number, number] => {
   }
   return [min, max];
 };
+
+// find all matching elements nearby
+export const findAllNearby = (
+  values: number[],
+  seek: number,
+  mid: number,
+  compareFunction: (v1: number, v2: number) => boolean,
+): number[] => {
+  const found = [mid];
+  // find left of current
+  let l = mid - 1;
+  while (l >= 0 && run(compareFunction, [values[l], seek])) {
+    found.unshift(l);
+    l--;
+  }
+  // find right of current
+  let r = mid + 1;
+  while (r < values.length && run(compareFunction, [values[r], seek])) {
+    found.push(r);
+    r++;
+  }
+  return found;
+};

@@ -26,20 +26,24 @@ const rabinKarp = (options?: Options): Algorithm => {
     let prevFrame = null;
     let currentFrameHash = null;
     for (let i = 0; i <= n - m; i++) {
+      // get current frame
       const currentFrame = text.substring(i, i + m);
 
+      // calculate hash for current frame
       currentFrameHash =
         currentFrameHash === null || prevFrame === null
           ? hasher.hash(currentFrame)
           : hasher.roll(currentFrameHash, prevFrame, currentFrame);
       prevFrame = currentFrame;
 
+      // if hashes match check if the strings match
       if (run(algoOptions.compareFunction, [seekHash, currentFrameHash])) {
         for (let j = 0; j < m; j++) {
           if (text[i + j] !== seek[j]) {
             break;
           }
           if (j === m - 1) {
+            // match found
             return i;
           }
         }

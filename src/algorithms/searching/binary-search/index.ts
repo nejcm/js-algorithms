@@ -1,32 +1,11 @@
-import {run} from '../../../helpers';
+import {findAllNearby, run} from '../../../helpers';
 import {equalThan} from '../../../helpers/comparator';
 import algorithm, {Algorithm, AlgorithmProps, Options} from '../Algorithm';
 
 const binarySearch = (options?: Options<number>): Algorithm<number> => {
-  const algoOptions: Options<number> = {
+  const algoOptions = {
     compareFunction: equalThan,
     ...options,
-  };
-
-  // Find all matching elements nearby
-  const findAll = (values: number[], seek: number, mid: number): number[] => {
-    const found = [mid];
-    // Find left of current
-    let l = mid - 1;
-    while (l >= 0 && run(algoOptions.compareFunction, [values[l], seek])) {
-      found.unshift(l);
-      l--;
-    }
-    // Find right of current
-    let r = mid + 1;
-    while (
-      r < values.length &&
-      run(algoOptions.compareFunction, [values[r], seek])
-    ) {
-      found.push(r);
-      r++;
-    }
-    return found;
   };
 
   const search = (values: number[], seek: number): number[] => {
@@ -36,10 +15,13 @@ const binarySearch = (options?: Options<number>): Algorithm<number> => {
     let start = 0;
     let end = values.length - 1;
 
+    // split array until they meet and can not be split anymore
     while (start <= end) {
       const mid = Math.floor((start + end) / 2);
+      // check if we found a match
+      // otherwise find out which half should be searched next
       if (run(algoOptions.compareFunction, [values[mid], seek])) {
-        return findAll(values, seek, mid);
+        return findAllNearby(values, seek, mid, algoOptions.compareFunction);
       } else if (values[mid] < seek) {
         start = mid + 1;
       } else {

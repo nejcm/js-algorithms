@@ -12,10 +12,13 @@ const linearSearch = <T>(options?: Options<T>): Algorithm<T> => {
     if (!values) {
       return [];
     }
+
     const found = [];
+    // loop
     for (let i = 0; i < values.length; i++) {
       run(algoOptions.visitingCallback, [values[i]]);
       if (run(algoOptions.compareFunction, [values[i], seek])) {
+        // return all found instances
         found.push(i);
       }
     }

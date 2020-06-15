@@ -8,6 +8,7 @@ const knuthMorrisPratt = (options?: Options): Algorithm => {
     ...options,
   };
 
+  // build pattern table
   const buildPatternTable = (seek: string): number[] => {
     const table = [0];
     let prefixIndex = 0;
@@ -49,11 +50,13 @@ const knuthMorrisPratt = (options?: Options): Algorithm => {
         run(algoOptions.compareFunction, [text[textIndex], seek[seekIndex]])
       ) {
         if (seekIndex === m - 1) {
+          // match found
           return textIndex - m + 1;
         }
         seekIndex++;
         textIndex++;
       } else if (seekIndex > 0) {
+        // move forward based on pattern table
         seekIndex = patternTable[seekIndex - 1];
       } else {
         seekIndex = 0;
