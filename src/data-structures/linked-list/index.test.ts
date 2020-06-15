@@ -132,6 +132,21 @@ describe('LinkedList', () => {
     expect(linkedList.remove(0).toArray()).toEqual([]);
   });
 
+  it('should reverse iterate linked list', () => {
+    const linkedList = createLinkedList();
+
+    linkedList.push(1);
+    linkedList.push(2);
+    linkedList.push(3);
+
+    const generator = linkedList.iterator();
+
+    expect(generator.next().value).toEqual(1);
+    expect(generator.next().value).toEqual(2);
+    expect(generator.next().value).toEqual(3);
+    expect(generator.next()).toMatchObject({done: true, value: undefined});
+  });
+
   it('should reverse linked list', () => {
     const linkedList = createLinkedList();
 
@@ -143,16 +158,16 @@ describe('LinkedList', () => {
   });
 
   it('should check if linked list is empty', () => {
-    const linkedList = createLinkedList();
     type Obj = {val: number};
+    const linkedList = createLinkedList<Obj>();
     linkedList.push({val: 0});
     linkedList.push({val: 5});
     linkedList.push({val: 10});
-    expect(linkedList.toString((node) => (node?.value as Obj).val)).toEqual(
+    expect(linkedList.toString((node) => node?.value.val.toString())).toEqual(
       '0 -> 5 -> 10',
     );
     expect(
-      linkedList.toString((node) => (node?.value as Obj).val, ','),
+      linkedList.toString((node) => node?.value.val.toString(), ','),
     ).toEqual('0,5,10');
   });
 

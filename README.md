@@ -8,15 +8,11 @@
 <br />
 
 <!-- prettier-ignore-start -->
-[![NPM][npm-badge]][npm-link] 
-[![JavaScript Style Guide][style-guide-badge]][style-guide]
-
 [![Build Status][build-badge]][build]
-[![Semantic release][semantic-release-badge]][semantic-release]
 [![Code Coverage][coverage-badge]][coverage]
-[![version][version-badge]][package] [![downloads][downloads-badge]][npmtrends]
-[![MIT License][license-badge]][license]
+![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)
 
+[![JavaScript Style Guide][style-guide-badge]][style-guide]
 [![All Contributors][all-contributors-badge]](#contributors)
 [![PRs Welcome][prs-badge]][prs] [![Code of Conduct][coc-badge]][coc]
 

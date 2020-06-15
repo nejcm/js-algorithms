@@ -1,48 +1,46 @@
-/* eslint-disable @typescript-eslint/no-empty-interface */
-export interface Options {}
-export type ToStringCallback = (current: Node | null) => unknown;
-export interface NodeProps {
-  value: unknown;
-  next?: Node | null;
-  prev?: Node | null;
+export type ToStringCallback<T> = (current: Node<T>) => string;
+export interface NodeProps<T> {
+  value: T;
+  next?: Node<T> | null;
+  prev?: Node<T> | null;
 }
-export interface Node extends NodeProps {
-  next: Node | null;
-  prev: Node | null;
-  toString: (callback?: ToStringCallback) => unknown | string;
+export interface Node<T> extends NodeProps<T> {
+  next: Node<T> | null;
+  prev: Node<T> | null;
+  toString: (callback?: ToStringCallback<T>) => T | string;
 }
-export interface DoublyLinkedList extends Options {
+export interface DoublyLinkedList<T> {
   length: number;
-  head: Node | null;
-  tail: Node | null;
-  push(this: DoublyLinkedList, element: unknown): DoublyLinkedList;
-  pop(this: DoublyLinkedList): unknown;
-  unshift(this: DoublyLinkedList, element: unknown): DoublyLinkedList;
-  shift(this: DoublyLinkedList): unknown;
-  get(this: DoublyLinkedList, index: number): unknown;
-  remove(this: DoublyLinkedList, index?: number): DoublyLinkedList;
+  head: Node<T> | null;
+  tail: Node<T> | null;
+  push(this: DoublyLinkedList<T>, element: T): DoublyLinkedList<T>;
+  pop(this: DoublyLinkedList<T>): T | undefined;
+  unshift(this: DoublyLinkedList<T>, element: T): DoublyLinkedList<T>;
+  shift(this: DoublyLinkedList<T>): T | undefined;
+  get(this: DoublyLinkedList<T>, index: number): T | undefined;
+  remove(this: DoublyLinkedList<T>, index?: number): DoublyLinkedList<T>;
   insert(
-    this: DoublyLinkedList,
-    element: unknown,
+    this: DoublyLinkedList<T>,
+    element: T,
     index?: number,
-  ): DoublyLinkedList;
-  reverse(this: DoublyLinkedList): DoublyLinkedList;
-  reverseIterator(this: DoublyLinkedList): Generator<unknown, void, unknown>;
-  isEmpty(this: DoublyLinkedList): boolean;
-  toArray(this: DoublyLinkedList): unknown[];
+  ): DoublyLinkedList<T>;
+  iterator(this: DoublyLinkedList<T>): Generator<T, void, T>;
+  reverse(this: DoublyLinkedList<T>): DoublyLinkedList<T>;
+  isEmpty(this: DoublyLinkedList<T>): boolean;
+  toArray(this: DoublyLinkedList<T>): T[];
   toString(
-    this: DoublyLinkedList,
-    callback?: ToStringCallback,
+    this: DoublyLinkedList<T>,
+    callback?: ToStringCallback<T>,
     separator?: string,
   ): string;
 }
 
-const linkedList = (options?: Options): DoublyLinkedList => {
+const linkedList = <T>(): DoublyLinkedList<T> => {
   const node = (
-    value: unknown,
-    next: Node | null = null,
-    prev: Node | null = null,
-  ): Node => {
+    value: T,
+    next: Node<T> | null = null,
+    prev: Node<T> | null = null,
+  ): Node<T> => {
     return {
       value,
       next,
@@ -55,11 +53,10 @@ const linkedList = (options?: Options): DoublyLinkedList => {
     };
   };
 
-  const list: DoublyLinkedList = {
+  const list: DoublyLinkedList<T> = {
     length: 0,
     head: null,
     tail: null,
-    ...options,
 
     push: function push(element) {
       const newNode = node(element);
@@ -80,7 +77,7 @@ const linkedList = (options?: Options): DoublyLinkedList => {
       if (this.isEmpty()) {
         return undefined;
       }
-      const tail = this.tail as Node;
+      const tail = this.tail as Node<T>;
       this.remove(this.length - 1);
       return tail.value;
     },
@@ -103,7 +100,7 @@ const linkedList = (options?: Options): DoublyLinkedList => {
       if (this.isEmpty()) {
         return undefined;
       }
-      const head = this.head as Node;
+      const head = this.head as Node<T>;
       this.head = head.next;
       if (this.head === null) {
         this.tail = null;
@@ -120,13 +117,13 @@ const linkedList = (options?: Options): DoublyLinkedList => {
       }
 
       if (index === 0) {
-        return (this.head as Node).value;
+        return (this.head as Node<T>).value;
       }
       if (index === this.length - 1) {
-        return (this.tail as Node).value;
+        return (this.tail as Node<T>).value;
       }
 
-      let current = this.head as Node;
+      let current = this.head as Node<T>;
       let i = 0;
       while (i < index && current.next) {
         current = current.next;
@@ -145,18 +142,18 @@ const linkedList = (options?: Options): DoublyLinkedList => {
         return this;
       }
 
-      let current = this.head as Node;
+      let current = this.head as Node<T>;
       let i = 0;
       while (i < index && current.next) {
         current = current.next;
         i++;
       }
 
-      (current.prev as Node).next = current.next;
+      (current.prev as Node<T>).next = current.next;
       if (this.tail === current) {
         this.tail = current.prev;
       } else {
-        (current.next as Node).prev = current.prev;
+        (current.next as Node<T>).prev = current.prev;
       }
       this.length--;
       return this;
@@ -175,7 +172,7 @@ const linkedList = (options?: Options): DoublyLinkedList => {
         return this.push(element);
       }
 
-      let current = this.head as Node;
+      let current = this.head as Node<T>;
       let i = 0;
       while (i < index && current.next) {
         current = current.next;
@@ -184,10 +181,18 @@ const linkedList = (options?: Options): DoublyLinkedList => {
 
       newNode.next = current;
       newNode.prev = current.prev;
-      (current.prev as Node).next = newNode;
+      (current.prev as Node<T>).next = newNode;
       current.prev = newNode;
       this.length++;
       return this;
+    },
+
+    iterator: function* iterator() {
+      let current = this.head;
+      while (current !== null) {
+        yield current.value;
+        current = current.next;
+      }
     },
 
     reverse: function reverse() {
@@ -210,14 +215,6 @@ const linkedList = (options?: Options): DoublyLinkedList => {
       this.tail = this.head;
       this.head = prev;
       return this;
-    },
-
-    reverseIterator: function* reverseIterator() {
-      let current = this.tail;
-      while (current !== null) {
-        yield current.value;
-        current = current.prev;
-      }
     },
 
     isEmpty: function isEmpty() {

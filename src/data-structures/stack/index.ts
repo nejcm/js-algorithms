@@ -1,21 +1,17 @@
-/* eslint-disable @typescript-eslint/no-empty-interface */
 import createList, {LinkedList} from '../linked-list';
 
-export interface Options {}
-
-export interface Stack extends Options {
-  items: LinkedList;
-  push(this: Stack, item: unknown): Stack;
-  pop(this: Stack): unknown;
-  peek(this: Stack): unknown;
-  isEmpty(this: Stack): boolean;
-  toString(this: Stack, separator?: string): string;
+export interface Stack<T> {
+  items: LinkedList<T>;
+  push(this: Stack<T>, item: T): Stack<T>;
+  pop(this: Stack<T>): T | undefined;
+  peek(this: Stack<T>): T | undefined;
+  isEmpty(this: Stack<T>): boolean;
+  toString(this: Stack<T>, separator?: string): string;
 }
 
-const stack = (options?: Options): Stack => {
-  const stackList: Stack = {
+const stack = <T>(): Stack<T> => {
+  const stackList: Stack<T> = {
     items: createList(),
-    ...options,
 
     push: function push(item) {
       this.items.unshift(item);

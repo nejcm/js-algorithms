@@ -1,37 +1,36 @@
-/* eslint-disable @typescript-eslint/no-empty-interface */
-export interface Options {}
-export type ToStringCallback = (current: Node | null) => unknown;
-export interface NodeProps {
-  value: unknown;
-  next?: Node | null;
+export type ToStringCallback<T> = (current: Node<T>) => string;
+export interface NodeProps<T> {
+  value: T;
+  next?: Node<T> | null;
 }
-export interface Node extends NodeProps {
-  next: Node | null;
-  toString: (callback?: ToStringCallback) => unknown | string;
+export interface Node<T> extends NodeProps<T> {
+  next: Node<T> | null;
+  toString: (callback?: ToStringCallback<T>) => T | string;
 }
-export interface LinkedList extends Options {
+export interface LinkedList<T> {
   length: number;
-  head: Node | null;
-  tail: Node | null;
-  push(this: LinkedList, element: unknown): LinkedList;
-  pop(this: LinkedList): unknown;
-  unshift(this: LinkedList, element: unknown): LinkedList;
-  shift(this: LinkedList): unknown;
-  get(this: LinkedList, index: number): unknown;
-  remove(this: LinkedList, index?: number): LinkedList;
-  insert(this: LinkedList, element: unknown, index?: number): LinkedList;
-  reverse(this: LinkedList): LinkedList;
-  isEmpty(this: LinkedList): boolean;
-  toArray(this: LinkedList): unknown[];
+  head: Node<T> | null;
+  tail: Node<T> | null;
+  push(this: LinkedList<T>, element: T): LinkedList<T>;
+  pop(this: LinkedList<T>): T | undefined;
+  unshift(this: LinkedList<T>, element: T): LinkedList<T>;
+  shift(this: LinkedList<T>): T | undefined;
+  get(this: LinkedList<T>, index: number): T | undefined;
+  remove(this: LinkedList<T>, index?: number): LinkedList<T>;
+  insert(this: LinkedList<T>, element: T, index?: number): LinkedList<T>;
+  iterator(this: LinkedList<T>): Generator<T, void, T>;
+  reverse(this: LinkedList<T>): LinkedList<T>;
+  isEmpty(this: LinkedList<T>): boolean;
+  toArray(this: LinkedList<T>): T[];
   toString(
-    this: LinkedList,
-    callback?: ToStringCallback,
+    this: LinkedList<T>,
+    callback?: ToStringCallback<T>,
     separator?: string,
   ): string;
 }
 
-const linkedList = (options?: Options): LinkedList => {
-  const node = (value: unknown, next: Node | null = null): Node => {
+const linkedList = <T>(): LinkedList<T> => {
+  const node = (value: T, next: Node<T> | null = null): Node<T> => {
     return {
       value,
       next,
@@ -43,11 +42,10 @@ const linkedList = (options?: Options): LinkedList => {
     };
   };
 
-  const list: LinkedList = {
+  const list: LinkedList<T> = {
     length: 0,
     head: null,
     tail: null,
-    ...options,
 
     push: function push(element) {
       const newNode = node(element);
@@ -67,7 +65,7 @@ const linkedList = (options?: Options): LinkedList => {
       if (this.isEmpty()) {
         return undefined;
       }
-      const tail = this.tail as Node;
+      const tail = this.tail as Node<T>;
       this.remove(this.length - 1);
       return tail.value;
     },
@@ -86,7 +84,7 @@ const linkedList = (options?: Options): LinkedList => {
       if (this.isEmpty()) {
         return undefined;
       }
-      const head = this.head as Node;
+      const head = this.head as Node<T>;
       this.head = head.next;
       if (this.head === null) {
         this.tail = null;
@@ -101,13 +99,13 @@ const linkedList = (options?: Options): LinkedList => {
       }
 
       if (index === 0) {
-        return (this.head as Node).value;
+        return (this.head as Node<T>).value;
       }
       if (index === this.length - 1) {
-        return (this.tail as Node).value;
+        return (this.tail as Node<T>).value;
       }
 
-      let current = this.head as Node;
+      let current = this.head as Node<T>;
       let i = 0;
       while (i < index && current.next) {
         current = current.next;
@@ -125,8 +123,8 @@ const linkedList = (options?: Options): LinkedList => {
         return this;
       }
 
-      let current = this.head as Node;
-      let previous: Node = current as Node;
+      let current = this.head as Node<T>;
+      let previous: Node<T> = current as Node<T>;
       let i = 0;
       while (i < index && current.next) {
         previous = current;
@@ -166,6 +164,14 @@ const linkedList = (options?: Options): LinkedList => {
       prev.next = newNode;
       this.length++;
       return this;
+    },
+
+    iterator: function* iterator() {
+      let current = this.head;
+      while (current !== null) {
+        yield current.value;
+        current = current.next;
+      }
     },
 
     reverse: function reverse() {

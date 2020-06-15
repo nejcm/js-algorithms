@@ -1,19 +1,15 @@
-/* eslint-disable @typescript-eslint/no-empty-interface */
-export interface Options {}
-
-export interface Stack extends Options {
-  items: unknown[];
-  push(this: Stack, item: unknown): Stack;
-  pop(this: Stack): unknown;
-  peek(this: Stack): unknown;
-  isEmpty(this: Stack): boolean;
-  toString(this: Stack, separator?: string): string;
+export interface Stack<T> {
+  items: T[];
+  push(this: Stack<T>, item: T): Stack<T>;
+  pop(this: Stack<T>): T | undefined;
+  peek(this: Stack<T>): T | undefined;
+  isEmpty(this: Stack<T>): boolean;
+  toString(this: Stack<T>, separator?: string): string;
 }
 
-const stack = (options?: Options): Stack => {
-  const stackArray: Stack = {
+const stack = <T>(): Stack<T> => {
+  const stackArray: Stack<T> = {
     items: [],
-    ...options,
 
     push: function push(item) {
       this.items.unshift(item);

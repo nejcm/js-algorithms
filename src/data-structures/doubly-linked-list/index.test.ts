@@ -152,25 +152,25 @@ describe('DoublyLinkedList', () => {
     linkedList.push(2);
     linkedList.push(3);
 
-    const generator = linkedList.reverseIterator();
+    const generator = linkedList.iterator();
 
-    expect(generator.next().value).toEqual(3);
-    expect(generator.next().value).toEqual(2);
     expect(generator.next().value).toEqual(1);
+    expect(generator.next().value).toEqual(2);
+    expect(generator.next().value).toEqual(3);
     expect(generator.next()).toMatchObject({done: true, value: undefined});
   });
 
   it('should check if doubly linked list is empty', () => {
-    const linkedList = createDoublyLinkedList();
     type Obj = {val: number};
+    const linkedList = createDoublyLinkedList<Obj>();
     linkedList.push({val: 0});
     linkedList.push({val: 5});
     linkedList.push({val: 10});
-    expect(linkedList.toString((node) => (node?.value as Obj).val)).toEqual(
+    expect(linkedList.toString((node) => node?.value.val.toString())).toEqual(
       '0 -> 5 -> 10',
     );
     expect(
-      linkedList.toString((node) => (node?.value as Obj).val, ','),
+      linkedList.toString((node) => node?.value.val.toString(), ','),
     ).toEqual('0,5,10');
   });
 

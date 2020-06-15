@@ -24,8 +24,8 @@ export default {
     '': [],
     Algorithms: ['Algorithms', 'Sorting', 'Searching', 'Pattern', 'String'],
     'Data Structures': [
-      'Bloom filter',
       'Data Structures',
+      'Bloom filter',
       'Disjoint-set',
       'Doubly linked list',
       'Graph',

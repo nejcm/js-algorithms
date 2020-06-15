@@ -1,21 +1,17 @@
-/* eslint-disable @typescript-eslint/no-empty-interface */
 import createList, {LinkedList} from '../linked-list';
 
-export interface Options {}
-
-export interface PriorityQueue extends Options {
-  items: LinkedList;
-  enqueue(this: PriorityQueue, item: unknown): PriorityQueue;
-  dequeue(this: PriorityQueue): unknown;
-  peek(this: PriorityQueue): unknown;
-  isEmpty(this: PriorityQueue): boolean;
-  toString(this: PriorityQueue, separator?: string): string;
+export interface PriorityQueue<T> {
+  items: LinkedList<T>;
+  enqueue(this: PriorityQueue<T>, item: T): PriorityQueue<T>;
+  dequeue(this: PriorityQueue<T>): T | undefined;
+  peek(this: PriorityQueue<T>): T | undefined;
+  isEmpty(this: PriorityQueue<T>): boolean;
+  toString(this: PriorityQueue<T>, separator?: string): string;
 }
 
-const queue = (options?: Options): PriorityQueue => {
-  const queueList: PriorityQueue = {
+const queue = <T>(): PriorityQueue<T> => {
+  const queueList: PriorityQueue<T> = {
     items: createList(),
-    ...options,
 
     enqueue: function enqueue(item) {
       this.items.push(item);
