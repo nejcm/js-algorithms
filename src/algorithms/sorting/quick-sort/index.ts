@@ -1,5 +1,5 @@
+import {run} from '../../../helpers';
 import {equalThan, lessThan} from '../../../helpers/comparator';
-import {run} from '../../../helpers/function';
 import algorithm, {Algorithm, AlgorithmProps, Options} from '../Algorithm';
 
 export enum PivotMode {
@@ -12,6 +12,7 @@ export interface QuickSortOptions<T> extends Options<T> {
   pivot?: PivotMode;
 }
 
+// get pivot function
 const getPivotFunction = <T>(option?: PivotMode): ((array: T[]) => T) => {
   switch (option || 0) {
     case PivotMode.Middle:
@@ -46,6 +47,7 @@ const quickSort = <T>(options?: QuickSortOptions<T>): Algorithm<T> => {
     const rArray = [];
     const pivot = algoOptions.getPivot(array);
     const cArray = [pivot];
+    // split array based on a pivot
     for (let i = 0; i < len - 1; i++) {
       run(algoOptions.visitingCallback, [array[i]]);
       if (equalThan(array[i], pivot)) {
@@ -57,6 +59,7 @@ const quickSort = <T>(options?: QuickSortOptions<T>): Algorithm<T> => {
       }
     }
 
+    // sort arrays and merge them
     return [...sort(lArray), ...cArray, ...sort(rArray)];
   }
 

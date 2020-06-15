@@ -1,5 +1,5 @@
+import {run} from '../../../helpers';
 import {equalThan} from '../../../helpers/comparator';
-import {run} from '../../../helpers/function';
 import algorithm, {Algorithm, AlgorithmProps, Options} from '../Algorithm';
 
 const binarySearch = (options?: Options<number>): Algorithm<number> => {

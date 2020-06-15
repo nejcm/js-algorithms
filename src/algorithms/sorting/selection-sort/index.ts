@@ -1,5 +1,5 @@
+import {run} from '../../../helpers';
 import {lessThan} from '../../../helpers/comparator';
-import {run} from '../../../helpers/function';
 import algorithm, {Algorithm, AlgorithmProps, Options} from '../Algorithm';
 
 const selectionSort = <T>(options?: Options<T>): Algorithm<T> => {
@@ -22,6 +22,7 @@ const selectionSort = <T>(options?: Options<T>): Algorithm<T> => {
         let minIndex = i;
         run(algoOptions.visitingCallback, [array[i]]);
 
+        // find minimum in the rest of array
         for (let j = i + 1; j < len; j++) {
           run(algoOptions.visitingCallback, [array[j]]);
 
@@ -30,6 +31,7 @@ const selectionSort = <T>(options?: Options<T>): Algorithm<T> => {
           }
         }
 
+        // swap min element with current
         if (minIndex !== i) {
           [array[i], array[minIndex]] = [array[minIndex], array[i]];
         }

@@ -12,6 +12,7 @@ const PolynomialHash = ({
   base = 37,
   modulus = 101,
 }: PolynomialHashProps = {}): PolynomialHash => {
+  // get char number value
   const charToNumber = (char: string): number => {
     let code = char.codePointAt(0) as number;
     const surrogate = char.codePointAt(1);
@@ -24,10 +25,13 @@ const PolynomialHash = ({
   };
 
   return {
+    // calculate hash for a string
     hash: (window: string) => {
+      // all character codes
       const codes = Array.from(window).map((char) => charToNumber(char));
 
       let hash = 0;
+      // calculate hash
       for (let i = 0; i < codes.length; i += 1) {
         hash *= base;
         hash += codes[i];
@@ -35,6 +39,7 @@ const PolynomialHash = ({
       }
       return hash;
     },
+    // calculate hash based on previous string value
     roll(prevHash: number, prevWindow: string, newWindow: string): number {
       let hash = prevHash;
 

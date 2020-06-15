@@ -1,5 +1,5 @@
+import {run} from '../../../helpers';
 import {lessThan} from '../../../helpers/comparator';
-import {run} from '../../../helpers/function';
 import algorithm, {Algorithm, AlgorithmProps, Options} from '../Algorithm';
 
 const insertionSort = <T>(options?: Options<T>): Algorithm<T> => {
@@ -18,14 +18,19 @@ const insertionSort = <T>(options?: Options<T>): Algorithm<T> => {
         };
       }
 
+      // loop array
       for (let i = 1; i < len; i++) {
         run(algoOptions.visitingCallback, [array[i]]);
+
         let j = i;
+        // loop back until element at the right position
         while (j > 0) {
           run(algoOptions.visitingCallback, [array[j - 1]]);
+          // if condition not meet no swap needed
           if (!run(algoOptions.compareFunction, [array[j], array[j - 1]])) {
             break;
           }
+          // swap elements
           [array[j], array[j - 1]] = [array[j - 1], array[j]];
           j--;
         }

@@ -1,5 +1,5 @@
+import {run} from '../../../helpers';
 import {lessThan} from '../../../helpers/comparator';
-import {run} from '../../../helpers/function';
 import algorithm, {Algorithm, AlgorithmProps, Options} from '../Algorithm';
 
 const bubbleSort = <T>(options?: Options<T>): Algorithm<T> => {
@@ -17,25 +17,24 @@ const bubbleSort = <T>(options?: Options<T>): Algorithm<T> => {
           result: values,
         };
       }
-      let swapped = false;
 
+      let swapped = false;
       for (let i = 1; i < len; i++) {
         swapped = false;
         run(algoOptions.visitingCallback, [array[i]]);
 
         for (let j = 0; j < len - i; j++) {
           run(algoOptions.visitingCallback, [array[j]]);
-
+          // compare elements
           if (run(algoOptions.compareFunction, [array[j + 1], array[j]])) {
             [array[j], array[j + 1]] = [array[j + 1], array[j]];
             swapped = true;
           }
         }
-
+        // if no elemets were swapped
+        // the array is already sorted
         if (!swapped) {
-          return {
-            result: array,
-          };
+          break;
         }
       }
 
