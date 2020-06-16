@@ -155,6 +155,9 @@ const Tester = {
     expect(alg.run([-5, -2, 0, 1, 2, 4], -1).result).toEqual([]);
     expect(alg.run([-9, -5, -2, -1, -1], -1).result).toEqual([3, 4]);
     expect(alg.run([-9, -5, -2, -1, -1], -8).result).toEqual([]);
+    expect(alg.run([2, 6, 8, 8, 10, 10, 10], 5).result).toEqual([]);
+    expect(alg.run([2, 6, 8, 8, 10, 10, 10], 7).result).toEqual([]);
+    expect(alg.run([2, 6, 8, 8, 10, 10, 10], 6).result).toEqual([1]);
     expect(
       alg.run(numbersSortedArray, containedSortedNumber.seek).result,
     ).toEqual(containedSortedNumber.result);

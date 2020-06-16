@@ -17,29 +17,22 @@ const interpolationSearch = (options?: Options<number>): Algorithm<number> => {
 
     // loop between
     while (start <= end && seek >= values[start] && seek <= values[end]) {
-      if (start === end) {
-        if (run(algoOptions.compareFunction, [values[start], seek])) {
-          // match found
-          return findAllNearby(
-            values,
-            seek,
-            start,
-            algoOptions.compareFunction,
-          );
-        }
-        return [];
-      }
-
       // interpolation of the middle index.
-      const pos = Math.floor(
+      let pos = Math.floor(
         start +
           ((end - start) / (values[end] - values[start])) *
             (seek - values[start]),
       );
+
+      // if all elements are same then we'll have divide by 0 or 0/0
+      // which may cause NaN
+      pos = Number.isNaN(pos) ? start : pos;
+
       if (run(algoOptions.compareFunction, [values[pos], seek])) {
         // match found
         return findAllNearby(values, seek, pos, algoOptions.compareFunction);
       }
+
       // check which half to continue searching
       if (values[pos] < seek) {
         // right
