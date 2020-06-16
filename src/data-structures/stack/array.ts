@@ -11,19 +11,28 @@ const stack = <T>(): Stack<T> => {
   const stackArray: Stack<T> = {
     items: [],
 
+    // add a new item to the start
     push: function push(item) {
       this.items.unshift(item);
       return this;
     },
+
+    // remove item from the start
     pop: function pop() {
       return this.items.shift();
     },
+
+    // get first item on the stack
     peek: function peek() {
       return this.items[0] || undefined;
     },
+
+    // check if the stack is empty
     isEmpty: function isEmpty() {
       return !this.items.length;
     },
+
+    // convert the stack to string
     toString: function toString(separator = ' -> ') {
       return this.items.join(separator);
     },

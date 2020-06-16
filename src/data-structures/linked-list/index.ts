@@ -47,8 +47,11 @@ const linkedList = <T>(): LinkedList<T> => {
     head: null,
     tail: null,
 
+    // add a new element at the end
     push: function push(element) {
       const newNode = node(element);
+      // if no nodes yet in list
+      // set head and tail
       if (!this.head || !this.tail) {
         this.head = newNode;
         this.tail = newNode;
@@ -61,6 +64,7 @@ const linkedList = <T>(): LinkedList<T> => {
       return this;
     },
 
+    // get and remove the last element
     pop: function pop() {
       if (this.isEmpty()) {
         return undefined;
@@ -70,9 +74,11 @@ const linkedList = <T>(): LinkedList<T> => {
       return tail.value;
     },
 
+    // add a new element at the start
     unshift: function unshift(element) {
       const newNode = node(element, this.head);
       this.head = newNode;
+      // if no tail yet then make it
       if (!list.tail) {
         this.tail = newNode;
       }
@@ -80,12 +86,14 @@ const linkedList = <T>(): LinkedList<T> => {
       return this;
     },
 
+    // get and remove the first element
     shift: function shift() {
       if (this.isEmpty()) {
         return undefined;
       }
       const head = this.head as Node<T>;
       this.head = head.next;
+      // if no head yet
       if (this.head === null) {
         this.tail = null;
       }
@@ -93,20 +101,24 @@ const linkedList = <T>(): LinkedList<T> => {
       return head.value;
     },
 
+    // get element at index
     get: function get(index) {
       if (index < 0 || index >= this.length || this.isEmpty()) {
         return undefined;
       }
 
+      // first element
       if (index === 0) {
         return (this.head as Node<T>).value;
       }
+      // last element
       if (index === this.length - 1) {
         return (this.tail as Node<T>).value;
       }
 
       let current = this.head as Node<T>;
       let i = 0;
+      // loop to index
       while (i < index && current.next) {
         current = current.next;
         i++;
@@ -114,10 +126,13 @@ const linkedList = <T>(): LinkedList<T> => {
       return current.value;
     },
 
+    // remove element from the list at index
     remove: function remove(index = 0) {
       if (index < 0 || index >= this.length || this.isEmpty()) {
         return this;
       }
+
+      // remove first element
       if (index === 0) {
         this.shift();
         return this;
@@ -126,12 +141,14 @@ const linkedList = <T>(): LinkedList<T> => {
       let current = this.head as Node<T>;
       let previous: Node<T> = current as Node<T>;
       let i = 0;
+      // loop to element at index
       while (i < index && current.next) {
         previous = current;
         current = current.next;
         i++;
       }
       previous.next = current.next;
+      // if last element is being removed than update tail
       if (previous.next === null) {
         this.tail = previous;
       }
@@ -139,15 +156,18 @@ const linkedList = <T>(): LinkedList<T> => {
       return this;
     },
 
+    // insert a new element at index
     insert: function insert(element, index = 0) {
       if (index < 0 || index > this.length) {
         return this;
       }
       const newNode = node(element);
+      // add at the start
       if (index === 0 || !this.head) {
         return this.unshift(element);
       }
 
+      // add at the end
       if (index === this.length) {
         return this.push(element);
       }
@@ -155,17 +175,20 @@ const linkedList = <T>(): LinkedList<T> => {
       let current = this.head;
       let prev = current;
       let i = 0;
+      // loop to index
       while (i < index && current.next) {
         prev = current;
         current = current.next;
         i++;
       }
+      // insert new element
       newNode.next = current;
       prev.next = newNode;
       this.length++;
       return this;
     },
 
+    // get generator that iterates over the list elements
     iterator: function* iterator() {
       let current = this.head;
       while (current !== null) {
@@ -174,6 +197,7 @@ const linkedList = <T>(): LinkedList<T> => {
       }
     },
 
+    // reverse the list
     reverse: function reverse() {
       let current = this.head;
       let prev = null;
@@ -194,10 +218,12 @@ const linkedList = <T>(): LinkedList<T> => {
       return this;
     },
 
+    // check if the list is empty
     isEmpty: function isEmpty() {
       return this.length === 0;
     },
 
+    // convert the list to array
     toArray: function toArray() {
       const nodes = [];
       let current = this.head;
@@ -208,12 +234,15 @@ const linkedList = <T>(): LinkedList<T> => {
       return nodes;
     },
 
+    // convert the list to string
     toString: function toString(callback?, separator = ' -> ') {
       let str = '';
       let current = this.head;
       while (current) {
+        // call each node toString method and pass the callback
         str += current.toString(callback);
         current = current.next;
+        // add separator if not last element
         if (current) {
           str += separator;
         }

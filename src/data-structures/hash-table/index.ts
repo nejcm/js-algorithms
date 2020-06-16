@@ -20,6 +20,7 @@ export interface HashTable<T> extends Options {
 }
 
 const hashTable = <T>(options: Options = {size: 20}): HashTable<T> => {
+  // find the item and index
   const find = (
     list: LinkedList<Item<T>>,
     key: string,
@@ -39,28 +40,33 @@ const hashTable = <T>(options: Options = {size: 20}): HashTable<T> => {
   };
 
   const table: HashTable<T> = {
-    size: 20,
+    size: 20, // default hash table size
     buckets: Array(options.size)
       .fill(null)
       .map(() => linkedList()),
 
+    // calculate the key hash value
     hash: function hash(key) {
       const keyHash = polyHash.hash(key);
       return keyHash % this.buckets.length;
     },
+
+    // insert new item into the table
     insert: function insert(key, value) {
       const keyHash = this.hash(key);
       const list = this.buckets[keyHash];
       const {item} = find(list, key);
 
       if (!item) {
-        // Insert
+        // insert
         list.push({key, value});
       } else {
-        // Update existing
+        // update existing
         item.value = value;
       }
     },
+
+    // delete item from hash table
     // prettier-ignore
     "delete": function del(key) {
       const keyHash = this.hash(key);
@@ -72,12 +78,16 @@ const hashTable = <T>(options: Options = {size: 20}): HashTable<T> => {
       }
       return false;
     },
+
+    // get item from the hash table
     get: function get(key) {
       const keyHash = this.hash(key);
       const list = this.buckets[keyHash];
       const {item} = find(list, key);
       return item?.value;
     },
+
+    // check if the table contains a key/item
     has: function has(key) {
       const keyHash = this.hash(key);
       const list = this.buckets[keyHash];
