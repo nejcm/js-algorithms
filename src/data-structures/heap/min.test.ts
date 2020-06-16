@@ -111,4 +111,20 @@ describe('MinHeap', () => {
       ),
     ).toEqual([0, 1, 3]);
   });
+
+  it('should update an item in the heap', () => {
+    const heap = createHeap();
+
+    heap.add(4);
+    heap.add(15);
+    heap.add(15);
+    heap.add(8);
+    heap.add(10);
+
+    expect(heap.items).toEqual([4, 8, 15, 15, 10]);
+    expect(heap.update(-1, 2).items).toEqual([4, 8, 15, 15, 10]);
+    expect(heap.update(0, 14).items).toEqual([8, 10, 15, 15, 14]);
+    expect(heap.update(1, 0).items).toEqual([0, 8, 15, 15, 14]);
+    expect(heap.update(4, 13).items).toEqual([0, 8, 15, 15, 13]);
+  });
 });

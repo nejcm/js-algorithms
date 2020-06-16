@@ -112,6 +112,22 @@ describe('MaxHeap', () => {
     ).toEqual([3, 4, 7]);
   });
 
+  it('should update an item in the heap', () => {
+    const heap = createHeap();
+
+    heap.add(4);
+    heap.add(15);
+    heap.add(15);
+    heap.add(8);
+    heap.add(10);
+
+    expect(heap.items).toEqual([15, 10, 15, 4, 8]);
+    expect(heap.update(-1, 2).items).toEqual([15, 10, 15, 4, 8]);
+    expect(heap.update(0, 14).items).toEqual([15, 10, 14, 4, 8]);
+    expect(heap.update(1, 0).items).toEqual([15, 8, 14, 4, 0]);
+    expect(heap.update(4, 13).items).toEqual([15, 13, 14, 4, 8]);
+  });
+
   it('should convert heap to string', () => {
     const heap = createHeap();
 
