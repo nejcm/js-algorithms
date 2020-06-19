@@ -1,12 +1,12 @@
-const pkgNmae = 'js-algorithms';
+const pkgName = 'js-algorithms';
 
 export default {
   lang: 'en',
   files: '**/*.mdx',
-  ignore: ['./*.md'],
-  title: `🔥 ${pkgNmae}`,
-  base: `/${pkgNmae}/`,
-  description: `Documentation on ${pkgNmae}.`,
+  ignore: ['readme.md', 'README.md'],
+  title: `🔥 ${pkgName}`,
+  base: `/${pkgName}/`,
+  description: `Documentation on ${pkgName}.`,
   menu: [
     'Introduction',
     'Installation',
@@ -17,34 +17,23 @@ export default {
   ],
   menuDisplayName: {
     Algorithms: 'Overview',
+    'All data structures': 'All',
     'Data Structures': 'Overview',
     Other: 'Overview',
   },
   groups: {
     '': [],
     Algorithms: ['Algorithms', 'Sorting', 'Searching', 'Pattern', 'String'],
-    'Data Structures': [
-      'Data Structures',
-      'Bloom filter',
-      'Disjoint-set',
-      'Doubly linked list',
-      'Graph',
-      'Hash table',
-      'Heap',
-      'Linked list',
-      'Priority queue',
-      'Queue',
-      'Stack',
-      'Tree',
-      'Trie',
-    ],
+    'Data Structures': ['Data Structures', 'All data structures'],
     Other: ['Other'],
   },
   themeConfig: {
+    search: true,
     footer: {
       navigation: true,
     },
     menu: {
+      search: false,
       headings: {
         rightSide: true,
         scrollspy: true,
