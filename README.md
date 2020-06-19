@@ -1,9 +1,11 @@
 # 🎓 Js algorithms
-<blockquote>Algorithms, data structures and other programming problems implemented in JavaScript with documentation.</blockquote>
+
+<blockquote>Algorithms, data structures and other programming challenges and problems implemented in JavaScript with documentation.</blockquote>
 
 <br />
 
-⚠️ This package is still under development! New algorithms are being added and existing ones refactored to improve code quality.
+⚠️ This package is still under development! New algorithms are being added and
+existing ones refactored to improve code quality.
 
 <br />
 
@@ -40,7 +42,6 @@
 
 ## Installation
 
-
 ```shell
 
 # Clone repo
@@ -59,7 +60,6 @@ $ npm run start
 Each algorithm is described on the docs website.
 
 > [**Docs website**][docs-link]
-
 
 ## Issues
 
@@ -87,7 +87,6 @@ instead of filing an issue on GitHub.
 ## Authors
 
 - Nejc Muršič ( [GitHub][github], [LinkedIn][linkedin] )
-
 
 ## Contributors
 
