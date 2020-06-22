@@ -29,6 +29,9 @@ export default {
   },
   themeConfig: {
     search: true,
+    header: {
+      icons: 'minimal',
+    },
     footer: {
       navigation: true,
     },
