@@ -27,8 +27,8 @@ const hashTable = <T>(options: Options = {size: 20}): HashTable<T> => {
     list: LinkedList<Item<T>>,
     key: string,
   ): {item?: Item<T>; index: number} => {
-    const iterator = list.iterator();
-    let node = iterator.next();
+    const iterate = list.iterate();
+    let node = iterate.next();
     let index = 0;
     while (!node.done) {
       const item = node.value;
@@ -36,7 +36,7 @@ const hashTable = <T>(options: Options = {size: 20}): HashTable<T> => {
         return {item, index};
       }
       index++;
-      node = iterator.next();
+      node = iterate.next();
     }
     return {index: -1};
   };

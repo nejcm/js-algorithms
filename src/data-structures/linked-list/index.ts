@@ -16,7 +16,7 @@ export interface LinkedList<T> {
   get(this: LinkedList<T>, index: number): T | undefined;
   remove(this: LinkedList<T>, index?: number): LinkedList<T>;
   insert(this: LinkedList<T>, element: T, index?: number): LinkedList<T>;
-  iterator(this: LinkedList<T>): Generator<T, void, T>;
+  iterate(this: LinkedList<T>): Generator<T, void, T>;
   reverse(this: LinkedList<T>): LinkedList<T>;
   isEmpty(this: LinkedList<T>): boolean;
   toArray(this: LinkedList<T>): T[];
@@ -187,7 +187,7 @@ const linkedList = <T>(): LinkedList<T> => {
     },
 
     // get generator that iterates over the list elements
-    iterator: function* iterator() {
+    iterate: function* iterate() {
       let current = this.head;
       while (current !== null) {
         yield current.value;

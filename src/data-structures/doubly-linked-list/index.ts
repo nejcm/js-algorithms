@@ -20,7 +20,7 @@ export interface DoublyLinkedList<T> {
     element: T,
     index?: number,
   ): DoublyLinkedList<T>;
-  iterator(this: DoublyLinkedList<T>): Generator<T, void, T>;
+  iterate(this: DoublyLinkedList<T>): Generator<T, void, T>;
   reverse(this: DoublyLinkedList<T>): DoublyLinkedList<T>;
   isEmpty(this: DoublyLinkedList<T>): boolean;
   toArray(this: DoublyLinkedList<T>): T[];
@@ -206,7 +206,7 @@ const linkedList = <T>(): DoublyLinkedList<T> => {
     },
 
     // get generator that iterates over the list elements
-    iterator: function* iterator() {
+    iterate: function* iterate() {
       let current = this.head;
       while (current !== null) {
         yield current.value;

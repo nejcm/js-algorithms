@@ -139,7 +139,7 @@ describe('LinkedList', () => {
     linkedList.push(2);
     linkedList.push(3);
 
-    const generator = linkedList.iterator();
+    const generator = linkedList.iterate();
 
     expect(generator.next().value).toEqual(1);
     expect(generator.next().value).toEqual(2);
