@@ -11,11 +11,13 @@ export interface Item<T> {
 }
 export interface HashTable<T> extends Options {
   size: number;
+  length: number;
   buckets: LinkedList<Item<T>>[];
   hash(this: HashTable<T>, key: string): number;
   insert(this: HashTable<T>, key: string, value: T): void;
   delete(this: HashTable<T>, key: string): boolean;
   get(this: HashTable<T>, key: string): T | undefined;
+  getAll(this: HashTable<T>): Item<T>[];
   has(this: HashTable<T>, key: string): boolean;
 }
 
@@ -41,6 +43,7 @@ const hashTable = <T>(options: Options = {size: 20}): HashTable<T> => {
 
   const table: HashTable<T> = {
     size: 20, // default hash table size
+    length: 0,
     buckets: Array(options.size)
       .fill(null)
       .map(() => linkedList()),
@@ -60,6 +63,7 @@ const hashTable = <T>(options: Options = {size: 20}): HashTable<T> => {
       if (!item) {
         // insert
         list.push({key, value});
+        this.length++;
       } else {
         // update existing
         item.value = value;
@@ -74,6 +78,7 @@ const hashTable = <T>(options: Options = {size: 20}): HashTable<T> => {
       const {index} = find(list, key);
       if (index >= 0) {
         list.remove(index);
+        this.length--;
         return true;
       }
       return false;
@@ -85,6 +90,15 @@ const hashTable = <T>(options: Options = {size: 20}): HashTable<T> => {
       const list = this.buckets[keyHash];
       const {item} = find(list, key);
       return item?.value;
+    },
+
+    // get all items
+    getAll: function getAll() {
+      let result: Item<T>[] = [];
+      this.buckets.forEach((bucket) => {
+        result = [...result, ...bucket.toArray()];
+      });
+      return result;
     },
 
     // check if the table contains a key/item

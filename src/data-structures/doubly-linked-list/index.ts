@@ -1,10 +1,6 @@
 export type ToStringCallback<T> = (current: Node<T>) => string;
-export interface NodeProps<T> {
+export interface Node<T> {
   value: T;
-  next?: Node<T> | null;
-  prev?: Node<T> | null;
-}
-export interface Node<T> extends NodeProps<T> {
   next: Node<T> | null;
   prev: Node<T> | null;
   toString: (callback?: ToStringCallback<T>) => T | string;
