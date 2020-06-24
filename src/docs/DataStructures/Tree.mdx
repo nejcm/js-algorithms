@@ -1,6 +1,6 @@
 ---
-name: Tree
-route: /data-structures/tree
+name: Trees
+route: /data-structures/trees
 menu: All data structures
 ---
 
@@ -56,21 +56,23 @@ Some tree types:
 6. N-ary tree: In this tree the limitation of the binary tree is removed. Here a
    node can have at most n children. Like binary tree it can be full,complete or
    perfect n-ary tree. N-ary is some time known as forest.
-7. Trie Structure: In computer science, a trie, also called digital tree and
+7. Fenwick tree: Is a binary indexed tree is a data structure that can
+   efficiently update elements and calculate prefix sums in a table of numbers.
+8. Trie Structure: In computer science, a trie, also called digital tree and
    sometimes radix tree or prefix tree (as they can be searched by prefixes), is
    an ordered tree data structure that is used to store a dynamic set or
    associative array where the keys are usually strings. All the descendants of
    a node have a common prefix of the string associated with that node, and the
    root is associated with the empty string.
-8. Suffix tree: Trie and suffix tree are closely related. a suffix tree (also
+9. Suffix tree: Trie and suffix tree are closely related. a suffix tree (also
    called PAT tree or, in an earlier form, position tree) is a compressed trie
    containing all the suffixes of the given text as their keys and positions in
    the text as their values. Suffix trees allow particularly fast
    implementations of many important string operations.
-9. Huffman Tree: Huffman tree is a frequency sorted binary tree used widely in
-   compressing data. Huffman tree is constructed to allocate a short code word
-   to a long text based on its frequency of occurrences.
-10. Heap Structure [Edit as suggested]: Heap structure is another widely used
+10. Huffman Tree: Huffman tree is a frequency sorted binary tree used widely in
+    compressing data. Huffman tree is constructed to allocate a short code word
+    to a long text based on its frequency of occurrences.
+11. Heap Structure [Edit as suggested]: Heap structure is another widely used
     tree structure with a specific ordering property. There are two types of
     heap - Min heap and Max heap. In a min heap the parent of a node must be
     smaller than the values of all its children. Similarly in max heap the
@@ -79,6 +81,12 @@ Some tree types:
     children.
 
 ![Data Structure Visualization](https://upload.wikimedia.org/wikipedia/commons/f/f7/Binary_tree.svg)
+
+| Operation | Best Case Complexity | Average Case Complexity | Worst Case Complexity |
+| --------- | :------------------: | :---------------------: | :-------------------: |
+| Search    |       O(log n)       |        O(log n)         |         O(n)          |
+| Insertion |       O(log n)       |        O(log n)         |         O(n)          |
+| Deletion  |       O(log n)       |        O(log n)         |         O(n)          |
 
 ## References
 
