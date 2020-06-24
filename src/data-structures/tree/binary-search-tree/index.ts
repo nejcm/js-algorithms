@@ -105,12 +105,15 @@ const tree = <T>(): BinarySearchTree<T> => {
         return this;
       }
 
+      this.size--;
+
       const nodeToRemove = current as Node<T>;
       let replacement = null;
+      let replacementParent = null;
       // has left and right child
       if (nodeToRemove.left !== null && nodeToRemove.right !== null) {
         replacement = nodeToRemove.left;
-        let replacementParent = nodeToRemove;
+        replacementParent = nodeToRemove;
 
         // traverse right subtree
         while (replacement.right !== null) {
@@ -122,7 +125,7 @@ const tree = <T>(): BinarySearchTree<T> => {
         replacement.right = nodeToRemove.right;
 
         if (replacementParent !== nodeToRemove) {
-          // remove replacment
+          // remove replacement
           replacementParent.right = replacement.left;
           // attach left subtree
           replacement.left = nodeToRemove.left;
@@ -132,8 +135,6 @@ const tree = <T>(): BinarySearchTree<T> => {
       } else if (nodeToRemove.right !== null) {
         replacement = nodeToRemove.right;
       }
-
-      this.size--;
 
       // is node is root
       if (nodeToRemove === this.root) {
@@ -191,19 +192,19 @@ const tree = <T>(): BinarySearchTree<T> => {
     toArray: function toArray() {
       const result: T[] = [];
       function traverse(node: Node<T> | null) {
-        if (node) {
-          // traverse the left subtree
-          if (node.left !== null) {
-            traverse(node.left);
-          }
+        if (!node) return;
 
-          // yield node value
-          result.push(node.value);
+        // traverse the left subtree
+        if (node.left !== null) {
+          traverse(node.left);
+        }
 
-          // traverse the right subtree
-          if (node.right !== null) {
-            traverse(node.right);
-          }
+        // yield node value
+        result.push(node.value);
+
+        // traverse the right subtree
+        if (node.right !== null) {
+          traverse(node.right);
         }
       }
       // start with the root
