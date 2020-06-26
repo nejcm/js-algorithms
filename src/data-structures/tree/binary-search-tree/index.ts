@@ -1,29 +1,35 @@
 export type ToStringCallback<T> = (current: Node<T>) => string;
+export type Meta = {[key: string]: unknown};
 export interface Node<T> {
   left: Node<T> | null;
   right: Node<T> | null;
   value: T;
-  meta: {[key: string]: unknown};
+  meta: Meta;
 }
 export interface BinarySearchTree<T> {
   size: number;
   root: Node<T> | null;
-  insert(this: BinarySearchTree<T>, value: T): BinarySearchTree<T>;
-  remove(this: BinarySearchTree<T>, value: T): BinarySearchTree<T>;
+  insert(this: BinarySearchTree<T>, value: T): Node<T> | undefined;
+  _remove(
+    this: BinarySearchTree<T>,
+    value: T,
+  ): {removed: Node<T>; replacement: Node<T> | null} | undefined;
+  remove(this: BinarySearchTree<T>, value: T): boolean;
   get(this: BinarySearchTree<T>, value: T): Node<T> | undefined;
   has(this: BinarySearchTree<T>, value: T): boolean;
+  _findMin(this: BinarySearchTree<T>): Node<T> | undefined;
   findMin(this: BinarySearchTree<T>): T | undefined;
   iterate(this: BinarySearchTree<T>): Generator<T, void, T>;
   toArray(this: BinarySearchTree<T>): T[];
   toString(this: BinarySearchTree<T>, separator?: string): string;
 }
 
-export const createNode = <T>(value: T): Node<T> => {
+export const createNode = <T>(value: T, meta: Meta = {}): Node<T> => {
   return {
     left: null,
     right: null,
     value,
-    meta: {},
+    meta,
   };
 };
 
@@ -40,44 +46,46 @@ const tree = <T>(): BinarySearchTree<T> => {
       if (!this.root) {
         this.root = newNode;
         this.size++;
-        return this;
+        return newNode;
       }
 
       let current = this.root;
       // loop until we find the correct spot
       while (current) {
-        // if the new value is less than this node's value, go left
         if (value < current.value) {
-          // if there's no left, then insert node there
+          // if the new value is less than this node's value, go left
           if (current.left === null) {
+            // if there's no left, then insert node there
             current.left = newNode;
             this.size++;
             break;
           }
           current = current.left;
-
-          // if the new value is greater than this node's value, go right
+          return newNode;
         } else if (value > current.value) {
-          // if there's no right, then insert node there
+          // if the new value is greater than this node's value, go right
           if (current.right === null) {
+            // if there's no right, then insert node there
             current.right = newNode;
             this.size++;
             break;
           }
           current = current.right;
+          return newNode;
         } else {
           // ignore if value exists
           break;
         }
       }
-      return this;
+      return undefined;
     },
 
-    remove: function remove(value) {
+    // remove node
+    _remove: function _remove(value) {
       let current = this.root;
       // empty tree
       if (current === null) {
-        return this;
+        return undefined;
       }
 
       let found = false;
@@ -102,7 +110,7 @@ const tree = <T>(): BinarySearchTree<T> => {
 
       // exit if not found
       if (!found) {
-        return this;
+        return undefined;
       }
 
       this.size--;
@@ -139,7 +147,7 @@ const tree = <T>(): BinarySearchTree<T> => {
       // is node is root
       if (nodeToRemove === this.root) {
         this.root = replacement;
-        return this;
+        return {removed: nodeToRemove, replacement};
       }
 
       // no children
@@ -148,9 +156,15 @@ const tree = <T>(): BinarySearchTree<T> => {
       } else {
         parent.right = replacement;
       }
-      return this;
+      return {removed: nodeToRemove, replacement};
     },
 
+    // remove value
+    remove: function remove(value) {
+      return this.remove(value) !== null;
+    },
+
+    // get node
     get: function get(value) {
       let current = this.root;
       // traverse node's
@@ -168,15 +182,22 @@ const tree = <T>(): BinarySearchTree<T> => {
       return undefined;
     },
 
+    // has / contains value
     has: function has(value) {
       return this.get(value) !== undefined;
     },
 
-    findMin: function findMin() {
-      const min = (node: Node<T> | null): T | undefined => {
-        return node?.left ? min(node.left) : node?.value || undefined;
+    // get min node
+    _findMin: function _findMin() {
+      const min = (node: Node<T> | null): Node<T> | undefined => {
+        return node?.left ? min(node.left) : node || undefined;
       };
       return min(this.root);
+    },
+
+    // get min value
+    findMin: function findMin() {
+      return this._findMin()?.value;
     },
 
     // iterate over tree nodes

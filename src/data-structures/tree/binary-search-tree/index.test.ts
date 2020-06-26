@@ -36,7 +36,8 @@ describe('Tree', () => {
   it('should remove nodes', () => {
     const tree = createTree();
 
-    expect(tree.remove(0).root).toEqual(null);
+    expect(tree.remove(0)).toEqual(false);
+    expect(tree.root).toEqual(null);
 
     tree.insert(3);
     tree.insert(1);
@@ -64,17 +65,16 @@ describe('Tree', () => {
     tree.remove(7);
     expect(tree.toArray()).toEqual([-6, -3, 1, 2, 3, 4, 8, 10, 13]);
 
-    tree
-      .remove(1)
-      .remove(3)
-      .remove(-3)
-      .remove(13)
-      .remove(8)
-      .remove(4)
-      .remove(2)
-      .remove(2)
-      .remove(-6)
-      .remove(10);
+    tree.remove(1);
+    tree.remove(3);
+    tree.remove(-3);
+    tree.remove(13);
+    tree.remove(8);
+    tree.remove(4);
+    tree.remove(2);
+    tree.remove(2);
+    tree.remove(-6);
+    tree.remove(10);
     expect(tree.toArray()).toEqual([]);
     expect(tree.root).toBeNull();
   });
