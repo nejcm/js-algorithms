@@ -50,6 +50,7 @@
     "no-debugger": "warn",
     "no-unused-vars": "error",
     "no-sequences": "off",
+    "no-continue": "off",
     "eqeqeq": "off",
     "import/no-useless-path-segments": "off",
     "max-lines": "off",
