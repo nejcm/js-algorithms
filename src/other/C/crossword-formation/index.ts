@@ -1,5 +1,4 @@
 /* eslint-disable max-depth */
-/* eslint-disable no-continue */
 /* eslint-disable complexity */
 export function crosswordFormation(words: string[]): number {
   let count = 0;
