@@ -3,6 +3,6 @@ export function isSubstitutionCipher(
   string2: string,
 ): boolean {
   return [...string1].every(
-    (c, i) => string1.indexOf(string1[i]) === string2.indexOf(string2[i]),
+    (_c, i) => string1.indexOf(string1[i]) === string2.indexOf(string2[i]),
   );
 }
