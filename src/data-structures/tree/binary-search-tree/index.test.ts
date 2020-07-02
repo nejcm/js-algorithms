@@ -1,8 +1,8 @@
-import createTree from './';
+import createTree from './index';
 
-describe('Tree', () => {
+describe('BinarySearchTree', () => {
   it('should create empty tree', () => {
-    const tree = createTree();
+    const tree = createTree<number>();
     expect(tree).toBeDefined();
     expect(tree.root).toBeNull();
   });
@@ -15,7 +15,7 @@ describe('Tree', () => {
     tree.insert(5);
     tree.insert(2);
 
-    expect(tree.toString()).toEqual('1 -> 2 -> 5');
+    expect(tree.toString()).toEqual('1, 2, 5');
     expect(tree.toArray()).toEqual([1, 2, 5]);
     expect(tree.root?.value).toEqual(1);
   });
@@ -95,6 +95,24 @@ describe('Tree', () => {
     expect(generator.next().value).toEqual(1);
     expect(generator.next().value).toEqual(5);
     expect(generator.next()).toMatchObject({done: true, value: undefined});
+  });
+
+  it('should get node', () => {
+    const tree = createTree();
+
+    expect(tree.findMin()).toBeUndefined();
+    tree.insert('a');
+    tree.insert('d');
+    tree.insert('b');
+    tree.insert('x');
+
+    expect(tree.get('x')).toMatchObject({
+      value: 'x',
+    });
+    expect(tree.get('b')).toMatchObject({
+      value: 'b',
+    });
+    expect(tree.get('z')).toBeUndefined();
   });
 
   it('should find minimum', () => {

@@ -15,7 +15,7 @@ export function addBorderV2(picture: string[]): string[] {
 
 export function addBorderV3(picture: string[]): string[] {
   let e;
-  return [(e = '*'.repeat(p[0].length + 2))].concat(
+  return [(e = '*'.repeat(picture[0].length + 2))].concat(
     picture.map((i) => `*${i}*`),
     e,
   );

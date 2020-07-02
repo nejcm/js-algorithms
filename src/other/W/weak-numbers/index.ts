@@ -1,5 +1,5 @@
 export function weakNumbers(n: number): number[] {
-  const divisors = (v) =>
+  const divisors = (v: number): number =>
     Array(v)
       .fill(0)
       .reduce((a, _c, i) => (v % (i + 1) ? a : a + 1), 0);

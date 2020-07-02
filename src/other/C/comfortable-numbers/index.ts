@@ -1,5 +1,5 @@
 export function comfortableNumbers(l: number, r: number): number {
-  const digitSum = (n) => {
+  const digitSum = (n: number): number => {
     let s = 0;
     while (n) {
       s += n % 10;
