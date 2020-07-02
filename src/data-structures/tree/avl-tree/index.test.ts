@@ -16,22 +16,22 @@ describe('AVLTree', () => {
 
     expect(tree.toArray()).toEqual([2, 4, 6]);
     expect(tree.root?.value).toEqual(4);
-    expect(tree.root?.meta.height).toEqual(2);
+    expect(tree.root?.height).toEqual(2);
 
     tree.insert(8);
 
     expect(tree.toArray()).toEqual([2, 4, 6, 8]);
     expect(tree.root?.value).toEqual(4);
-    expect(tree.root?.meta.height).toEqual(3);
+    expect(tree.root?.height).toEqual(3);
 
     tree.insert(0);
 
     expect(tree.toArray()).toEqual([0, 2, 4, 6, 8]);
     expect(tree.root?.value).toEqual(4);
     expect(tree.root?.left?.value).toEqual(2);
-    expect(tree.root?.left?.meta.height).toEqual(2);
-    expect(tree.root?.right?.meta.height).toEqual(2);
-    expect(tree.root?.meta.height).toEqual(3);
+    expect(tree.root?.left?.height).toEqual(2);
+    expect(tree.root?.right?.height).toEqual(2);
+    expect(tree.root?.height).toEqual(3);
 
     tree.insert(0);
 
@@ -47,17 +47,17 @@ describe('AVLTree', () => {
     tree.insert(5);
 
     expect(tree.root?.value).toEqual(15);
-    expect(tree.root?.meta.height).toEqual(3);
+    expect(tree.root?.height).toEqual(3);
     expect(tree.toString()).toEqual('5, 10, 15, 20');
 
     tree.insert(12);
     expect(tree.root?.value).toEqual(15);
-    expect(tree.root?.meta.height).toEqual(3);
+    expect(tree.root?.height).toEqual(3);
     expect(tree.toString()).toEqual('5, 10, 12, 15, 20');
 
     tree.insert(1);
     expect(tree.root?.value).toEqual(10);
-    expect(tree.root?.meta.height).toEqual(3);
+    expect(tree.root?.height).toEqual(3);
     expect(tree.toString()).toEqual('1, 5, 10, 12, 15, 20');
   });
 
@@ -70,20 +70,20 @@ describe('AVLTree', () => {
 
     expect(tree.toArray()).toEqual([1, 2, 3]);
     expect(tree.root?.value).toEqual(2);
-    expect(tree.root?.meta.height).toEqual(2);
+    expect(tree.root?.height).toEqual(2);
 
     tree.insert(4);
 
     expect(tree.toArray()).toEqual([1, 2, 3, 4]);
     expect(tree.root?.value).toEqual(2);
-    expect(tree.root?.meta.height).toEqual(3);
+    expect(tree.root?.height).toEqual(3);
 
     tree.insert(5);
 
     expect(tree.toArray()).toEqual([1, 2, 3, 4, 5]);
     expect(tree.root?.value).toEqual(2);
     expect(tree.root?.right?.value).toEqual(4);
-    expect(tree.root?.meta.height).toEqual(3);
+    expect(tree.root?.height).toEqual(3);
   });
 
   it('should do complex right-right rotation', () => {
@@ -95,17 +95,17 @@ describe('AVLTree', () => {
     tree.insert(25);
 
     expect(tree.root?.value).toEqual(15);
-    expect(tree.root?.meta.height).toEqual(3);
+    expect(tree.root?.height).toEqual(3);
     expect(tree.toArray()).toEqual([10, 15, 20, 25]);
 
     tree.insert(16);
     expect(tree.root?.value).toEqual(15);
-    expect(tree.root?.meta.height).toEqual(3);
+    expect(tree.root?.height).toEqual(3);
     expect(tree.toArray()).toEqual([10, 15, 16, 20, 25]);
 
     tree.insert(26);
     expect(tree.root?.value).toEqual(20);
-    expect(tree.root?.meta.height).toEqual(3);
+    expect(tree.root?.height).toEqual(3);
     expect(tree.toArray()).toEqual([10, 15, 16, 20, 25, 26]);
   });
 
@@ -117,7 +117,7 @@ describe('AVLTree', () => {
     tree.insert(12);
     tree.insert(11);
 
-    expect(tree.root?.meta.height).toEqual(3);
+    expect(tree.root?.height).toEqual(3);
     expect(tree.root?.value).toEqual(12);
     expect(tree.toArray()).toEqual([10, 11, 12, 15]);
   });
@@ -130,7 +130,7 @@ describe('AVLTree', () => {
     tree.insert(16);
     tree.insert(18);
 
-    expect(tree.root?.meta.height).toEqual(3);
+    expect(tree.root?.height).toEqual(3);
     expect(tree.root?.value).toEqual(16);
     expect(tree.toArray()).toEqual([15, 16, 18, 20]);
   });
@@ -143,32 +143,32 @@ describe('AVLTree', () => {
     tree.insert(3);
 
     expect(tree.root?.value).toEqual(2);
-    expect(tree.root?.meta.height).toEqual(2);
+    expect(tree.root?.height).toEqual(2);
 
     tree.insert(6);
 
     expect(tree.root?.value).toEqual(2);
-    expect(tree.root?.meta.height).toEqual(3);
+    expect(tree.root?.height).toEqual(3);
 
     tree.insert(15);
 
     expect(tree.root?.value).toEqual(2);
-    expect(tree.root?.meta.height).toEqual(3);
+    expect(tree.root?.height).toEqual(3);
 
     tree.insert(-2);
 
     expect(tree.root?.value).toEqual(2);
-    expect(tree.root?.meta.height).toEqual(3);
+    expect(tree.root?.height).toEqual(3);
 
     tree.insert(-5);
 
     expect(tree.root?.value).toEqual(2);
-    expect(tree.root?.meta.height).toEqual(3);
+    expect(tree.root?.height).toEqual(3);
 
     tree.insert(-8);
 
     expect(tree.root?.value).toEqual(2);
-    expect(tree.root?.meta.height).toEqual(4);
+    expect(tree.root?.height).toEqual(4);
   });
 
   it('should remove values with right-right rotation', () => {
@@ -187,7 +187,7 @@ describe('AVLTree', () => {
     expect(tree.root?.value).toEqual(3);
     expect(tree.root?.left?.value).toEqual(2);
     expect(tree.root?.right?.value).toEqual(4);
-    expect(tree.root?.meta.height).toEqual(2);
+    expect(tree.root?.height).toEqual(2);
   });
 
   it('should remove values with left-left rotation', () => {
@@ -208,7 +208,7 @@ describe('AVLTree', () => {
     expect(tree.root?.value).toEqual(1);
     expect(tree.root?.left?.value).toEqual(0);
     expect(tree.root?.right?.value).toEqual(2);
-    expect(tree.root?.meta.height).toEqual(2);
+    expect(tree.root?.height).toEqual(2);
   });
 
   it('should keep balance after removal', () => {

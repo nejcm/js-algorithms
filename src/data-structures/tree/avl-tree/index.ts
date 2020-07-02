@@ -17,7 +17,7 @@ const avlTree = <T>(): AvlTree<T> => {
 
   // get node height
   const height = (node: Node<T> | null): number =>
-    (node?.meta.height || 0) as number;
+    (node?.height || 0) as number;
 
   // find minimum node in tree
   const minValueNode = (node: Node<T>): Node<T> => {
@@ -42,8 +42,8 @@ const avlTree = <T>(): AvlTree<T> => {
     x.right = node;
 
     // update heights
-    node.meta.height = Math.max(height(node.left), height(node.right)) + 1;
-    x.meta.height = Math.max(height(x.left), height(x.right)) + 1;
+    node.height = Math.max(height(node.left), height(node.right)) + 1;
+    x.height = Math.max(height(x.left), height(x.right)) + 1;
     return x;
   };
 
@@ -55,8 +55,8 @@ const avlTree = <T>(): AvlTree<T> => {
     x.left = node;
 
     // update heights
-    node.meta.height = Math.max(height(node.left), height(node.right)) + 1;
-    x.meta.height = Math.max(height(x.left), height(x.right)) + 1;
+    node.height = Math.max(height(node.left), height(node.right)) + 1;
+    x.height = Math.max(height(x.left), height(x.right)) + 1;
     return x;
   };
 
@@ -64,7 +64,7 @@ const avlTree = <T>(): AvlTree<T> => {
     // add note if not exists
     if (root === null) {
       this.size++;
-      return this.createNode(value, {height: 1});
+      return this.createNode(value, {}, {height: 1});
     }
 
     // move into left subtree
@@ -81,7 +81,7 @@ const avlTree = <T>(): AvlTree<T> => {
     }
 
     // get max height from children
-    root.meta.height = Math.max(height(root.left), height(root.right)) + 1;
+    root.height = Math.max(height(root.left), height(root.right)) + 1;
     // get node balance factor
     const balance = getBalance(root);
     // left left case
@@ -148,7 +148,7 @@ const avlTree = <T>(): AvlTree<T> => {
     }
 
     // recalc height
-    root.meta.height = Math.max(height(root.left), height(root.right)) + 1;
+    root.height = Math.max(height(root.left), height(root.right)) + 1;
     // get node balance factor
     const balance = getBalance(root);
 

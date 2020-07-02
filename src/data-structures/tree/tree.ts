@@ -5,11 +5,16 @@ export interface Node<T> {
   right: Node<T> | null;
   value: T;
   meta: Meta;
+  [key: string]: unknown;
 }
 export interface Tree<T> {
   size: number;
   root: Node<T> | null;
-  createNode<T>(value: T, meta?: Meta): Node<T>;
+  createNode<T>(
+    value: T,
+    meta?: Meta,
+    other?: {[key: string]: unknown},
+  ): Node<T>;
   _insert(this: Tree<T>, value: T): Node<T> | undefined;
   _remove(this: Tree<T>, value: T): Node<T> | undefined;
   _get(this: Tree<T>, value: T): Node<T> | undefined;
@@ -26,11 +31,12 @@ const tree = <T>(): Tree<T> => {
     size: 0,
 
     // create node
-    createNode: function createNode(value, meta = {}) {
+    createNode: function createNode(value, meta = {}, other = {}) {
       return {
         left: null,
         right: null,
         value,
+        ...other,
         meta,
       };
     },
