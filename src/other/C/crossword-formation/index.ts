@@ -14,7 +14,7 @@ export function crosswordFormation(words: string[]): number {
         for (let w2 = 1; w2 < words[j].length; w2++) {
           // chars not equal
           if (words[i][w1] !== words[j][w2]) continue;
-          //
+
           for (let b1 = 0; b1 < w2 - 1; b1++) {
             // loop all
             for (let k = 0; k < 4; k++) {
@@ -26,7 +26,7 @@ export function crosswordFormation(words: string[]): number {
               for (let c1 = 0; c1 < words[k].length - 1; c1++) {
                 // chars not equal
                 if (words[k][c1] !== words[j][b1]) continue;
-                //
+
                 for (let c2 = c1 + 2; c2 < words[k].length; c2++) {
                   const a2 = w1 + (c2 - c1);
                   // does not fit

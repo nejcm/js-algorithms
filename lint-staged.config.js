@@ -1,6 +1,6 @@
 module.exports = {
-  '*.js': ['eslint', 'jest --findRelatedTests'],
-  '*.+(js|jsx|json|yml|yaml|css|less|scss|ts|tsx|md|graphql|mdx)': [
+  '*.(js|ts)': ['eslint', 'jest --findRelatedTests'],
+  '*.+(js|jsx|ts|tsx|json|yml|yaml|css|less|scss|ts|tsx|md|graphql|mdx)': [
     'prettier --write',
   ],
 };
