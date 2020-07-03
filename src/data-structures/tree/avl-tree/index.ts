@@ -30,7 +30,6 @@ const avlTree = <T>(): AvlTree<T> => {
 
   // get balance factor
   const getBalance = (node: Node<T>): number => {
-    if (node === null) return 0;
     return height(node.left) - height(node.right);
   };
 
