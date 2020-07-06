@@ -13,7 +13,7 @@ module.exports = {
   collectCoverageFrom: [
     'src/**/*.{js,jsx,ts,tsx}',
     '!src/**/*.d.ts',
-    '!src/other/**/*.{js,jsx,ts,tsx}',
+    '!src/code-challenges/**/*.{js,jsx,ts,tsx}',
     '!src/**/*.story.{js,jsx,ts,tsx}',
   ],
   coverageDirectory: './coverage',

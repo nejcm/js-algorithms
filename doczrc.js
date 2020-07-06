@@ -18,14 +18,14 @@ export default {
   menuDisplayName: {
     Algorithms: 'Overview',
     'All data structures': 'All',
-    'Data Structures': 'Overview',
-    Other: 'Overview',
+    'Data structures': 'Overview',
+    'Code challanges': 'Overview',
   },
   groups: {
     '': [],
     Algorithms: ['Algorithms', 'Sorting', 'Searching', 'Pattern', 'String'],
-    'Data Structures': ['Data Structures', 'All data structures'],
-    Other: ['Other'],
+    'Data Structures': ['Data structures', 'All data structures'],
+    'Code challanges': ['Code challanges'],
   },
   themeConfig: {
     search: true,
