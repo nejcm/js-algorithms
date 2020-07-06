@@ -1,19 +1,24 @@
 /* eslint-disable no-lonely-if */
 /* eslint-disable complexity */
-import createTree, {Node, Tree} from '../tree';
+import createTree, {Key, Node, Tree} from '../tree';
 
 export interface AvlTree<T> extends Tree<T> {
-  _insertNode(this: AvlTree<T>, node: Node<T> | null, value: T): Node<T> | null;
-  insert(this: AvlTree<T>, value: T): AvlTree<T>;
-  _removeNode(this: AvlTree<T>, node: Node<T> | null, value: T): Node<T> | null;
-  remove(this: AvlTree<T>, value: T): AvlTree<T>;
-  get(this: AvlTree<T>, value: T): Node<T> | undefined;
-  has(this: AvlTree<T>, value: T): boolean;
-  findMin(this: AvlTree<T>): T | undefined;
+  _insertNode(
+    this: AvlTree<T>,
+    node: Node<T> | null,
+    key: Key,
+    value?: T,
+  ): Node<T> | null;
+  insert(this: AvlTree<T>, key: Key, value?: T): AvlTree<T>;
+  _removeNode(this: AvlTree<T>, node: Node<T> | null, key: Key): Node<T> | null;
+  remove(this: AvlTree<T>, key: Key): AvlTree<T>;
+  get(this: AvlTree<T>, key: Key): Node<T> | undefined;
+  has(this: AvlTree<T>, key: Key): boolean;
+  findMin(this: AvlTree<T>): Key | undefined;
 }
 
 const avlTree = <T>(): AvlTree<T> => {
-  const treeObj = createTree<T>() as AvlTree<T>;
+  const tree = createTree<T>() as AvlTree<T>;
 
   // get node height
   const height = (node: Node<T> | null): number =>
@@ -59,20 +64,20 @@ const avlTree = <T>(): AvlTree<T> => {
     return x;
   };
 
-  treeObj._insertNode = function _insertNode(root, value) {
+  tree._insertNode = function _insertNode(root, key, value) {
     // add note if not exists
     if (root === null) {
       this.size++;
-      return this.createNode(value, {}, {height: 1});
+      return this.createNode(key, value, {height: 1});
     }
 
     // move into left subtree
-    if (value < root.value) {
-      root.left = this._insertNode(root.left, value);
+    if (key < root.key) {
+      root.left = this._insertNode(root.left, key, value);
     }
     // move into right subtree
-    else if (value > root.value) {
-      root.right = this._insertNode(root.right, value);
+    else if (key > root.key) {
+      root.right = this._insertNode(root.right, key, value);
     }
     // already exists
     else {
@@ -84,20 +89,20 @@ const avlTree = <T>(): AvlTree<T> => {
     // get node balance factor
     const balance = getBalance(root);
     // left left case
-    if (balance > 1 && root.left && root.left.value > value) {
+    if (balance > 1 && root.left && root.left.key > key) {
       return rotateRight(root);
     }
     // right right case
-    if (balance < -1 && root.right && value > root.right.value) {
+    if (balance < -1 && root.right && key > root.right.key) {
       return rotateLeft(root);
     }
     // left right case
-    if (balance > 1 && root.left && value > root.left.value) {
+    if (balance > 1 && root.left && key > root.left.key) {
       root.left = rotateLeft(root.left);
       return rotateRight(root);
     }
     // right left case
-    if (balance < -1 && root.right && value < root.right.value) {
+    if (balance < -1 && root.right && key < root.right.key) {
       root.right = rotateRight(root.right);
       return rotateLeft(root);
     }
@@ -105,25 +110,25 @@ const avlTree = <T>(): AvlTree<T> => {
     return root;
   };
 
-  treeObj.insert = function insert(value) {
-    this.root = this._insertNode(this.root, value);
+  tree.insert = function insert(key, value) {
+    this.root = this._insertNode(this.root, key, value);
     return this;
   };
 
-  treeObj._removeNode = function _removeNode(root, value) {
+  tree._removeNode = function _removeNode(root, key) {
     if (root === null) {
       return root;
     }
 
     // move into left subtree
-    if (value < root.value) {
-      root.left = this._removeNode(root.left, value);
+    if (key < root.key) {
+      root.left = this._removeNode(root.left, key);
     }
     // move into right subtree
-    else if (value > root.value) {
-      root.right = this._removeNode(root.right, value);
+    else if (key > root.key) {
+      root.right = this._removeNode(root.right, key);
     }
-    // value found
+    // key found
     else {
       // root is the node to be deleted
       if (!root.left && !root.right) {
@@ -136,8 +141,9 @@ const avlTree = <T>(): AvlTree<T> => {
         // node with two children: get the inorder
         // successor (smallest in the right subtree)
         const node = minValueNode(root.right as Node<T>);
+        root.key = node.key;
         root.value = node.value;
-        root.right = this._removeNode(root.right, node.value);
+        root.right = this._removeNode(root.right, node.key);
       }
     }
 
@@ -174,24 +180,24 @@ const avlTree = <T>(): AvlTree<T> => {
     return root;
   };
 
-  treeObj.remove = function remove(value) {
-    this.root = this._removeNode(this.root, value);
+  tree.remove = function remove(key) {
+    this.root = this._removeNode(this.root, key);
     return this;
   };
 
-  treeObj.get = function get(value) {
-    return this._get(value);
+  tree.get = function get(key) {
+    return this._get(key);
   };
 
-  treeObj.has = function has(value) {
-    return this._has(value);
+  tree.has = function has(key) {
+    return this._has(key);
   };
 
-  treeObj.findMin = function findMin() {
-    return this._findMin()?.value;
+  tree.findMin = function findMin() {
+    return this._findMin()?.key;
   };
 
-  return treeObj;
+  return tree;
 };
 
 export default avlTree;

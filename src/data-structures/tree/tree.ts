@@ -1,27 +1,23 @@
 export type ToStringCallback<T> = (current: Node<T>) => string;
-export type Meta = {[key: string]: unknown};
+export type Key = string | number;
 export interface Node<T> {
   left: Node<T> | null;
   right: Node<T> | null;
-  value: T;
-  meta: Meta;
+  key: Key;
+  value?: T;
   [key: string]: unknown;
 }
 export interface Tree<T> {
   size: number;
   root: Node<T> | null;
-  createNode<T>(
-    value: T,
-    meta?: Meta,
-    other?: {[key: string]: unknown},
-  ): Node<T>;
-  _insert(this: Tree<T>, value: T): Node<T> | undefined;
-  _remove(this: Tree<T>, value: T): Node<T> | undefined;
-  _get(this: Tree<T>, value: T): Node<T> | undefined;
-  _has(this: Tree<T>, value: T): boolean;
+  createNode<T>(key: Key, value?: T, other?: {[key: string]: unknown}): Node<T>;
+  _insert(this: Tree<T>, key: Key, value?: T): Node<T> | undefined;
+  _remove(this: Tree<T>, key: Key): Node<T> | undefined;
+  _get(this: Tree<T>, key: Key): Node<T> | undefined;
+  _has(this: Tree<T>, key: Key): boolean;
   _findMin(this: Tree<T>): Node<T> | undefined;
-  iterate(this: Tree<T>): Generator<T, void, T>;
-  toArray(this: Tree<T>): T[];
+  iterate(this: Tree<T>): Generator<Key, void, Key>;
+  toArray(this: Tree<T>): Key[];
   toString(this: Tree<T>, separator?: string): string;
 }
 
@@ -31,19 +27,19 @@ const tree = <T>(): Tree<T> => {
     size: 0,
 
     // create node
-    createNode: function createNode(value, meta = {}, other = {}) {
+    createNode: function createNode(key, value, other = {}) {
       return {
         left: null,
         right: null,
+        key,
         value,
         ...other,
-        meta,
       };
     },
 
-    // add a value
-    _insert: function _insert(value) {
-      const newNode = this.createNode(value);
+    // add new node
+    _insert: function _insert(key, value) {
+      const newNode = this.createNode(key, value);
 
       // set root if empty
       if (!this.root) {
@@ -55,8 +51,8 @@ const tree = <T>(): Tree<T> => {
       let current = this.root;
       // loop until we find the correct spot
       while (current) {
-        if (value < current.value) {
-          // if the new value is less than this node's value, go left
+        if (key < current.key) {
+          // if the new key is less than this node's key, go left
           if (current.left === null) {
             // if there's no left, then insert node there
             current.left = newNode;
@@ -64,8 +60,8 @@ const tree = <T>(): Tree<T> => {
             return current.left;
           }
           current = current.left;
-        } else if (value > current.value) {
-          // if the new value is greater than this node's value, go right
+        } else if (key > current.key) {
+          // if the new key is greater than this node's key, go right
           if (current.right === null) {
             // if there's no right, then insert node there
             current.right = newNode;
@@ -74,7 +70,7 @@ const tree = <T>(): Tree<T> => {
           }
           current = current.right;
         } else {
-          // ignore if value exists
+          // ignore if key exists
           break;
         }
       }
@@ -82,7 +78,7 @@ const tree = <T>(): Tree<T> => {
     },
 
     // remove node
-    _remove: function _remove(value) {
+    _remove: function _remove(key) {
       let current = this.root;
       // empty tree
       if (current === null) {
@@ -94,11 +90,11 @@ const tree = <T>(): Tree<T> => {
 
       // find node
       while (current !== null) {
-        if (value < current.value) {
+        if (key < current.key) {
           // left
           parent = current;
           current = current.left;
-        } else if (value > current.value) {
+        } else if (key > current.key) {
           // right
           parent = current;
           current = current.right;
@@ -152,7 +148,7 @@ const tree = <T>(): Tree<T> => {
       }
 
       // no children
-      if (nodeToRemove.value < parent.value) {
+      if (nodeToRemove.key < parent.key) {
         parent.left = replacement;
       } else {
         parent.right = replacement;
@@ -161,14 +157,14 @@ const tree = <T>(): Tree<T> => {
     },
 
     // get node
-    _get: function _get(value) {
+    _get: function _get(key) {
       let current = this.root;
       // traverse node's
       while (current) {
-        if (value < current.value) {
+        if (key < current.key) {
           // left
           current = current.left;
-        } else if (value > current.value) {
+        } else if (key > current.key) {
           // right
           current = current.right;
         } else {
@@ -178,9 +174,9 @@ const tree = <T>(): Tree<T> => {
       return undefined;
     },
 
-    // has / contains value
-    _has: function _has(value) {
-      return this._get(value) !== undefined;
+    // has / contains key
+    _has: function _has(key) {
+      return this._get(key) !== undefined;
     },
 
     // get min node
@@ -202,7 +198,7 @@ const tree = <T>(): Tree<T> => {
 
     // get array of all values
     toArray: function toArray() {
-      const result: T[] = [];
+      const result: Key[] = [];
       function traverse(node: Node<T> | null) {
         if (!node) return;
 
@@ -212,7 +208,7 @@ const tree = <T>(): Tree<T> => {
         }
 
         // yield node value
-        result.push(node.value);
+        result.push(node.key);
 
         // traverse the right subtree
         if (node.right !== null) {

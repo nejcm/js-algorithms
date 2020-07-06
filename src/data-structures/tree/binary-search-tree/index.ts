@@ -1,34 +1,34 @@
-import createTree, {Node, Tree} from '../tree';
+import createTree, {Key, Node, Tree} from '../tree';
 
 export interface BinarySearchTree<T> extends Tree<T> {
-  insert(this: BinarySearchTree<T>, value: T): Node<T> | undefined;
-  remove(this: BinarySearchTree<T>, value: T): boolean;
-  get(this: BinarySearchTree<T>, value: T): Node<T> | undefined;
-  has(this: BinarySearchTree<T>, value: T): boolean;
-  findMin(this: BinarySearchTree<T>): T | undefined;
+  insert(this: BinarySearchTree<T>, key: Key, value?: T): Node<T> | undefined;
+  remove(this: BinarySearchTree<T>, key: Key): boolean;
+  get(this: BinarySearchTree<T>, key: Key): Node<T> | undefined;
+  has(this: BinarySearchTree<T>, key: Key): boolean;
+  findMin(this: BinarySearchTree<T>): Key | undefined;
 }
 
 const tree = <T>(): BinarySearchTree<T> => {
   const treeObj = createTree<T>() as BinarySearchTree<T>;
 
-  treeObj.insert = function insert(value) {
-    return this._insert(value);
+  treeObj.insert = function insert(key, value) {
+    return this._insert(key, value);
   };
 
-  treeObj.remove = function remove(value) {
-    return !!this._remove(value);
+  treeObj.remove = function remove(key) {
+    return !!this._remove(key);
   };
 
-  treeObj.get = function get(value) {
-    return this._get(value);
+  treeObj.get = function get(key) {
+    return this._get(key);
   };
 
-  treeObj.has = function has(value) {
-    return this._has(value);
+  treeObj.has = function has(key) {
+    return this._has(key);
   };
 
   treeObj.findMin = function findMin() {
-    return this._findMin()?.value;
+    return this._findMin()?.key;
   };
 
   return treeObj;

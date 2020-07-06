@@ -7,7 +7,7 @@ describe('BinarySearchTree', () => {
     expect(tree.root).toBeNull();
   });
 
-  it('should insert values', () => {
+  it('should insert nodes', () => {
     const tree = createTree();
 
     tree.insert(1);
@@ -17,10 +17,10 @@ describe('BinarySearchTree', () => {
 
     expect(tree.toString()).toEqual('1, 2, 5');
     expect(tree.toArray()).toEqual([1, 2, 5]);
-    expect(tree.root?.value).toEqual(1);
+    expect(tree.root?.key).toEqual(1);
   });
 
-  it('should check if value exists', () => {
+  it('should check if node exists', () => {
     const tree = createTree();
 
     tree.insert(1);
@@ -57,7 +57,7 @@ describe('BinarySearchTree', () => {
 
     tree.remove(6);
     expect(tree.toArray()).toEqual([-6, -3, -1, 1, 2, 3, 4, 7, 8, 10, 13]);
-    expect(tree.root?.value).toEqual(3);
+    expect(tree.root?.key).toEqual(3);
 
     tree.remove(-1);
     expect(tree.toArray()).toEqual([-6, -3, 1, 2, 3, 4, 7, 8, 10, 13]);
@@ -107,10 +107,10 @@ describe('BinarySearchTree', () => {
     tree.insert('x');
 
     expect(tree.get('x')).toMatchObject({
-      value: 'x',
+      key: 'x',
     });
     expect(tree.get('b')).toMatchObject({
-      value: 'b',
+      key: 'b',
     });
     expect(tree.get('z')).toBeUndefined();
   });
