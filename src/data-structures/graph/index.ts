@@ -1,5 +1,9 @@
-export type ToStringCallback<T> = (current: T, index: number) => string;
-export type Meta = {[key: string]: unknown};
+export type Key = string | number;
+export type ToStringCallback = <T>(
+  current: Key,
+  index: number,
+  vertex: Vertex<T>,
+) => string;
 export interface Options {
   directed?: boolean;
 }
@@ -9,45 +13,49 @@ export type Edge = {
   [key: string]: unknown;
 };
 export interface Vertex<T> {
-  meta: Meta;
-  edges: Map<T, Edge>;
+  value?: T;
+  edges: Map<Key, Edge>;
 }
 
 export interface Graph<T> {
-  vertices: Map<T, Vertex<T>>;
+  vertices: Map<Key, Vertex<T>>;
   directed: boolean;
   addVertex(
     this: Graph<T>,
-    value: T,
-    meta?: Meta,
-    edges?: [T, Edge?][],
+    key: Key,
+    value?: T,
+    edges?: [Key, Edge?][],
   ): Graph<T>;
-  deleteVertex(this: Graph<T>, value: T): boolean;
-  addEdge(this: Graph<T>, start: T, end: T, weight?: number): boolean;
-  deleteEdge(this: Graph<T>, start: T, end: T): boolean;
-  getEdge(this: Graph<T>, start: T, end: T): Edge | undefined;
-  hasEdge(this: Graph<T>, start: T, end: T): boolean;
+  deleteVertex(this: Graph<T>, key: Key): boolean;
+  addEdge(this: Graph<T>, start: Key, end: Key, weight?: number): boolean;
+  deleteEdge(this: Graph<T>, start: Key, end: Key): boolean;
+  getEdge(this: Graph<T>, start: Key, end: Key): Edge | undefined;
+  hasEdge(this: Graph<T>, start: Key, end: Key): boolean;
   getWeight(this: Graph<T>): number;
-  getNeighbors(this: Graph<T>, value: T): [T, Edge][] | undefined;
-  getVertex(this: Graph<T>, value: T): Vertex<T> | undefined;
-  hasVertex(this: Graph<T>, value: T): boolean;
+  getNeighbors(this: Graph<T>, key: Key): [Key, Edge][] | undefined;
+  getVertex(this: Graph<T>, key: Key): Vertex<T> | undefined;
+  hasVertex(this: Graph<T>, key: Key): boolean;
   getAllVertices(this: Graph<T>): Vertex<T>[];
-  toString(this: Graph<T>, separator?: string): string;
+  toString(
+    this: Graph<T>,
+    separator?: string,
+    callback?: ToStringCallback,
+  ): string;
 }
 
 const graph = <T>(options?: Options): Graph<T> => {
   const graphObj: Graph<T> = {
-    vertices: new Map<T, Vertex<T>>(),
+    vertices: new Map<Key, Vertex<T>>(),
     directed: options?.directed || false,
 
     // add vertex
-    addVertex: function addVertex(value, meta = {}, edges = []) {
+    addVertex: function addVertex(key, value, edges = []) {
       const vertexEdges = edges.map((edge) => [
         edge.shift(),
         edge.shift() || {},
-      ]) as [T, Edge][];
-      this.vertices.set(value, {
-        meta,
+      ]) as [Key, Edge][];
+      this.vertices.set(key, {
+        value,
         edges: new Map(vertexEdges),
       });
       return this;
@@ -55,16 +63,16 @@ const graph = <T>(options?: Options): Graph<T> => {
 
     // delete vertex
     // this will delete also all connected edges
-    deleteVertex: function deleteVertex(value) {
-      const exists = this.vertices.has(value);
+    deleteVertex: function deleteVertex(key) {
+      const exists = this.vertices.has(key);
       // if vertex does not exist
       if (!exists) return false;
       // delete all connected edges
       this.vertices.forEach((vertex) => {
-        vertex.edges.delete(value);
+        vertex.edges.delete(key);
       });
       // delete vertex
-      this.vertices.delete(value);
+      this.vertices.delete(key);
       return true;
     },
 
@@ -74,13 +82,13 @@ const graph = <T>(options?: Options): Graph<T> => {
     },
 
     // get vertex
-    getVertex: function getVertex(value) {
-      return this.vertices.get(value);
+    getVertex: function getVertex(key) {
+      return this.vertices.get(key);
     },
 
     // has vertex
-    hasVertex: function hasVertex(value) {
-      return !!this.vertices.get(value);
+    hasVertex: function hasVertex(key) {
+      return !!this.vertices.get(key);
     },
 
     // add edge
@@ -147,8 +155,8 @@ const graph = <T>(options?: Options): Graph<T> => {
 
     // get array of all neighbors
     // or undefined if vertex does not exists
-    getNeighbors: function getNeighbors(value) {
-      const values = this.vertices.get(value)?.edges.entries();
+    getNeighbors: function getNeighbors(key) {
+      const values = this.vertices.get(key)?.edges.entries();
       // if vertex does not exist
       if (!values) return undefined;
       // return all vertex edges
@@ -156,8 +164,11 @@ const graph = <T>(options?: Options): Graph<T> => {
     },
 
     // print graph
-    toString: function toString(separator = ', ') {
-      return [...this.vertices.keys()].join(separator);
+    toString: function toString(separator = ', ', callback) {
+      if (!callback) return [...this.vertices.keys()].join(separator);
+      return [...this.vertices.entries()]
+        .map((entry, i) => callback(entry[0], i, entry[1]))
+        .join(separator);
     },
   };
 
