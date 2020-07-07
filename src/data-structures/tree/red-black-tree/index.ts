@@ -1,6 +1,6 @@
-import createTree, {Key, Node, Tree} from '../tree';
+import createTree, {BinaryTree, Key, Node} from '../binaryTree';
 
-export interface RedBlackTree<T> extends Tree<T> {
+export interface RedBlackTree<T> extends BinaryTree<T> {
   _insertNode(
     this: RedBlackTree<T>,
     node: Node<T> | null,

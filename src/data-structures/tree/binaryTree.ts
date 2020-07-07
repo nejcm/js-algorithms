@@ -7,22 +7,22 @@ export interface Node<T> {
   value?: T;
   [key: string]: unknown;
 }
-export interface Tree<T> {
+export interface BinaryTree<T> {
   size: number;
   root: Node<T> | null;
   createNode<T>(key: Key, value?: T, other?: {[key: string]: unknown}): Node<T>;
-  _insert(this: Tree<T>, key: Key, value?: T): Node<T> | undefined;
-  _remove(this: Tree<T>, key: Key): Node<T> | undefined;
-  _get(this: Tree<T>, key: Key): Node<T> | undefined;
-  _has(this: Tree<T>, key: Key): boolean;
-  _findMin(this: Tree<T>): Node<T> | undefined;
-  iterate(this: Tree<T>): Generator<Key, void, Key>;
-  toArray(this: Tree<T>): Key[];
-  toString(this: Tree<T>, separator?: string): string;
+  _insert(this: BinaryTree<T>, key: Key, value?: T): Node<T> | undefined;
+  _remove(this: BinaryTree<T>, key: Key): Node<T> | undefined;
+  _get(this: BinaryTree<T>, key: Key): Node<T> | undefined;
+  _has(this: BinaryTree<T>, key: Key): boolean;
+  _findMin(this: BinaryTree<T>): Node<T> | undefined;
+  iterate(this: BinaryTree<T>): Generator<Key, void, Key>;
+  toArray(this: BinaryTree<T>): Key[];
+  toString(this: BinaryTree<T>, separator?: string): string;
 }
 
-const tree = <T>(): Tree<T> => {
-  const treeObj: Tree<T> = {
+const binaryTree = <T>(): BinaryTree<T> => {
+  const tree: BinaryTree<T> = {
     root: null,
     size: 0,
 
@@ -226,7 +226,7 @@ const tree = <T>(): Tree<T> => {
     },
   };
 
-  return treeObj;
+  return tree;
 };
 
-export default tree;
+export default binaryTree;

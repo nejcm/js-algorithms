@@ -1,6 +1,6 @@
-import createTree, {Key, Node, Tree} from '../tree';
+import createTree, {BinaryTree, Key, Node} from '../binaryTree';
 
-export interface BinarySearchTree<T> extends Tree<T> {
+export interface BinarySearchTree<T> extends BinaryTree<T> {
   insert(this: BinarySearchTree<T>, key: Key, value?: T): Node<T> | undefined;
   remove(this: BinarySearchTree<T>, key: Key): boolean;
   get(this: BinarySearchTree<T>, key: Key): Node<T> | undefined;

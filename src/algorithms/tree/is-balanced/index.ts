@@ -1,6 +1,6 @@
-import {Node, Tree} from '../../../data-structures/tree/tree';
+import {BinaryTree, Node} from '../../../data-structures/tree/binaryTree';
 
-export default function isBalancedTree<T>(tree: Tree<T>): boolean {
+export default function isBalancedTree<T>(tree: BinaryTree<T>): boolean {
   // get height of subtree at node as root
   const height = (node: Node<T> | null): number => {
     if (node === null) return 0;

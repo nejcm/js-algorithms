@@ -1,8 +1,8 @@
 /* eslint-disable no-lonely-if */
 /* eslint-disable complexity */
-import createTree, {Key, Node, Tree} from '../tree';
+import createTree, {BinaryTree, Key, Node} from '../binaryTree';
 
-export interface AvlTree<T> extends Tree<T> {
+export interface AvlTree<T> extends BinaryTree<T> {
   _insertNode(
     this: AvlTree<T>,
     node: Node<T> | null,

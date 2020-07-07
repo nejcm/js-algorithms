@@ -1,5 +1,5 @@
+import {Node} from '../../../data-structures/tree/binaryTree';
 import {RedBlackTree} from '../../../data-structures/tree/red-black-tree';
-import {Node} from '../../../data-structures/tree/tree';
 
 export default function isValidRedBlackTree<T>(tree: RedBlackTree<T>): boolean {
   const validate = (node: Node<T> | null): number => {

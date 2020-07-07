@@ -1,6 +1,6 @@
-import {Node, Tree} from '../../../data-structures/tree/tree';
+import {BinaryTree, Node} from '../../../data-structures/tree/binaryTree';
 
-export default function isPerfectTree<T>(tree: Tree<T>): boolean {
+export default function isPerfectTree<T>(tree: BinaryTree<T>): boolean {
   // get depth at node as root
   const getDepth = (node: Node<T> | null): number => {
     let depth = 0;

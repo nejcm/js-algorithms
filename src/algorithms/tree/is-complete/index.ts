@@ -1,6 +1,6 @@
-import {Node, Tree} from '../../../data-structures/tree/tree';
+import {BinaryTree, Node} from '../../../data-structures/tree/binaryTree';
 
-export default function isCompleteTree<T>(tree: Tree<T>): boolean {
+export default function isCompleteTree<T>(tree: BinaryTree<T>): boolean {
   const isComplete = (node: Node<T> | null, index: number): boolean => {
     if (node === null) return true;
     if (index >= tree.size) return false;
