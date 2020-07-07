@@ -11,7 +11,7 @@ export default {
     'Introduction',
     'Installation',
     {
-      name: 'Data Structures',
+      name: 'Data structures',
       menu: [],
     },
   ],
@@ -20,11 +20,21 @@ export default {
     'All data structures': 'All',
     'Data structures': 'Overview',
     'Code challanges': 'Overview',
+    'Tree BFS & DFS': 'BFS & DFS',
+    'Graph BFS & DFS': 'BFS & DFS',
   },
   groups: {
     '': [],
-    Algorithms: ['Algorithms', 'Sorting', 'Searching', 'Pattern', 'String'],
-    'Data Structures': ['Data structures', 'All data structures'],
+    Algorithms: [
+      'Algorithms',
+      'Graph',
+      'Pattern',
+      'Searching',
+      'Sorting',
+      'String',
+      'Tree',
+    ],
+    'Data structures': ['Data structures', 'All data structures'],
     'Code challanges': ['Code challanges'],
   },
   themeConfig: {
