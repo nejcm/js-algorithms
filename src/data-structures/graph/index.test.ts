@@ -4,6 +4,7 @@ describe('Graph', () => {
   it('should create a graph', () => {
     const graph = createGraph();
     expect(graph).toBeDefined();
+    expect(graph.isEmpty()).toBeTruthy();
     expect(graph.vertices).toBeDefined();
     expect(graph.directed).toBeFalsy();
 
@@ -22,6 +23,7 @@ describe('Graph', () => {
     graph.addVertex('B');
     graph.addVertex('C');
 
+    expect(graph.isEmpty()).toBeFalsy();
     expect(graph.toString()).toEqual('A, B, C');
     expect(graph.toString(' - ')).toEqual('A - B - C');
 
@@ -155,5 +157,19 @@ describe('Graph', () => {
     expect(graph.deleteEdge('Z', 'X')).toBeTruthy();
     expect(graph.hasEdge('Z', 'X')).toBeFalsy();
     expect(graph.hasEdge('X', 'Z')).toBeTruthy();
+  });
+
+  it('should call toString callback', () => {
+    const graph = createGraph<{[key: string]: unknown}>({directed: true});
+
+    graph.addVertex('1', {val: 'V1'});
+    graph.addVertex('2', {val: 'V2'});
+    graph.addVertex('3', {val: 'V3'});
+    graph.addEdge('1', '2');
+    graph.addEdge('2', '3');
+
+    expect(
+      graph.toString(' <-> ', (_k, _i, vertex) => String(vertex.value?.val)),
+    ).toEqual('V1 <-> V2 <-> V3');
   });
 });

@@ -1,6 +1,6 @@
 export type Key = string | number;
-export type ToStringCallback = <T>(
-  current: Key,
+export type ToStringCallback<T> = (
+  key: Key,
   index: number,
   vertex: Vertex<T>,
 ) => string;
@@ -32,14 +32,15 @@ export interface Graph<T> {
   getEdge(this: Graph<T>, start: Key, end: Key): Edge | undefined;
   hasEdge(this: Graph<T>, start: Key, end: Key): boolean;
   getWeight(this: Graph<T>): number;
-  getNeighbors(this: Graph<T>, key: Key): [Key, Edge][] | undefined;
+  getNeighbors(this: Graph<T>, key: Key): [Key, Vertex<T>][] | undefined;
   getVertex(this: Graph<T>, key: Key): Vertex<T> | undefined;
   hasVertex(this: Graph<T>, key: Key): boolean;
   getAllVertices(this: Graph<T>): Vertex<T>[];
+  isEmpty(this: Graph<T>): boolean;
   toString(
     this: Graph<T>,
     separator?: string,
-    callback?: ToStringCallback,
+    callback?: ToStringCallback<T>,
   ): string;
 }
 
@@ -154,13 +155,13 @@ const graph = <T>(options?: Options): Graph<T> => {
     },
 
     // get array of all neighbors
-    // or undefined if vertex does not exists
+    // or undefined if none exist
     getNeighbors: function getNeighbors(key) {
-      const values = this.vertices.get(key)?.edges.entries();
+      const keys = this.vertices.get(key)?.edges.keys();
       // if vertex does not exist
-      if (!values) return undefined;
+      if (!keys) return undefined;
       // return all vertex edges
-      return [...values];
+      return [...keys].map((k) => [k, this.vertices.get(k) as Vertex<T>]);
     },
 
     // print graph
@@ -169,6 +170,11 @@ const graph = <T>(options?: Options): Graph<T> => {
       return [...this.vertices.entries()]
         .map((entry, i) => callback(entry[0], i, entry[1]))
         .join(separator);
+    },
+
+    // check if graph is empty
+    isEmpty: function isEmpty() {
+      return !this.vertices.size;
     },
   };
 
