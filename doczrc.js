@@ -19,7 +19,7 @@ export default {
     Algorithms: 'Overview',
     'All data structures': 'All',
     'Data structures': 'Overview',
-    'Code challanges': 'Overview',
+    'Code challenges': 'Overview',
     'Tree BFS & DFS': 'BFS & DFS',
     'Graph BFS & DFS': 'BFS & DFS',
   },
@@ -35,7 +35,7 @@ export default {
       'Tree',
     ],
     'Data structures': ['Data structures', 'All data structures'],
-    'Code challanges': ['Code challanges'],
+    'Code challenges': ['Code challenges'],
   },
   themeConfig: {
     search: true,

@@ -1,6 +1,65 @@
 /* eslint-disable max-depth */
 /* eslint-disable complexity */
 export function crosswordFormation(words: string[]): number {
+  let s = 0;
+
+  // loop all for 1st word
+  for (let i = 0; i < 4; i++) {
+    // loop all for 2nd word
+    for (let j = 0; j < 4; j++) {
+      // not same as 1st
+      if (i === j) continue;
+
+      // loop chars of 1st
+      for (let k = 0; k < words[i].length; k++) {
+        // loop chars of 2nd
+        for (let p = 0; p < words[j].length; p++) {
+          // chars of 1st and 2nd not equal
+          if (words[i][k] !== words[j][p]) continue;
+
+          // loop all for 3rd
+          for (let u = 0; u < 4; u++) {
+            // not same as 1st or 2nd
+            if (i === u || j === u) continue;
+
+            // 2 spaces between words
+            for (let t = p + 2; t < words[j].length; t++) {
+              // loop 3rd
+              for (let e = 0; e < words[u].length; e++) {
+                // chars not equal
+                if (words[j][t] !== words[u][e]) continue;
+
+                // loop all for 4th
+                for (let w = 0; w < 4; w++) {
+                  // not same as 1st, 2nd or 3rd
+                  if (i === w || j === w || u === w) continue;
+
+                  // 2 spaces between words
+                  for (let d = k + 2; d < words[i].length; d++) {
+                    // loop 4th
+                    for (let y = 0; y < words[w].length; y++) {
+                      // check if chars
+                      if (
+                        words[i][d] === words[w][y] &&
+                        words[u][e + d - k] !== undefined &&
+                        words[u][e + d - k] === words[w][y + t - p]
+                      ) {
+                        s++;
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  return s;
+}
+
+export function crosswordFormationV2(words: string[]): number {
   let count = 0;
   // loop all
   for (let i = 0; i < 4; i++) {
