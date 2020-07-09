@@ -1,11 +1,11 @@
 import {Node} from '../../../data-structures/tree/binaryTree';
 
 // return false from callback to stop searching
-export type Callback = <T>(node: Node<T>) => boolean;
+export type Callback<T> = (node: Node<T>) => boolean;
 
 export default function depthFirstSearch<T>(
   start: Node<T> | null | undefined,
-  callback: Callback,
+  callback: Callback<T>,
 ): void {
   // is empty
   if (!start) return;
