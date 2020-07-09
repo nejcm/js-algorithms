@@ -13,6 +13,7 @@ export type Edge = {
   [key: string]: unknown;
 };
 export interface Vertex<T> {
+  key: Key;
   value?: T;
   edges: Map<Key, Edge>;
 }
@@ -56,6 +57,7 @@ const graph = <T>(options?: Options): Graph<T> => {
         edge.shift() || {},
       ]) as [Key, Edge][];
       this.vertices.set(key, {
+        key,
         value,
         edges: new Map(vertexEdges),
       });
