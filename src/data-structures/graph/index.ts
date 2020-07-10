@@ -8,6 +8,8 @@ export interface Options {
   directed?: boolean;
 }
 export type Edge = {
+  start: Key;
+  end: Key;
   weight?: number;
   // could add start and end vertex
   [key: string]: unknown;
@@ -25,13 +27,15 @@ export interface Graph<T> {
     this: Graph<T>,
     key: Key,
     value?: T,
-    edges?: [Key, Edge?][],
-  ): Graph<T>;
+    edges?: [Key, Partial<Edge>?][],
+  ): Vertex<T>;
   deleteVertex(this: Graph<T>, key: Key): boolean;
   addEdge(this: Graph<T>, start: Key, end: Key, weight?: number): boolean;
   deleteEdge(this: Graph<T>, start: Key, end: Key): boolean;
   getEdge(this: Graph<T>, start: Key, end: Key): Edge | undefined;
   hasEdge(this: Graph<T>, start: Key, end: Key): boolean;
+  getEdges(this: Graph<T>, key: Key): Edge[] | undefined;
+  getAllEdges(this: Graph<T>): Edge[];
   getWeight(this: Graph<T>): number;
   getNeighbors(this: Graph<T>, key: Key): [Key, Vertex<T>][] | undefined;
   getVertex(this: Graph<T>, key: Key): Vertex<T> | undefined;
@@ -51,17 +55,27 @@ const graph = <T>(options?: Options): Graph<T> => {
     directed: options?.directed || false,
 
     // add vertex
+    // it will override value and edges for an existing vertex
     addVertex: function addVertex(key, value, edges = []) {
+      // create vertex edges
       const vertexEdges = edges.map((edge) => [
-        edge.shift(),
-        edge.shift() || {},
+        edge[0],
+        {
+          start: key,
+          end: edge[0],
+          weight: 0,
+          ...edge[1],
+        },
       ]) as [Key, Edge][];
-      this.vertices.set(key, {
+
+      // create new vertex
+      const newVertex = {
         key,
         value,
         edges: new Map(vertexEdges),
-      });
-      return this;
+      };
+      this.vertices.set(key, newVertex);
+      return newVertex;
     },
 
     // delete vertex
@@ -96,17 +110,24 @@ const graph = <T>(options?: Options): Graph<T> => {
 
     // add edge
     addEdge: function addEdge(start, end, weight = 0) {
-      const startVertex = this.vertices.get(start);
-      const endVertex = this.vertices.get(end);
-      // vertices do not exist
-      if (!startVertex || !endVertex) return false;
+      let startVertex = this.vertices.get(start);
+      let endVertex = this.vertices.get(end);
+
+      // insert start vertex if it does not exist
+      if (!startVertex) {
+        startVertex = this.addVertex(start);
+      }
+      // insert end vertex if it does not exist
+      if (!endVertex) {
+        endVertex = this.addVertex(end);
+      }
 
       // add edge
       // if exists it updates the weight
-      startVertex.edges.set(end, {weight});
+      startVertex.edges.set(end, {start, end, weight});
       // if undirected add backwards connection
       if (!this.directed) {
-        endVertex.edges.set(start, {weight});
+        endVertex.edges.set(start, {end: start, start: end, weight});
       }
       return true;
     },
@@ -142,22 +163,52 @@ const graph = <T>(options?: Options): Graph<T> => {
       return !!this.getEdge(start, end);
     },
 
+    // get array of all vertex edges
+    // or undefined if vertex does not exist
+    getEdges: function getEdges(key) {
+      const vertex = this.vertices.get(key);
+      // check if vertex exist
+      if (!vertex) return undefined;
+      return [...vertex.edges.values()];
+    },
+
+    // get all edges in graph
+    getAllEdges: function getAllEdges() {
+      const added = new Map<Key, boolean>();
+      const idDirected = this.directed;
+      return this.getAllVertices().reduce((all, vertex) => {
+        // if directed then return all
+        if (idDirected) {
+          return [...all, ...vertex.edges.values()];
+        }
+        // if undirected then filter duplicates
+        added.set(vertex.key, true);
+        const edges = [...vertex.edges.values()].filter((edge) => {
+          // is vertex already in added
+          return !added.has(edge.end);
+        });
+        return [...all, ...edges];
+      }, [] as Edge[]);
+    },
+
     // get sum of all edge weights
     getWeight: function getWeight() {
       // for each vertex sum all edge weights
-      return this.getAllVertices().reduce(
-        (total, vertex) =>
-          total +
-          [...vertex.edges.values()].reduce(
-            (vertexTotal, edge) => vertexTotal + (edge.weight || 0),
-            0,
-          ),
-        0,
+      return (
+        this.getAllVertices().reduce(
+          (total, vertex) =>
+            total +
+            [...vertex.edges.values()].reduce(
+              (vertexTotal, edge) => vertexTotal + (edge.weight || 0),
+              0,
+            ),
+          0,
+        ) / (this.directed ? 1 : 2)
       );
     },
 
-    // get array of all neighbors
-    // or undefined if none exist
+    // get array of all vertex neighbors
+    // or undefined if vertex does not exist
     getNeighbors: function getNeighbors(key) {
       const keys = this.vertices.get(key)?.edges.keys();
       // if vertex does not exist

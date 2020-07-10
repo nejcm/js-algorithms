@@ -27,7 +27,16 @@ describe('Graph', () => {
     expect(graph.toString()).toEqual('A, B, C');
     expect(graph.toString(' - ')).toEqual('A - B - C');
 
-    graph.addVertex('X', {test: 'test'}, [['A'], ['C', {weight: 2}]]);
+    expect(
+      graph.addVertex('X', {test: 'value'}, [['A'], ['C', {weight: 2}]]),
+    ).toMatchObject({
+      key: 'X',
+      value: {test: 'value'},
+      edges: new Map([
+        ['A', {start: 'X', end: 'A', weight: 0}],
+        ['C', {start: 'X', end: 'C', weight: 2}],
+      ]),
+    });
 
     expect(graph.toString()).toEqual('A, B, C, X');
   });
@@ -69,7 +78,9 @@ describe('Graph', () => {
     graph.addEdge(1, 5);
     graph.addEdge(10, 5, 2);
 
-    expect(graph.addEdge(20, 5, 2)).toBeFalsy();
+    expect(graph.addEdge(20, 5, 2)).toBeTruthy();
+    expect(graph.hasVertex(20)).toBeTruthy();
+    expect(graph.hasEdge(20, 5)).toBeTruthy();
     expect(graph.hasEdge(1, 5)).toBeTruthy();
     expect(graph.getEdge(5, 1)).toBeDefined();
     expect(graph.hasEdge(1, 10)).toBeFalsy();
@@ -91,7 +102,7 @@ describe('Graph', () => {
     expect(graph.hasEdge('Z', 'X')).toBeFalsy();
   });
 
-  it('should get vertex neighbors and weight in undirected graph', () => {
+  it('should get vertex neighbors and edges with weights in undirected graph', () => {
     const graph = createGraph();
 
     expect(graph.getNeighbors(1)).toBeUndefined();
@@ -99,13 +110,37 @@ describe('Graph', () => {
     graph.addVertex(2);
     graph.addVertex(3);
     graph.addVertex(4);
+    graph.addVertex(5);
+    graph.addVertex(6);
     graph.addEdge(1, 3, 5);
     graph.addEdge(1, 4);
+    graph.addEdge(1, 6);
+    graph.addEdge(5, 6, 1);
 
-    expect(graph.getNeighbors(1)?.length).toEqual(2);
+    expect(graph.getNeighbors(1)?.length).toEqual(3);
     expect(graph.getNeighbors(2)?.length).toEqual(0);
     expect(graph.getNeighbors(3)?.length).toEqual(1);
-    expect(graph.getWeight()).toEqual(10);
+    expect(graph.getNeighbors(6)?.length).toEqual(2);
+    expect(graph.getWeight()).toEqual(6);
+
+    const allEdges = graph.getAllEdges();
+    expect(allEdges.length).toEqual(4);
+    expect(allEdges).toEqual([
+      {start: 1, end: 3, weight: 5},
+      {start: 1, end: 4, weight: 0},
+      {start: 1, end: 6, weight: 0},
+      {start: 5, end: 6, weight: 1},
+    ]);
+
+    expect(graph.getEdges(0)).toBeUndefined();
+
+    const vertexEdges = graph.getEdges(1);
+    expect(vertexEdges?.length).toEqual(3);
+    expect(vertexEdges).toEqual([
+      {start: 1, end: 3, weight: 5},
+      {start: 1, end: 4, weight: 0},
+      {start: 1, end: 6, weight: 0},
+    ]);
   });
 
   it('should also delete nodes when vertex deleted in undirected graph', () => {
@@ -141,6 +176,7 @@ describe('Graph', () => {
     expect(graph.hasEdge(1, 5)).toBeTruthy();
     expect(graph.hasEdge(5, 1)).toBeFalsy();
     expect(graph.getWeight()).toEqual(2);
+    expect(graph.getAllEdges().length).toEqual(2);
   });
 
   it('should delete edge from vertex in directed graph', () => {
