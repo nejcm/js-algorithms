@@ -2,10 +2,20 @@ import createGraph from '../../../data-structures/graph';
 import topologicalSort from './';
 
 describe('TopologicalSort', () => {
-  it('should perform topologicalSort on graph', () => {
+  it('should return undefined for empty graph', () => {
     const graph = createGraph({directed: true});
 
     expect(topologicalSort(graph)).toBeUndefined();
+  });
+
+  it('should throw error for undirected graph', () => {
+    const graph = createGraph({directed: false});
+
+    expect(() => topologicalSort(graph)).toThrowError();
+  });
+
+  it('should return ordered vertices', () => {
+    const graph = createGraph({directed: true});
 
     graph.addVertex(0);
     graph.addVertex(1);

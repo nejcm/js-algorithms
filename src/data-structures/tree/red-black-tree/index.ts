@@ -109,11 +109,11 @@ const redBlackTree = <T>(): RedBlackTree<T> => {
   };
 
   // delete min node in subtree
-  const deleteMinNode = (node: Node<T> | null): Node<T> | null => {
-    if (!node?.left) return null;
+  const deleteMinNode = (node: Node<T>): Node<T> | null => {
+    if (node.left === null) return null;
     if (!isRed(node.left) && !isRed(node.left.left)) node = moveRedLeft(node);
 
-    node.left = deleteMinNode(node.left);
+    node.left = deleteMinNode(node.left as Node<T>);
     return balance(node);
   };
 
@@ -149,8 +149,8 @@ const redBlackTree = <T>(): RedBlackTree<T> => {
 
   // insert new node
   tree.insert = function insert(key, value) {
-    this.root = this._insertNode(this.root, key, value);
-    if (this.root) this.root.isBlack = true;
+    this.root = this._insertNode(this.root, key, value) as Node<T>;
+    this.root.isBlack = true;
     return this;
   };
 
@@ -178,7 +178,7 @@ const redBlackTree = <T>(): RedBlackTree<T> => {
         const node = minValueNode(root.right as Node<T>);
         root.key = node.key;
         root.value = node.value;
-        root.right = deleteMinNode(root.right);
+        root.right = deleteMinNode(root.right as Node<T>);
       } else {
         root.right = this._removeNode(root.right, key);
       }
