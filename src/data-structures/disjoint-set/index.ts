@@ -6,9 +6,10 @@ export interface ItemParam<T> {
 export interface Item<T> extends ItemParam<T> {
   parent: Item<T> | null;
   rank: number;
+  [key: string]: unknown;
 }
 export interface DisjointSet<T> {
-  items: {[key: string]: Item<T>};
+  items: Map<Key, Item<T>>;
   add(this: DisjointSet<T>, ...values: (ItemParam<T> | Key)[]): boolean;
   find(this: DisjointSet<T>, key: Key): Key | undefined;
   union(this: DisjointSet<T>, key1: Key, key2: Key): DisjointSet<T>;
@@ -31,33 +32,35 @@ const disjointSet = <T>(): DisjointSet<T> => {
   };
 
   const disjointSetObj: DisjointSet<T> = {
-    items: {},
+    items: new Map<Key, Item<T>>(),
 
     // add items
     add: function add(...items) {
-      // map values to Item object
-      this.items = {
-        ...this.items,
-        ...items.reduce((map, item) => {
-          const obj = typeof item === 'object' ? item : {key: item};
-          map[String(obj.key)] = createItem(obj.key, obj.value);
-          return map;
-        }, {} as {[key: string]: Item<T>}),
-      };
+      // map values to Item and add them to items
+      items.forEach((item) => {
+        const obj = typeof item === 'object' ? item : {key: item};
+        if (!this.items.has(obj.key)) {
+          this.items.set(obj.key, createItem(obj.key, obj.value));
+        }
+      });
       return true;
     },
 
     // find parent key
     find: function find(key) {
-      if (!this.items.hasOwnProperty(key)) return undefined;
-      let current = this.items[key];
+      // find item
+      if (!this.items.has(key)) return undefined;
+      const item = this.items.get(key) as Item<T>;
+      let current = item;
       let i = 0;
       while (current.parent) {
         current = current.parent;
         i++;
       }
-      if (i > 1) this.items[key].parent = current;
       // collapsing find
+      // update parent
+      if (i > 1) this.items.set(key, {...item, parent: current});
+      // return key
       return current.key;
     },
 
@@ -67,7 +70,7 @@ const disjointSet = <T>(): DisjointSet<T> => {
       const rootKey2 = this.find(key2);
 
       // items do not exist
-      if (!rootKey1 || !rootKey2) {
+      if (rootKey1 === undefined || rootKey2 === undefined) {
         throw new Error('One or both values do not exist.');
       }
 
@@ -76,8 +79,8 @@ const disjointSet = <T>(): DisjointSet<T> => {
         return this;
       }
 
-      const root1 = this.items[rootKey1];
-      const root2 = this.items[rootKey2];
+      const root1 = this.items.get(rootKey1) as Item<T>;
+      const root2 = this.items.get(rootKey2) as Item<T>;
 
       // weighted union
       // if root2's tree is bigger then make root2 a new root
