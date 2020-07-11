@@ -1,0 +1,34 @@
+---
+name: Kruskal
+route: /algorithms/graph/kruskal
+menu: Graph
+---
+
+# Kruskal
+
+Kruskal's algorithm is a minimum-spanning-tree algorithm which finds an edge of
+the least possible weight that connects any two trees in the forest. It is a
+greedy algorithm in graph theory as it finds a minimum spanning tree for a
+connected weighted graph adding increasing cost arcs at each step. This means it
+finds a subset of the edges that forms a tree that includes every vertex, where
+the total weight of all the edges in the tree is minimized. If the graph is not
+connected, then it finds a minimum spanning forest (a minimum spanning tree for
+each connected component). [Source: Wikipedia]
+
+![Kruskal Algorithm](https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/MST_kruskal_en.gif/600px-MST_kruskal_en.gif)
+
+## Complexity
+
+| Name |  Best time  | Comments |
+| :--- | :---------: | :------- |
+| Prim | v \* log(v) |          |
+
+\* Where v = number of vertices; e = number of edges
+
+## References
+
+- [Geeksforgeeks](https://www.geeksforgeeks.org/kruskals-minimum-spanning-tree-algorithm-greedy-algo-2/)
+- [Wikipedia](https://en.wikipedia.org/wiki/Kruskal%27s_algorithm)
+- [YouTube](https://www.youtube.com/watch?v=4ZlRH0eK-qQ&t=700s&ab_channel=AbdulBari)
+- [Programiz](https://www.programiz.com/dsa/kruskal-algorithm)
+- [cp-algorithms](https://cp-algorithms.com/graph/mst_kruskal.html)
