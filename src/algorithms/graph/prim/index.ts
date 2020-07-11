@@ -43,7 +43,7 @@ export default function prim<T>(graph: Graph<T>): Graph<T> | undefined {
     // if next vertex was already visited then continue
     if (nextKey === null) continue;
 
-    // add current edge to MST
+    // add current edge to minimum spanning tree
     mst.addEdge(currentEdge.start, currentEdge.end, currentEdge.weight);
 
     // add vertex to visited

@@ -116,4 +116,29 @@ describe('Prim', () => {
       {start: 'E', end: 'C', weight: 3},
     ]);
   });
+
+  it('should find minimum spanning tree in graph #4', () => {
+    const graph = createGraph();
+
+    graph.addVertex('A');
+    graph.addVertex('B');
+    graph.addVertex('C');
+
+    graph.addEdge('A', 'B');
+    graph.addEdge('A', 'C', 1);
+    graph.addEdge('B', 'C', -3);
+
+    expect(graph.getWeight()).toEqual(-2);
+
+    const mst = prim(graph);
+
+    expect(mst?.getWeight()).toEqual(-3);
+    expect(mst?.vertices.size).toEqual(graph.vertices.size);
+    expect(mst?.getAllEdges().length).toEqual(graph.vertices.size - 1);
+
+    expect(mst?.getAllEdges()).toEqual([
+      {start: 'A', end: 'B', weight: 0},
+      {start: 'B', end: 'C', weight: -3},
+    ]);
+  });
 });
