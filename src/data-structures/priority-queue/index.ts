@@ -7,15 +7,20 @@ export interface Item<T> {
 }
 export interface PriorityQueue<T> {
   items: Heap<Item<T>>;
+  size(this: PriorityQueue<T>): number;
   enqueue(
     this: PriorityQueue<T>,
     value: T,
     priority?: number,
   ): PriorityQueue<T>;
-  dequeue(this: PriorityQueue<T>): T | undefined;
+  dequeue(this: PriorityQueue<T>): Item<T> | undefined;
+  remove(this: PriorityQueue<T>, item: T): void;
   changePriority(this: PriorityQueue<T>, item: T, priority: number): void;
-  peek(this: PriorityQueue<T>): T | undefined;
+  peek(this: PriorityQueue<T>): Item<T> | undefined;
+  contains(this: PriorityQueue<T>, value: T): boolean;
+  clear(this: PriorityQueue<T>): void;
   isEmpty(this: PriorityQueue<T>): boolean;
+  toArray(this: PriorityQueue<T>): Item<T>[];
   toString(
     this: PriorityQueue<T>,
     callback?: ToStringCallback<Item<T>>,
@@ -41,7 +46,17 @@ const queue = <T>(): PriorityQueue<T> => {
 
     // remove first item from the queue
     dequeue: function dequeue() {
-      return this.items.shift()?.value;
+      return this.items.shift();
+    },
+
+    // remove item from queue
+    remove: function remove(value) {
+      const indexes = this.items.find(
+        {value, priority: 0},
+        (item, needle) => item.value === needle.value,
+      );
+      indexes.forEach((index) => this.items.remove(index));
+      return this;
     },
 
     // change priority of an item
@@ -57,12 +72,35 @@ const queue = <T>(): PriorityQueue<T> => {
 
     // get first item in queue
     peek: function peek() {
-      return this.items.peek()?.value;
+      return this.items.peek();
+    },
+
+    // check if value in queue
+    contains: function contains(value) {
+      return this.items.contains(
+        {value, priority: 0},
+        (item, needle) => item.value === needle.value,
+      );
     },
 
     // check if the queue is empty
     isEmpty: function isEmpty() {
       return this.items.isEmpty();
+    },
+
+    // convert queue to array
+    toArray: function toArray() {
+      return this.items.items;
+    },
+
+    // get queue size
+    size: function size() {
+      return this.items.items.length || 0;
+    },
+
+    // clear queue
+    clear: function clear() {
+      this.items.items = [];
     },
 
     // convert queue to string
