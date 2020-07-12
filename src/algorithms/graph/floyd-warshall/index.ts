@@ -34,6 +34,8 @@ export default function floydWarshall<T>(
     for (let i = 0; i < len; i++) {
       // each vertex as destination
       for (let j = 0; j < len; j++) {
+        // these remain unchanged
+        if (k === i || k === j || i === j) continue;
         // if vertex k is on the shortest path from i to j,
         // then update the value of distances[i][j]
         if (distances[i][k] + distances[k][j] < distances[i][j]) {

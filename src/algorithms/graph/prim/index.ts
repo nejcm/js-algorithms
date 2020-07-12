@@ -4,7 +4,9 @@ import createGraph, {
   Key,
   Vertex,
 } from '../../../data-structures/graph';
-import createPriorityQueue from '../../../data-structures/priority-queue';
+import createPriorityQueue, {
+  Item,
+} from '../../../data-structures/priority-queue';
 
 export default function prim<T>(graph: Graph<T>): Graph<T> | undefined {
   // is directed
@@ -32,7 +34,7 @@ export default function prim<T>(graph: Graph<T>): Graph<T> | undefined {
   // explore all queued edges
   while (!edgesQueue.isEmpty()) {
     // get edge with min weight
-    const currentEdge = edgesQueue.dequeue() as Edge;
+    const currentEdge = (edgesQueue.dequeue() as Item<Edge>).value as Edge;
 
     // find next min vertex to visit
     let nextKey: Key | null = null;
