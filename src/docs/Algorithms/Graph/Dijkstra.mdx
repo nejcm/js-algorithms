@@ -30,9 +30,10 @@ cities. [Source: Wikipedia]
 
 ## Complexity
 
-| Name     |  Worst time   |    Best time    | Comments |
-| :------- | :-----------: | :-------------: | :------- |
-| Dijkstra | v<sup>2</sup> | e + v \* log(v) |          |
+| Name     |   Worst time    | Comments                                |
+| :------- | :-------------: | :-------------------------------------- |
+| Dijkstra | e + v \* log(v) | Using fibonacci heap min-priority queue |
+| Dijkstra |  v<sup>2</sup>  | Using an array                          |
 
 \* Where v = number of vertices; e = number of edges
 
