@@ -27,18 +27,26 @@ describe('Graph', () => {
     expect(graph.toString()).toEqual('A, B, C');
     expect(graph.toString(' - ')).toEqual('A - B - C');
 
-    expect(
-      graph.addVertex('X', {test: 'value'}, [['A'], ['C', {weight: 2}]]),
-    ).toMatchObject({
+    expect(graph.addVertex('X', {test: 'value'})).toMatchObject({
       key: 'X',
       value: {test: 'value'},
-      edges: new Map([
-        ['A', {start: 'X', end: 'A', weight: 0}],
-        ['C', {start: 'X', end: 'C', weight: 2}],
-      ]),
     });
 
     expect(graph.toString()).toEqual('A, B, C, X');
+
+    graph.addVertices([['D'], ['E']]);
+
+    const newVertices = graph.addVertices([['D'], ['E', 'test']]);
+    expect(newVertices.length).toEqual(2);
+    expect(newVertices[0]).toMatchObject({
+      key: 'D',
+    });
+    expect(newVertices[1]).toMatchObject({
+      key: 'E',
+      value: 'test',
+    });
+
+    expect(graph.toString()).toEqual('A, B, C, X, D, E');
   });
 
   it('should delete vertex from undirected graph', () => {

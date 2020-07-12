@@ -23,12 +23,8 @@ export interface Vertex<T> {
 export interface Graph<T> {
   vertices: Map<Key, Vertex<T>>;
   directed: boolean;
-  addVertex(
-    this: Graph<T>,
-    key: Key,
-    value?: T,
-    edges?: [Key, Partial<Edge>?][],
-  ): Vertex<T>;
+  addVertex(this: Graph<T>, key: Key, value?: T): Vertex<T>;
+  addVertices(this: Graph<T>, items: [Key, T?][]): Vertex<T>[];
   deleteVertex(this: Graph<T>, key: Key): boolean;
   addEdge(this: Graph<T>, start: Key, end: Key, weight?: number): boolean;
   deleteEdge(this: Graph<T>, start: Key, end: Key): boolean;
@@ -55,27 +51,26 @@ const graph = <T>(options?: Options): Graph<T> => {
     directed: options?.directed || false,
 
     // add vertex
-    // it will override value and edges for an existing vertex
-    addVertex: function addVertex(key, value, edges = []) {
-      // create vertex edges
-      const vertexEdges = edges.map((edge) => [
-        edge[0],
-        {
-          start: key,
-          end: edge[0],
-          weight: 0,
-          ...edge[1],
-        },
-      ]) as [Key, Edge][];
-
+    // it will override value for an existing vertex
+    addVertex: function addVertex(key, value) {
       // create new vertex
       const newVertex = {
         key,
         value,
-        edges: new Map(vertexEdges),
+        edges: new Map<Key, Edge>(),
       };
       this.vertices.set(key, newVertex);
       return newVertex;
+    },
+
+    // add vertices
+    // it will override value and edges for an existing vertex
+    addVertices: function addVertices(items) {
+      const newVertices: Vertex<T>[] = [];
+      items.forEach((item) => {
+        newVertices.push(this.addVertex(item[0], item[1]));
+      });
+      return newVertices;
     },
 
     // delete vertex
