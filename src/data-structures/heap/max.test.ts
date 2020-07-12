@@ -128,6 +128,23 @@ describe('MaxHeap', () => {
     expect(heap.update(4, 13).items).toEqual([15, 13, 14, 4, 8]);
   });
 
+  it('should return true if heap contains item', () => {
+    const heap = createHeap();
+
+    expect(heap.contains(0)).toBeFalsy();
+
+    heap.add(4);
+    heap.add(15);
+    heap.add(15);
+    heap.add(8);
+    heap.add(10);
+
+    expect(heap.contains(4)).toBeTruthy();
+    expect(heap.contains(15)).toBeTruthy();
+    expect(heap.contains(10)).toBeTruthy();
+    expect(heap.contains(9)).toBeFalsy();
+  });
+
   it('should convert heap to string', () => {
     const heap = createHeap();
 

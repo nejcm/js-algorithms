@@ -26,6 +26,11 @@ export interface Heap<T> {
     element: T,
     compareCallback?: (heapItem: T, searchedItem: T) => boolean,
   ): number[];
+  contains(
+    this: Heap<T>,
+    element: T,
+    compareCallback?: (heapItem: T, searchedItem: T) => boolean,
+  ): boolean;
   update(this: Heap<T>, index: number, value: T): Heap<T>;
   heapify(this: Heap<T>, index: number): Heap<T>;
   heapifyUp(this: Heap<T>, startIndex?: number): Heap<T>;
@@ -165,6 +170,11 @@ const heap = <T>(options?: Options<T>): Heap<T> => {
         }
       }
       return found;
+    },
+
+    // contains a node
+    contains: function contains(element, compareCallback = equalThan) {
+      return this.items.some((item) => compareCallback(item, element));
     },
 
     // heapifys up or down if needed
