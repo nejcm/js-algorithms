@@ -199,18 +199,17 @@ const linkedList = <T>(): LinkedList<T> => {
     reverse: function reverse() {
       let current = this.head;
       let prev = null;
-      let next = null;
 
       while (current) {
         // store next node.
-        next = current.next;
-        // change current node next so it links to the previous node.
+        const next = current.next;
+        // change current node next so it links to the previous node
         current.next = prev;
-        // move prev and current nodes one step forward.
+        // move prev and current nodes one step forward
         prev = current;
         current = next;
       }
-      // reset head and tail.
+      // reset head and tail
       this.tail = this.head;
       this.head = prev;
       return this;
