@@ -29,7 +29,27 @@ algorithms such as Dijkstra's algorithm. When a heap is a complete binary tree,
 it has a smallest possible height—a heap with N nodes and for each node a
 branches always has loga N height. (Source: Wikipedia)
 
-![Data Structure Visualization](https://www.geeksforgeeks.org/wp-content/uploads/MinHeapAndMaxHeap.png)
+![Heap Visualization](https://www.geeksforgeeks.org/wp-content/uploads/MinHeapAndMaxHeap.png)
+
+**Types of heaps:**
+
+There are several different types of heaps, each with a different implementation
+and various advantages and disadvantages. However, each heap type satisfies the
+heap property and can be used for the same types of tasks.
+
+| Operation        | find-min | delete-min | insert     | decrease-key | meld     |
+| ---------------- | -------- | ---------- | ---------- | ------------ | -------- |
+| Binary           | Θ(1)     | Θ(log n)   | O(log n)   | O(log n)     | Θ(n)     |
+| Leftist          | Θ(1)     | Θ(log n)   | Θ(log n)   | O(log n)     | Θ(log n) |
+| Binomial         | Θ(1)     | Θ(log n)   | Θ(1)\*     | Θ(log n)     | O(log n) |
+| Fibonacci        | Θ(1)     | O(log n)\* | Θ(1)       | Θ(1)\*       | Θ(1)     |
+| Pairing          | Θ(1)     | O(log n)\* | Θ(1)       | o(log n)\*   | Θ(1)     |
+| Brodal           | Θ(1)     | O(log n)   | Θ(1)       | Θ(1)         | Θ(1)     |
+| Rank-pairing     | Θ(1)     | O(log n)\* | Θ(1)       | Θ(1)\*       | Θ(1)     |
+| Strict Fibonacci | Θ(1)     | O(log n)   | Θ(1)       | Θ(1)         | Θ(1)     |
+| 2-3 heap         | O(log n) | O(log n)\* | O(log n)\* | Θ(1)         | ?        |
+
+\* Amortized time
 
 ## References
 
