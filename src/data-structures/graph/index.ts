@@ -24,7 +24,7 @@ export interface Graph<T> {
   vertices: Map<Key, Vertex<T>>;
   directed: boolean;
   addVertex(this: Graph<T>, key: Key, value?: T): Vertex<T>;
-  addVertices(this: Graph<T>, items: [Key, T?][]): Vertex<T>[];
+  addVertices(this: Graph<T>, ...items: [Key, T?][]): Vertex<T>[];
   deleteVertex(this: Graph<T>, key: Key): boolean;
   addEdge(this: Graph<T>, start: Key, end: Key, weight?: number): boolean;
   deleteEdge(this: Graph<T>, start: Key, end: Key): boolean;
@@ -37,6 +37,7 @@ export interface Graph<T> {
   getVertex(this: Graph<T>, key: Key): Vertex<T> | undefined;
   hasVertex(this: Graph<T>, key: Key): boolean;
   getAllVertices(this: Graph<T>): Vertex<T>[];
+  getAdjacencyMatrix(this: Graph<T>, fallback?: number): number[][];
   isEmpty(this: Graph<T>): boolean;
   toString(
     this: Graph<T>,
@@ -64,8 +65,8 @@ const graph = <T>(options?: Options): Graph<T> => {
     },
 
     // add vertices
-    // it will override value and edges for an existing vertex
-    addVertices: function addVertices(items) {
+    // it will override value for an existing vertex
+    addVertices: function addVertices(...items) {
       const newVertices: Vertex<T>[] = [];
       items.forEach((item) => {
         newVertices.push(this.addVertex(item[0], item[1]));
@@ -210,6 +211,30 @@ const graph = <T>(options?: Options): Graph<T> => {
       if (!keys) return undefined;
       // return all vertex edges
       return [...keys].map((k) => [k, this.vertices.get(k) as Vertex<T>]);
+    },
+
+    // get adjacency matrix
+    getAdjacencyMatrix: function getAdjacencyMatrix() {
+      const vertices = this.getAllVertices();
+      const len = vertices.length;
+      const matrix: number[][] = [];
+
+      // fill matrix
+      for (let i = 0; i < len; i++) {
+        matrix[i] = [];
+        for (let j = 0; j < len; j++) {
+          // same source vertex and destination vertex
+          if (i === j) {
+            matrix[i][j] = 0;
+            continue;
+          }
+          // find edge beetween vertices
+          // if no edge then fallback
+          const edge = vertices[i].edges.get(vertices[j].key);
+          matrix[i][j] = edge ? edge.weight || 0 : Infinity;
+        }
+      }
+      return matrix;
     },
 
     // print graph

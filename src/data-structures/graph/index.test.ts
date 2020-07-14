@@ -34,9 +34,7 @@ describe('Graph', () => {
 
     expect(graph.toString()).toEqual('A, B, C, X');
 
-    graph.addVertices([['D'], ['E']]);
-
-    const newVertices = graph.addVertices([['D'], ['E', 'test']]);
+    const newVertices = graph.addVertices(['D'], ['E', 'test']);
     expect(newVertices.length).toEqual(2);
     expect(newVertices[0]).toMatchObject({
       key: 'D',
@@ -46,7 +44,11 @@ describe('Graph', () => {
       value: 'test',
     });
 
-    expect(graph.toString()).toEqual('A, B, C, X, D, E');
+    expect(
+      graph.addVertices(...([['F'], ['G'], ['H']] as [string][]))?.length,
+    ).toEqual(3);
+
+    expect(graph.toString()).toEqual('A, B, C, X, D, E, F, G, H');
   });
 
   it('should delete vertex from undirected graph', () => {
