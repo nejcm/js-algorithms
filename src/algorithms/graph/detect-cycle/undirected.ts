@@ -14,7 +14,7 @@ export default function detectCycle<T>(graph: Graph<T>): boolean {
   const visited = new Map<Key, boolean>();
 
   // dfs
-  const isCyclic = (vertex: Vertex<T>, parent?: Vertex<T>): boolean => {
+  const isCyclic = (vertex: Vertex<T>, parent?: Key): boolean => {
     // mark visited
     visited.set(vertex.key, true);
 
@@ -23,11 +23,11 @@ export default function detectCycle<T>(graph: Graph<T>): boolean {
     for (let i = 0; i < neighbors.length || 0; i++) {
       // if not visited then continue
       if (!visited.get(neighbors[i][1].key)) {
-        if (isCyclic(neighbors[i][1], vertex)) return true;
+        if (isCyclic(neighbors[i][1], vertex.key)) return true;
       }
-      // if visited and to a parent of current vertex,
+      // if visited and not a parent of current vertex,
       // then cycle found
-      else if (neighbors[i][1].key !== parent?.key) return true;
+      else if (neighbors[i][1].key !== parent) return true;
     }
     return false;
   };

@@ -38,7 +38,7 @@
       }
     ],
     "max-lines-per-function": ["error", 500],
-    "complexity": ["error", 16],
+    "complexity": ["error", 20],
     "valid-jsdoc": ["warn", {"requireReturn": false}],
     "no-bitwise": "off",
     "consistent-return": "off",

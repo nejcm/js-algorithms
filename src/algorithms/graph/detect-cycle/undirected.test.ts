@@ -31,7 +31,7 @@ describe('DetectCycleUndirected', () => {
     expect(detectCycle(graph)).toBeFalsy();
   });
 
-  it('should return true for cycle in graph #', () => {
+  it('should return true for cycle in graph #2', () => {
     const graph = createGraph({directed: false});
 
     graph.addEdge(0, 5);

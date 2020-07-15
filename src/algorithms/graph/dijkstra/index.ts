@@ -8,11 +8,11 @@ export default function dijkstra<T>(
   start: Key,
 ): [Key, number][] | undefined {
   // is empty
-  if (graph.isEmpty()) return;
+  if (graph.isEmpty()) return undefined;
   // get start vertex
   const startVertex = graph.getVertex(start);
   // has start vertex
-  if (!startVertex) return;
+  if (!startVertex) return undefined;
 
   // init queue
   const queue = createPriorityQueue<Key>();

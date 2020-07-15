@@ -4,6 +4,13 @@ export type ToStringCallback<T> = (
   index: number,
   vertex: Vertex<T>,
 ) => string;
+export type AdjacencyMatrixCallback<T> = (vals: {
+  start: number;
+  end: number;
+  startVertex: Vertex<T>;
+  endVertex: Vertex<T>;
+  edge?: Edge;
+}) => void;
 export interface Options {
   directed?: boolean;
 }
@@ -37,7 +44,10 @@ export interface Graph<T> {
   getVertex(this: Graph<T>, key: Key): Vertex<T> | undefined;
   hasVertex(this: Graph<T>, key: Key): boolean;
   getAllVertices(this: Graph<T>): Vertex<T>[];
-  getAdjacencyMatrix(this: Graph<T>, fallback?: number): number[][];
+  getAdjacencyMatrix(
+    this: Graph<T>,
+    callback?: AdjacencyMatrixCallback<T>,
+  ): number[][];
   isEmpty(this: Graph<T>): boolean;
   toString(
     this: Graph<T>,
@@ -214,7 +224,9 @@ const graph = <T>(options?: Options): Graph<T> => {
     },
 
     // get adjacency matrix
-    getAdjacencyMatrix: function getAdjacencyMatrix() {
+    getAdjacencyMatrix: function getAdjacencyMatrix(
+      callback = () => undefined,
+    ) {
       const vertices = this.getAllVertices();
       const len = vertices.length;
       const matrix: number[][] = [];
@@ -232,6 +244,14 @@ const graph = <T>(options?: Options): Graph<T> => {
           // if no edge then fallback
           const edge = vertices[i].edges.get(vertices[j].key);
           matrix[i][j] = edge ? edge.weight || 0 : Infinity;
+          // callback
+          callback({
+            start: i,
+            end: j,
+            startVertex: vertices[i],
+            endVertex: vertices[j],
+            edge,
+          });
         }
       }
       return matrix;
