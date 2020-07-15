@@ -31,23 +31,13 @@ describe('BreadthFirstSearchGraph', () => {
     bfs(graph, 'A', {visitCallback: callbackStub});
     expect(callbackStub).toBeCalledTimes(1);
 
-    let visited: number[] = [];
-    let customCallbackStub = jest.fn((k) => {
+    const visited: number[] = [];
+    const customCallbackStub = jest.fn((k) => {
       visited.push(k);
-      return true;
     });
     bfs(graph, 'B', {visitCallback: customCallbackStub});
     expect(visited).toEqual(['B', 'C', 'D', 'E', 'G', 'F']);
     expect(customCallbackStub).toBeCalledTimes(6);
-
-    visited = [];
-    customCallbackStub = jest.fn((k) => {
-      visited.push(k);
-      return k !== 'E';
-    });
-    bfs(graph, 'B', {visitCallback: customCallbackStub});
-    expect(visited).toEqual(['B', 'C', 'D', 'E']);
-    expect(customCallbackStub).toBeCalledTimes(4);
   });
 
   it('should search directed graph', () => {
@@ -78,23 +68,13 @@ describe('BreadthFirstSearchGraph', () => {
     bfs(graph, 0, {visitCallback: callbackStub});
     expect(callbackStub).toBeCalledTimes(1);
 
-    let visited: number[] = [];
-    let customCallbackStub = jest.fn((k) => {
+    const visited: number[] = [];
+    const customCallbackStub = jest.fn((k) => {
       visited.push(k);
-      return true;
     });
     bfs(graph, 1, {visitCallback: customCallbackStub});
     expect(visited).toEqual([1, 2, 3, 4, 5, 6, 7, 8]);
     expect(customCallbackStub).toBeCalledTimes(8);
-
-    visited = [];
-    customCallbackStub = jest.fn((k) => {
-      visited.push(k);
-      return k !== 6;
-    });
-    bfs(graph, 1, {visitCallback: customCallbackStub});
-    expect(visited).toEqual([1, 2, 3, 4, 5, 6]);
-    expect(customCallbackStub).toBeCalledTimes(6);
   });
 
   it('should exclude some vertices', () => {
@@ -118,7 +98,6 @@ describe('BreadthFirstSearchGraph', () => {
     const visited: number[] = [];
     const customCallbackStub = jest.fn((k) => {
       visited.push(k);
-      return true;
     });
     bfs(graph, 0, {
       visitCallback: customCallbackStub,

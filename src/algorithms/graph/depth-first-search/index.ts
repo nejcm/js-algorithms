@@ -1,7 +1,11 @@
 import {Graph, Key, Vertex} from '../../../data-structures/graph';
 
-// return false from callback to stop searching
-export type Callback<T> = (key: Key, vertex: Vertex<T>) => boolean | void;
+// return data that will be passed to next function call
+export type Callback<T> = (
+  key: Key,
+  vertex: Vertex<T>,
+  data?: unknown,
+) => unknown | void;
 
 export interface Options<T> {
   visitCallback: Callback<T>;
@@ -22,11 +26,11 @@ export default function depthFirstSearch<T>(
   // has start vertex and was not visited
   if (!startVertex || visited.get(start)) return;
 
-  const dfs = (key: Key, vertex: Vertex<T>): boolean => {
+  const dfs = (key: Key, vertex: Vertex<T>, data?: unknown): void => {
+    // call callback
+    data = visitCallback(key, vertex, data);
     // mark key as visited
     visited.set(key, true);
-    // call callback
-    if (visitCallback(key, vertex) === false) return false;
 
     // get all neighbors
     const neighbors = graph.getNeighbors(key) as [Key, Vertex<T>][];
@@ -35,10 +39,8 @@ export default function depthFirstSearch<T>(
       // skip if key already visited
       if (visited.get(k)) continue;
       // call dfs recursively
-      // stop if false returned from function
-      if (!dfs(k, v)) return false;
+      dfs(k, v, data);
     }
-    return true;
   };
   dfs(start, startVertex);
 }

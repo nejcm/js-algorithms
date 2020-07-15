@@ -31,23 +31,14 @@ describe('DepthFirstSearchGraph', () => {
     dfs(graph, 'A', {visitCallback: callbackStub});
     expect(callbackStub).toBeCalledTimes(1);
 
-    let visited: number[] = [];
-    let customCallbackStub = jest.fn((k) => {
+    const visited: number[] = [];
+    const customCallbackStub = jest.fn((k) => {
       visited.push(k);
       return true;
     });
     dfs(graph, 'B', {visitCallback: customCallbackStub});
     expect(visited).toEqual(['B', 'C', 'E', 'F', 'G', 'D']);
     expect(customCallbackStub).toBeCalledTimes(6);
-
-    visited = [];
-    customCallbackStub = jest.fn((k) => {
-      visited.push(k);
-      return k !== 'F';
-    });
-    dfs(graph, 'B', {visitCallback: customCallbackStub});
-    expect(visited).toEqual(['B', 'C', 'E', 'F']);
-    expect(customCallbackStub).toBeCalledTimes(4);
   });
 
   it('should search directed graph', () => {
@@ -78,23 +69,14 @@ describe('DepthFirstSearchGraph', () => {
     dfs(graph, 0, {visitCallback: callbackStub});
     expect(callbackStub).toBeCalledTimes(1);
 
-    let visited: number[] = [];
-    let customCallbackStub = jest.fn((k) => {
+    const visited: number[] = [];
+    const customCallbackStub = jest.fn((k) => {
       visited.push(k);
       return true;
     });
     dfs(graph, 1, {visitCallback: customCallbackStub});
     expect(visited).toEqual([1, 2, 3, 6, 7, 8, 4, 5]);
     expect(customCallbackStub).toBeCalledTimes(8);
-
-    visited = [];
-    customCallbackStub = jest.fn((k) => {
-      visited.push(k);
-      return k !== 6;
-    });
-    dfs(graph, 1, {visitCallback: customCallbackStub});
-    expect(visited).toEqual([1, 2, 3, 6]);
-    expect(customCallbackStub).toBeCalledTimes(4);
   });
 
   it('should exclude some vertices', () => {

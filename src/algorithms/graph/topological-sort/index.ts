@@ -27,7 +27,6 @@ export default function topologicalSort<T>(
     visited.set(vertex.key, true);
     // remove vertex from unvisited
     unvisited.delete(vertex.key);
-    return true;
   };
 
   // do dfs on all unvisited vertices

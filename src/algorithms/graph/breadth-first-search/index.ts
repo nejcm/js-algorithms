@@ -2,7 +2,7 @@ import {Graph, Key, Vertex} from '../../../data-structures/graph';
 import createQueue from '../../../data-structures/queue';
 
 // return false from callback to stop searching
-export type Callback<T> = (key: Key, vertex: Vertex<T>) => boolean | void;
+export type Callback<T> = (key: Key, vertex: Vertex<T>) => void;
 
 export interface Options<T> {
   visitCallback: Callback<T>;
@@ -31,7 +31,7 @@ export default function breadthFirstSearch<T>(
     // dequeue vertex
     const [key, vertex] = queue.dequeue() as [Key, Vertex<T>];
     // call callback
-    if (visitCallback(key, vertex) === false) return;
+    visitCallback(key, vertex);
 
     // get all neighbors
     const neighbors = graph.getNeighbors(key) as [Key, Vertex<T>][];
