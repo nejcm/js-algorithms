@@ -2,7 +2,14 @@ import {Graph, Key} from '../../../data-structures/graph';
 
 export default function hamiltonianCycle<T>(
   graph: Graph<T>,
+  isPath = false,
 ): Key[][] | undefined {
+  // is directed
+  if (graph.directed) {
+    throw new Error(
+      'Hamiltonian cycle algorithms works only for undirected graphs.',
+    );
+  }
   // is empty
   if (graph.isEmpty()) return undefined;
 
@@ -13,7 +20,7 @@ export default function hamiltonianCycle<T>(
   const len = vertices.length;
   const adjacencyMatrix = graph.getAdjacencyMatrix();
 
-  // check if first and last vertex are connected
+  // check if first and next (last added) vertex are connected
   const isCycle = (cycle: number[]): boolean => {
     return adjacencyMatrix[cycle[cycle.length - 1]][cycle[0]] !== Infinity;
   };
@@ -33,13 +40,14 @@ export default function hamiltonianCycle<T>(
     // for dfs recursion
     const currentCycle = [...cycle];
 
-    // check if cycle is complete
-    // and valid Hamiltonian path
+    // found a path
     if (len === currentCycle.length) {
-      if (isCycle(currentCycle)) {
-        // save cycle
+      // if cycle check if it is a valid
+      if (isPath || isCycle(currentCycle)) {
         // map indexes to vertex keys
-        cycles.push(currentCycle.map((index) => vertices[index].key));
+        const result = currentCycle.map((index) => vertices[index].key);
+        // save cycle
+        cycles.push(result);
       }
       return;
     }
