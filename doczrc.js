@@ -28,6 +28,7 @@ export default {
     Algorithms: [
       'Algorithms',
       'Graph',
+      'Math',
       'Pattern',
       'Searching',
       'Sorting',
