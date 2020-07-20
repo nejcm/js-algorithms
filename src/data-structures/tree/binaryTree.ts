@@ -7,6 +7,7 @@ export interface Node<T> {
   value?: T;
   [key: string]: unknown;
 }
+export type ToArrayCallback<T, K> = (node: Node<T>) => K;
 export interface BinaryTree<T> {
   size: number;
   root: Node<T> | null;
@@ -16,8 +17,11 @@ export interface BinaryTree<T> {
   _get(this: BinaryTree<T>, key: Key): Node<T> | undefined;
   _has(this: BinaryTree<T>, key: Key): boolean;
   _findMin(this: BinaryTree<T>): Node<T> | undefined;
-  iterate(this: BinaryTree<T>): Generator<Key, void, Key>;
+  traverse(this: BinaryTree<T>): Generator<Node<T>, void, Node<T>>;
+  traversePreOrder(this: BinaryTree<T>): Generator<Node<T>, void, Node<T>>;
+  traversePostOrder(this: BinaryTree<T>): Generator<Node<T>, void, Node<T>>;
   toArray(this: BinaryTree<T>): Key[];
+  toArray<K>(this: BinaryTree<T>, callback: ToArrayCallback<T, K>): K[];
   toString(this: BinaryTree<T>, separator?: string): string;
 }
 
@@ -187,36 +191,85 @@ const binaryTree = <T>(): BinaryTree<T> => {
       return min(this.root);
     },
 
-    // iterate over tree nodes
-    iterate: function* iterate() {
-      // get generator that iterates over the list elements
-      const array = this.toArray();
-      for (let i = 0; i < array.length; i++) {
-        yield array[i];
-      }
-    },
-
-    // get array of all values
-    toArray: function toArray() {
-      const result: Key[] = [];
-      function traverse(node: Node<T> | null) {
+    // traverse tree nodes in order
+    traverse: function* traverse() {
+      function* helper(node: Node<T> | null): Generator<Node<T>, void, Node<T>> {
         if (!node) return;
 
         // traverse the left subtree
         if (node.left !== null) {
-          traverse(node.left);
+          yield* helper(node.left);
         }
 
         // yield node value
-        result.push(node.key);
+        yield node;
 
         // traverse the right subtree
         if (node.right !== null) {
-          traverse(node.right);
+          yield* helper(node.right);
         }
       }
-      // start with the root
-      traverse(this.root);
+
+      yield* helper(this.root);
+    },
+
+    // traverse tree nodes in pre order
+    traversePreOrder: function* traversePreOrder() {
+      function* helper(node: Node<T> | null): Generator<Node<T>, void, Node<T>> {
+        if (!node) return;
+
+        // yield node value
+        yield node;
+
+        // traverse the left subtree
+        if (node.left !== null) {
+          yield* helper(node.left);
+        }
+
+        // traverse the right subtree
+        if (node.right !== null) {
+          yield* helper(node.right);
+        }
+      }
+      yield* helper(this.root);
+    },
+
+    // traverse tree nodes in post order
+    traversePostOrder: function* traversePostOrder() {
+      function* helper(node: Node<T> | null): Generator<Node<T>, void, Node<T>> {
+        if (!node) return;
+
+        // traverse the left subtree
+        if (node.left !== null) {
+          yield* helper(node.left);
+        }
+
+        // traverse the right subtree
+        if (node.right !== null) {
+          yield* helper(node.right);
+        }
+
+        // yield node value
+        yield node;
+      }
+      yield* helper(this.root);
+    },
+
+    // get array of all node values in order with custom callback
+    toArray: function toArray<K>(
+      callback: ToArrayCallback<T, K> = (node) => (node.key as unknown) as K,
+    ) {
+      const result: K[] = [];
+
+      // traverse over nodes in order
+      // init iterator
+      const iterator = this.traverse();
+      let current = iterator.next();
+      while (!current.done) {
+        result.push(callback(current.value));
+        current = iterator.next();
+      }
+
       return result;
     },
 

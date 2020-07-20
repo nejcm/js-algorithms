@@ -33,9 +33,7 @@ const bubbleSort = <T>(options?: Options<T>): Algorithm<T> => {
         }
         // if no elemets were swapped
         // the array is already sorted
-        if (!swapped) {
-          break;
-        }
+        if (!swapped) break;
       }
 
       return {

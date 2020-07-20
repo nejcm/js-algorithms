@@ -1,3 +1,4 @@
+import {Node} from '../binaryTree';
 import createTree from './index';
 
 describe('BinarySearchTree', () => {
@@ -79,22 +80,101 @@ describe('BinarySearchTree', () => {
     expect(tree.root).toBeNull();
   });
 
-  it('should iterate tree nodes', () => {
-    const tree = createTree();
+  it('should traverse tree nodes', () => {
+    const tree = createTree<string>();
 
-    tree.insert(5);
-    tree.insert(-10);
-    tree.insert(1);
-    tree.insert(-2);
+    let generator = tree.traverse();
+    expect(generator.next()).toMatchObject({done: true, value: undefined});
+
+    tree.insert(5, 'N1');
+    tree.insert(-10, 'N2');
+    tree.insert(1, 'N3');
+    tree.insert(-2, 'N4');
+    tree.insert(8, 'N5');
+    tree.insert(-12, 'N6');
+    tree.insert(3, 'N7');
+
+    generator = tree.traverse();
+
+    const node = generator.next().value as Node<string>;
+    expect(node.key).toEqual(-12);
+    expect(node.value).toEqual('N6');
+    expect((generator.next().value as Node<string>).key).toEqual(-10);
+    expect((generator.next().value as Node<string>).key).toEqual(-2);
+    expect((generator.next().value as Node<string>).key).toEqual(1);
+    expect((generator.next().value as Node<string>).key).toEqual(3);
+    expect((generator.next().value as Node<string>).key).toEqual(5);
+    expect((generator.next().value as Node<string>).key).toEqual(8);
+    expect(generator.next()).toMatchObject({done: true, value: undefined});
+  });
+
+  it('should traverse tree nodes in pre order', () => {
+    const tree = createTree<string>();
+
+    let generator = tree.traversePreOrder();
+    expect(generator.next()).toMatchObject({done: true, value: undefined});
+
+    tree.insert(5, 'N1');
+    tree.insert(-10, 'N2');
+    tree.insert(1, 'N3');
+    tree.insert(-2, 'N4');
+    tree.insert(8, 'N5');
+    tree.insert(-12, 'N6');
+    tree.insert(3, 'N7');
+
+    generator = tree.traversePreOrder();
+
+    expect((generator.next().value as Node<string>).key).toEqual(5);
+    expect((generator.next().value as Node<string>).key).toEqual(-10);
+    expect((generator.next().value as Node<string>).key).toEqual(-12);
+    expect((generator.next().value as Node<string>).key).toEqual(1);
+    expect((generator.next().value as Node<string>).key).toEqual(-2);
+    expect((generator.next().value as Node<string>).key).toEqual(3);
+    expect((generator.next().value as Node<string>).key).toEqual(8);
+    expect(generator.next()).toMatchObject({done: true, value: undefined});
+  });
+
+  it('should traverse tree nodes in post order', () => {
+    const tree = createTree<string>();
+
+    let generator = tree.traversePostOrder();
+    expect(generator.next()).toMatchObject({done: true, value: undefined});
+
+    tree.insert(5, 'N1');
+    tree.insert(-10, 'N2');
+    tree.insert(1, 'N3');
+    tree.insert(-2, 'N4');
+    tree.insert(8, 'N5');
+    tree.insert(-12, 'N6');
+    tree.insert(3, 'N7');
+
+    generator = tree.traversePostOrder();
+
+    expect((generator.next().value as Node<string>).key).toEqual(-12);
+    expect((generator.next().value as Node<string>).key).toEqual(-2);
+    expect((generator.next().value as Node<string>).key).toEqual(3);
+    expect((generator.next().value as Node<string>).key).toEqual(1);
+    expect((generator.next().value as Node<string>).key).toEqual(-10);
+    expect((generator.next().value as Node<string>).key).toEqual(8);
+    expect((generator.next().value as Node<string>).key).toEqual(5);
+    expect(generator.next()).toMatchObject({done: true, value: undefined});
+  });
+
+  it('should return array', () => {
+    const tree = createTree<string>();
+
+    tree.insert(5, 'N1');
+    tree.insert(-10, 'N2');
+    tree.insert(1, 'N3');
+    tree.insert(-2, 'N4');
 
     expect(tree.toArray()).toEqual([-10, -2, 1, 5]);
-    const generator = tree.iterate();
-
-    expect(generator.next().value).toEqual(-10);
-    expect(generator.next().value).toEqual(-2);
-    expect(generator.next().value).toEqual(1);
-    expect(generator.next().value).toEqual(5);
-    expect(generator.next()).toMatchObject({done: true, value: undefined});
+    expect(tree.toArray<string>((node) => node.value || '')).toEqual([
+      'N2',
+      'N4',
+      'N3',
+      'N1',
+    ]);
   });
 
   it('should get node', () => {
