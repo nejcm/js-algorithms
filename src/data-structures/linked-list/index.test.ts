@@ -13,11 +13,13 @@ describe('LinkedList', () => {
     expect(linkedList.head).toBeNull();
     expect(linkedList.tail).toBeNull();
 
-    linkedList.push(0);
     linkedList.push(1);
-    expect(linkedList.toString()).toBe('0 -> 1');
+    linkedList.unshift(0);
+    linkedList.push(2);
+    linkedList.push(3);
+    expect(linkedList.toString()).toBe('0 -> 1 -> 2 -> 3');
     expect(linkedList.tail).not.toBeNull();
-    expect(linkedList.tail?.value).toBe(1);
+    expect(linkedList.tail?.value).toBe(3);
     expect(linkedList.tail?.next).toBeNull();
   });
 
@@ -69,21 +71,8 @@ describe('LinkedList', () => {
     expect(linkedList.insert('d', 5).toArray()).toEqual(['a', 'c', 'b']);
     expect(linkedList.insert('d').toArray()).toEqual(['d', 'a', 'c', 'b']);
     expect(linkedList.head?.value).toBe('d');
-    expect(linkedList.insert('e', 4).toArray()).toEqual([
-      'd',
-      'a',
-      'c',
-      'b',
-      'e',
-    ]);
-    expect(linkedList.insert('f', 3).toArray()).toEqual([
-      'd',
-      'a',
-      'c',
-      'f',
-      'b',
-      'e',
-    ]);
+    expect(linkedList.insert('e', 4).toArray()).toEqual(['d', 'a', 'c', 'b', 'e']);
+    expect(linkedList.insert('f', 3).toArray()).toEqual(['d', 'a', 'c', 'f', 'b', 'e']);
     expect(linkedList.tail?.value).toBe('e');
   });
 
@@ -166,9 +155,9 @@ describe('LinkedList', () => {
     expect(linkedList.toString((node) => node?.value.val.toString())).toEqual(
       '0 -> 5 -> 10',
     );
-    expect(
-      linkedList.toString((node) => node?.value.val.toString(), ','),
-    ).toEqual('0,5,10');
+    expect(linkedList.toString((node) => node?.value.val.toString(), ',')).toEqual(
+      '0,5,10',
+    );
   });
 
   it('should convert linked list to string', () => {
