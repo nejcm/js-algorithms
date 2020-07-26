@@ -44,9 +44,9 @@ describe('Graph', () => {
       value: 'test',
     });
 
-    expect(
-      graph.addVertices(...([['F'], ['G'], ['H']] as [string][]))?.length,
-    ).toEqual(3);
+    expect(graph.addVertices(...([['F'], ['G'], ['H']] as [string][]))?.length).toEqual(
+      3,
+    );
 
     expect(graph.toString()).toEqual('A, B, C, X, D, E, F, G, H');
   });
@@ -187,6 +187,48 @@ describe('Graph', () => {
     expect(graph.hasEdge(5, 1)).toBeFalsy();
     expect(graph.getWeight()).toEqual(2);
     expect(graph.getAllEdges().length).toEqual(2);
+  });
+
+  it('should reverse directed graph', () => {
+    const graph = createGraph({directed: true});
+
+    graph.addEdge('A', 'B');
+    graph.addEdge('A', 'C');
+    graph.addEdge('C', 'D');
+    graph.addEdge('D', 'A');
+
+    expect(graph.getAllEdges().length).toBe(4);
+    expect(graph.hasEdge('A', 'B')).toBeTruthy();
+
+    graph.reverse();
+
+    expect(graph.getAllEdges().length).toBe(4);
+    expect(graph.hasEdge('A', 'B')).toBeFalsy();
+    expect(graph.hasEdge('B', 'A')).toBeTruthy();
+    expect(graph.hasEdge('A', 'C')).toBeFalsy();
+    expect(graph.hasEdge('C', 'A')).toBeTruthy();
+    expect(graph.hasEdge('D', 'C')).toBeTruthy();
+    expect(graph.hasEdge('A', 'D')).toBeTruthy();
+  });
+
+  it('should do nothing for reversing undirected graph', () => {
+    const graph = createGraph({directed: false});
+
+    graph.addEdge('A', 'B');
+    graph.addEdge('A', 'C');
+    graph.addEdge('D', 'A');
+
+    expect(graph.getAllEdges().length).toBe(3);
+
+    graph.reverse();
+
+    expect(graph.getAllEdges().length).toBe(3);
+    expect(graph.hasEdge('A', 'B')).toBeTruthy();
+    expect(graph.hasEdge('B', 'A')).toBeTruthy();
+    expect(graph.hasEdge('A', 'C')).toBeTruthy();
+    expect(graph.hasEdge('C', 'A')).toBeTruthy();
+    expect(graph.hasEdge('D', 'A')).toBeTruthy();
+    expect(graph.hasEdge('A', 'D')).toBeTruthy();
   });
 
   it('should delete edge from vertex in directed graph', () => {

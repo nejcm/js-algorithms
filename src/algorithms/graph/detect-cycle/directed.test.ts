@@ -31,7 +31,7 @@ describe('DetectCycleDirected', () => {
     expect(detectCycle(graph)).toBeFalsy();
   });
 
-  it('should return true for cycle in graph #', () => {
+  it('should return true for cycle in graph #2', () => {
     const graph = createGraph({directed: true});
 
     graph.addEdge(0, 1);

@@ -1,9 +1,5 @@
 export type Key = string | number;
-export type ToStringCallback<T> = (
-  key: Key,
-  index: number,
-  vertex: Vertex<T>,
-) => string;
+export type ToStringCallback<T> = (key: Key, index: number, vertex: Vertex<T>) => string;
 export type AdjacencyMatrixCallback<T> = (vals: {
   start: number;
   end: number;
@@ -44,16 +40,10 @@ export interface Graph<T> {
   getVertex(this: Graph<T>, key: Key): Vertex<T> | undefined;
   hasVertex(this: Graph<T>, key: Key): boolean;
   getAllVertices(this: Graph<T>): Vertex<T>[];
-  getAdjacencyMatrix(
-    this: Graph<T>,
-    callback?: AdjacencyMatrixCallback<T>,
-  ): number[][];
+  getAdjacencyMatrix(this: Graph<T>, callback?: AdjacencyMatrixCallback<T>): number[][];
+  reverse(this: Graph<T>): Graph<T>;
   isEmpty(this: Graph<T>): boolean;
-  toString(
-    this: Graph<T>,
-    separator?: string,
-    callback?: ToStringCallback<T>,
-  ): string;
+  toString(this: Graph<T>, separator?: string, callback?: ToStringCallback<T>): string;
 }
 
 const graph = <T>(options?: Options): Graph<T> => {
@@ -224,9 +214,7 @@ const graph = <T>(options?: Options): Graph<T> => {
     },
 
     // get adjacency matrix
-    getAdjacencyMatrix: function getAdjacencyMatrix(
-      callback = () => undefined,
-    ) {
+    getAdjacencyMatrix: function getAdjacencyMatrix(callback = () => undefined) {
       const vertices = this.getAllVertices();
       const len = vertices.length;
       const matrix: number[][] = [];
@@ -255,6 +243,23 @@ const graph = <T>(options?: Options): Graph<T> => {
         }
       }
       return matrix;
+    },
+
+    // reverse graph
+    reverse: function reverse() {
+      // if graph is undirected than
+      // reverse is not needed
+      if (!this.directed) return this;
+
+      const vertices = this.getAllVertices();
+      const edges = this.getAllEdges();
+
+      // clear all edges
+      vertices.forEach((vertex) => vertex.edges.clear());
+
+      // loop all edges and add reversed to graph
+      edges.forEach((edge) => this.addEdge(edge.end, edge.start, edge.weight));
+      return this;
     },
 
     // print graph
