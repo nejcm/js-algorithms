@@ -34,6 +34,7 @@ export default {
       'Sorting',
       'String',
       'Tree',
+      'Other',
     ],
     'Data structures': ['Data structures', 'All data structures'],
     'Code challenges': ['Code challenges'],

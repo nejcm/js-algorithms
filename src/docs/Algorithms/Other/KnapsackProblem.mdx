@@ -1,0 +1,49 @@
+---
+name: Knapsack problem
+route: /algorithms/graph/knapsack-problem
+menu: Other
+---
+
+# Knapsack problem
+
+The knapsack problem is a problem in combinatorial optimization: Given a set of items,
+each with a weight and a value, determine the number of each item to include in a
+collection so that the total weight is less than or equal to a given limit and the total
+value is as large as possible. It derives its name from the problem faced by someone who
+is constrained by a fixed-size knapsack and must fill it with the most valuable items. The
+problem often arises in resource allocation where the decision makers have to choose from
+a set of non-divisible projects or tasks under a fixed budget or time constraint,
+respectively. [Source: Wikipedia]
+
+The knapsack problem is interesting from the perspective of computer science for many
+reasons:
+
+- The decision problem form of the knapsack problem (Can a value of at least V be achieved
+  without exceeding the weight W?) is NP-complete, thus there is no known algorithm both
+  correct and fast (polynomial-time) in all cases.
+- While the decision problem is NP-complete, the optimization problem is NP-hard, its
+  resolution is at least as difficult as the decision problem, and there is no known
+  polynomial algorithm which can tell, given a solution, whether it is optimal (which
+  would mean that there is no solution with a larger V, thus solving the NP-complete
+  decision problem).
+- There is a pseudo-polynomial time algorithm using dynamic programming.
+- There is a fully polynomial-time approximation scheme, which uses the pseudo-polynomial
+  time algorithm as a subroutine, described below.
+- Many cases that arise in practice, and "random instances" from some distributions, can
+  nonetheless be solved exactly.
+
+## Complexity
+
+| Name                         |   Best time   | Space  | Comments                                            |
+| :--------------------------- | :-----------: | :----: | :-------------------------------------------------- |
+| Greedy approach              | 2<sup>n</sup> |   1    | Finds optimal solution only with allowing fractions |
+| Dynamic programming approach |    n \* w     | n \* w |                                                     |
+
+\* Where n = number of items; w = capacity
+
+## References
+
+- [Geeksforgeeks](https://www.geeksforgeeks.org/0-1-knapsack-problem-dp-10/)
+- [Wikipedia](https://en.wikipedia.org/wiki/Knapsack_problem)
+- [YouTube](https://www.youtube.com/watch?v=oTTzNMHM05I&ab_channel=AbdulBari)
+- [YouTube](https://www.youtube.com/watch?v=nLmhmB6NzcM&ab_channel=AbdulBari)
