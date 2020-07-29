@@ -15,11 +15,7 @@ export interface DoublyLinkedList<T> {
   shift(this: DoublyLinkedList<T>): T | undefined;
   get(this: DoublyLinkedList<T>, index: number): T | undefined;
   remove(this: DoublyLinkedList<T>, index?: number): DoublyLinkedList<T>;
-  insert(
-    this: DoublyLinkedList<T>,
-    element: T,
-    index?: number,
-  ): DoublyLinkedList<T>;
+  insert(this: DoublyLinkedList<T>, element: T, index?: number): DoublyLinkedList<T>;
   iterate(this: DoublyLinkedList<T>): Generator<T, void, T>;
   reverse(this: DoublyLinkedList<T>): DoublyLinkedList<T>;
   isEmpty(this: DoublyLinkedList<T>): boolean;
@@ -43,9 +39,7 @@ const linkedList = <T>(): DoublyLinkedList<T> => {
       next,
       prev,
       toString: function toString(callback?) {
-        return typeof callback === 'function'
-          ? callback(this)
-          : String(this.value);
+        return typeof callback === 'function' ? callback(this) : String(this.value);
       },
     };
   };
@@ -177,7 +171,6 @@ const linkedList = <T>(): DoublyLinkedList<T> => {
       if (index < 0 || index > this.length) {
         return this;
       }
-      const newNode = node(element);
       // add at the start
       if (index === 0 || !this.head) {
         return this.unshift(element);
@@ -197,8 +190,7 @@ const linkedList = <T>(): DoublyLinkedList<T> => {
       }
 
       // insert new element
-      newNode.next = current;
-      newNode.prev = current.prev;
+      const newNode = node(element, current, current.prev);
       (current.prev as Node<T>).next = newNode;
       current.prev = newNode;
       this.length++;
