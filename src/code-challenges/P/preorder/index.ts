@@ -1,9 +1,8 @@
 export function preorder(root: Node): number[] {
   if (root === null) return [];
 
-  const stack = [];
+  const stack = [root];
   const result = [];
-  stack.push(root);
 
   while (stack.length) {
     const next = stack.pop() as Node;
