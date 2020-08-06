@@ -2,30 +2,22 @@ language: node_js
 cache: npm
 notifications:
   email: false
+env:
+  - TEST=test
 node_js:
   - lts/*
   - node
 install: npm install
+script:
+  - npm run validate
 branches:
   only:
     - master
     - next
     - beta
-    - alpha
 
 jobs:
   include:
-    - stage: testing
-      #if: branch in (master, develop)
-      node_js: lts/*
-      env:
-        - TEST=test
-      script:
-        - npm run validate
-      after_success:
-        - mv coverage/coverage-final.json coverage/coverage.json
-        - codecov
-
     - stage: deploy
       if: branch = master
       node_js: lts/*

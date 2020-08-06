@@ -2,10 +2,13 @@
 
 <blockquote>Algorithms, data structures and other programming challenges and problems implemented in JavaScript with documentation.</blockquote>
 
+Big thank you goes to
+[javascript-algorithms](https://github.com/trekhleb/javascript-algorithms).
+
 <br />
 
-⚠️ This package is still under development! New algorithms are being added and
-existing ones refactored to improve code quality.
+⚠️ This package is still under development! New algorithms are being added and existing
+ones refactored to improve code quality.
 
 <br />
 
@@ -63,8 +66,7 @@ Each algorithm is described on the docs website.
 
 ## Issues
 
-_Looking to contribute? Look for the [Good First Issue][good-first-issue]
-label._
+_Looking to contribute? Look for the [Good First Issue][good-first-issue] label._
 
 ### 🐛 Bugs
 
@@ -74,15 +76,15 @@ Please file an issue for bugs, missing documentation, or unexpected behavior.
 
 ### 💡 Feature Requests
 
-Please file an issue to suggest new features. Vote on feature requests by adding
-a 👍. This helps maintainers prioritize what to work on.
+Please file an issue to suggest new features. Vote on feature requests by adding a 👍.
+This helps maintainers prioritize what to work on.
 
 [**See Feature Requests**][requests]
 
 ### ❓ Questions
 
-For questions related to using the library, please visit a support community
-instead of filing an issue on GitHub.
+For questions related to using the library, please visit a support community instead of
+filing an issue on GitHub.
 
 ## Authors
 
@@ -115,8 +117,8 @@ instead of filing an issue on GitHub.
 
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
-This project follows the [all-contributors][all-contributors] specification.
-Contributions of any kind welcome!
+This project follows the [all-contributors][all-contributors] specification. Contributions
+of any kind welcome!
 
 ## Support
 
