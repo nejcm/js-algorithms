@@ -10,14 +10,25 @@ jobs:
   test:
     name: Running tests...
     runs-on: ubuntu-latest
-
+    
     steps:
       - uses: actions/checkout@v2
       - name: Use node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
-      - name: Installing
-      - run: npm install
-      - name: Test
-      - run: npm run validate
+
+      - name: Install and test
+        run: |
+          npm install
+          npm run validate
+
+      - name: Building docs
+        run: npm run docz:build
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@3.5.9
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BRANCH: gh-pages
+          FOLDER: .docz/dist
+
