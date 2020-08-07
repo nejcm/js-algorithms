@@ -38,7 +38,7 @@
     "test:build": "jest --coverage --colors --silent && jest-coverage-badges",
     "test:watch": "jest --watch",
     "docz:clean": "rimraf .docz && docz clean",
-    "docz:dev": "npm run docz:clean && docz dev",
+    "docz:dev": "docz dev",
     "docz:build": "npm run docz:clean && docz build",
     "start": "npm run docz:dev",
     "validate": "npm run format && npm run lint && npm run test:build",

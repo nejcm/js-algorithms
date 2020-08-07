@@ -58,6 +58,11 @@ $ npm run start
 
 ```
 
+### Issues
+
+Sometimes npm has some issues with running docs. Try using yarn instead for installing the
+deps and running tasks.
+
 ## Docs & Examples
 
 Each algorithm is described on the docs website.
