@@ -50,11 +50,11 @@ ones refactored to improve code quality.
 # Clone repo
 $ git clone https://github.com/nejcm/js-algorithms.git my-project
 
-# Install dependencies and run lint and tests
-$ npm setup
+# Install dependencies, run lint and tests
+$ yarn setup
 
-# Run project
-$ npm run start
+# Run project docs
+$ yarn start
 
 ```
 
