@@ -1,11 +1,11 @@
-Yesterday you found some shoes in the back of your closet. Each shoe is
-described by two values:
+Yesterday you found some shoes in the back of your closet. Each shoe is described by two
+values:
 
 - _type_ indicates if it's a left or a right shoe;
 - _size_ is the size of the shoe.
 
-Your task is to check whether it is possible to pair the shoes you found in such
-a way that each pair consists of a right and a left shoe of an equal size.
+Your task is to check whether it is possible to pair the shoes you found in such a way
+that each pair consists of a right and a left shoe of an equal size.
 
 Example
 
@@ -35,9 +35,8 @@ Input/Output
 
 - **\[input\] array.array.integer shoes**
 
-  Array of shoes. Each shoe is given in the format `[_type_, _size_]`, where
-  _type_ is either `0` or `1` for left and right respectively, and _size_ is a
-  positive integer.
+  Array of shoes. Each shoe is given in the format `[_type_, _size_]`, where _type_ is
+  either `0` or `1` for left and right respectively, and _size_ is a positive integer.
 
   _Guaranteed constraints:_  
   `1 ≤ shoes.length ≤ 200`,  

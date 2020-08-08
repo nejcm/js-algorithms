@@ -1,9 +1,7 @@
 export function areSimilar(a: number[], b: number[]): boolean {
   const ad = a.filter((v, i) => v !== b[i]);
   const bd = b.filter((v, i) => v !== a[i]);
-  return (
-    ad.length == 0 || (ad.length == 2 && ad.join('') === bd.reverse().join(''))
-  );
+  return ad.length == 0 || (ad.length == 2 && ad.join('') === bd.reverse().join(''));
 }
 
 export function areSimilarV2(a: number[], b: number[]): boolean {

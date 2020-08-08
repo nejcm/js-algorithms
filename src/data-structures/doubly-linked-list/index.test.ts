@@ -72,21 +72,8 @@ describe('DoublyLinkedList', () => {
     expect(linkedList.insert('d', 5).toArray()).toEqual(['a', 'c', 'b']);
     expect(linkedList.insert('d').toArray()).toEqual(['d', 'a', 'c', 'b']);
     expect(linkedList.head?.value).toBe('d');
-    expect(linkedList.insert('e', 4).toArray()).toEqual([
-      'd',
-      'a',
-      'c',
-      'b',
-      'e',
-    ]);
-    expect(linkedList.insert('f', 3).toArray()).toEqual([
-      'd',
-      'a',
-      'c',
-      'f',
-      'b',
-      'e',
-    ]);
+    expect(linkedList.insert('e', 4).toArray()).toEqual(['d', 'a', 'c', 'b', 'e']);
+    expect(linkedList.insert('f', 3).toArray()).toEqual(['d', 'a', 'c', 'f', 'b', 'e']);
     expect(linkedList.tail?.value).toBe('e');
   });
 
@@ -169,9 +156,9 @@ describe('DoublyLinkedList', () => {
     expect(linkedList.toString((node) => node?.value.val.toString())).toEqual(
       '0 -> 5 -> 10',
     );
-    expect(
-      linkedList.toString((node) => node?.value.val.toString(), ','),
-    ).toEqual('0,5,10');
+    expect(linkedList.toString((node) => node?.value.val.toString(), ',')).toEqual(
+      '0,5,10',
+    );
   });
 
   it('should convert doubly linked list to string', () => {

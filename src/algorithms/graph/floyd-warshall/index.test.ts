@@ -82,15 +82,7 @@ describe('FloydWarshall', () => {
 
     const {vertices, distances} = floydWarshall(graph) || {};
 
-    expect(vertices?.map((v) => v.key)).toEqual([
-      'A',
-      'B',
-      'C',
-      'D',
-      'E',
-      'F',
-      'G',
-    ]);
+    expect(vertices?.map((v) => v.key)).toEqual(['A', 'B', 'C', 'D', 'E', 'F', 'G']);
     expect(distances).toEqual([
       [0, 0, 2, Infinity, Infinity, Infinity, Infinity],
       [1, 0, 3, Infinity, Infinity, Infinity, Infinity],

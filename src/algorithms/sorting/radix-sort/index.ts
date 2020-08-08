@@ -22,11 +22,7 @@ const lsdRadixSort = <T>(options?: radixSortOptions<T>): Algorithm<T> => {
     return Math.floor(value / algoOptions.digits ** index) % algoOptions.digits;
   };
   // get char position
-  const getCharPosition = (
-    value: string,
-    index: number,
-    maxPasses: number,
-  ): number => {
+  const getCharPosition = (value: string, index: number, maxPasses: number): number => {
     const len = value.length;
     if (maxPasses - index > len) {
       return 0;
@@ -94,14 +90,10 @@ const lsdRadixSort = <T>(options?: radixSortOptions<T>): Algorithm<T> => {
       // sort based on type
       switch (typeof array[0]) {
         case 'number':
-          array = (sortNumbers(
-            (array as unknown) as number[],
-          ) as unknown) as T[];
+          array = (sortNumbers((array as unknown) as number[]) as unknown) as T[];
           break;
         case 'string':
-          array = (sortStrings(
-            (array as unknown) as string[],
-          ) as unknown) as T[];
+          array = (sortStrings((array as unknown) as string[]) as unknown) as T[];
           break;
         default:
           break;

@@ -1,5 +1,5 @@
-Define a _word_ as a sequence of consecutive English letters. Find the longest
-_word_ from the given string.
+Define a _word_ as a sequence of consecutive English letters. Find the longest _word_ from
+the given string.
 
 Example
 
@@ -17,8 +17,7 @@ Input/Output
 
 - **\[output\] string**
 
-  - The longest _word_ from `text`. It's guaranteed that there is a unique
-    output.
+  - The longest _word_ from `text`. It's guaranteed that there is a unique output.
 
 **\[JavaScript (ES6)\] Syntax Tips**
 

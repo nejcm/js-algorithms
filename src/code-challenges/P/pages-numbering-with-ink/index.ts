@@ -1,7 +1,4 @@
-export function pagesNumberingWithInk(
-  current: number,
-  numberOfDigits: number,
-): number {
+export function pagesNumberingWithInk(current: number, numberOfDigits: number): number {
   let i;
   for (i = current; numberOfDigits > 0; i++) {
     numberOfDigits -= i.toString().split('').length;

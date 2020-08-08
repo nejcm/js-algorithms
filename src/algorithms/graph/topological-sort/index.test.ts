@@ -29,25 +29,11 @@ describe('TopologicalSort', () => {
     graph.addEdge(2, 3);
     graph.addEdge(2, 1);
 
-    expect(topologicalSort(graph)?.map((v) => v.key)).toEqual([
-      0,
-      1,
-      4,
-      2,
-      3,
-      5,
-    ]);
+    expect(topologicalSort(graph)?.map((v) => v.key)).toEqual([0, 1, 4, 2, 3, 5]);
 
     graph.addEdge(0, 5);
 
-    expect(topologicalSort(graph)?.map((v) => v.key)).toEqual([
-      0,
-      1,
-      4,
-      5,
-      2,
-      3,
-    ]);
+    expect(topologicalSort(graph)?.map((v) => v.key)).toEqual([0, 1, 4, 5, 2, 3]);
 
     graph.addVertex(6);
     graph.addVertex(7);

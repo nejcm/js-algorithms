@@ -1,9 +1,8 @@
-Define an _alphabet reflection_ as follows: `a` turns into `z`, `b` turns into
-`y`, `c` turns into `x`, ..., `n` turns into `m`, `m` turns into `n`, ..., `z`
-turns into `a`.
+Define an _alphabet reflection_ as follows: `a` turns into `z`, `b` turns into `y`, `c`
+turns into `x`, ..., `n` turns into `m`, `m` turns into `n`, ..., `z` turns into `a`.
 
-Define a _string reflection_ as the result of applying the alphabet reflection
-to each of its characters.
+Define a _string reflection_ as the result of applying the alphabet reflection to each of
+its characters.
 
 Reflect the given string.
 

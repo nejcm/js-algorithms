@@ -21,8 +21,7 @@ const avlTree = <T>(): AvlTree<T> => {
   const tree = createTree<T>() as AvlTree<T>;
 
   // get node height
-  const height = (node: Node<T> | null): number =>
-    (node?.height || 0) as number;
+  const height = (node: Node<T> | null): number => (node?.height || 0) as number;
 
   // find minimum node in tree
   const minValueNode = (node: Node<T>): Node<T> => {

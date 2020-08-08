@@ -13,10 +13,7 @@ export function chessKnight(cell: string): number {
   const c2 = Number(cell[1]) - 1;
   return pos.reduce(
     (acc, p) =>
-      acc +
-      (c1 + p[0] >= 0 && c1 + p[0] < 8 && c2 + p[1] >= 0 && c2 + p[1] < 8
-        ? 1
-        : 0),
+      acc + (c1 + p[0] >= 0 && c1 + p[0] < 8 && c2 + p[1] >= 0 && c2 + p[1] < 8 ? 1 : 0),
     0,
   );
 }

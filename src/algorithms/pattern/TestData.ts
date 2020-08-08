@@ -1,22 +1,14 @@
 import {Algorithm, Options} from './Algorithm';
 
 const Tester = {
-  testWrong: (
-    algorithm: (opts?: Options) => Algorithm,
-    options?: Options,
-  ): void => {
+  testWrong: (algorithm: (opts?: Options) => Algorithm, options?: Options): void => {
     const alg = algorithm(options);
     // This is only to force typescript to accept the parameter to test it
     expect(alg.run((null as unknown) as string, '').result).toEqual(-1);
     expect(alg.run((undefined as unknown) as string, '0').result).toEqual(-1);
-    expect(alg.run('Test', (undefined as unknown) as string).result).toEqual(
-      -1,
-    );
+    expect(alg.run('Test', (undefined as unknown) as string).result).toEqual(-1);
   },
-  testStrings: (
-    algorithm: (opts?: Options) => Algorithm,
-    options?: Options,
-  ): void => {
+  testStrings: (algorithm: (opts?: Options) => Algorithm, options?: Options): void => {
     const alg = algorithm(options);
 
     expect(alg.run('', '').result).toEqual(-1);
@@ -41,10 +33,7 @@ const Tester = {
     expect(alg.run(upperCaseStr, 'XZ').result).toBe(-1);
     expect(alg.run(upperCaseStr, 'CFGGGGAAAAAA').result).toBe(9);
   },
-  testLongText: (
-    algorithm: (opts?: Options) => Algorithm,
-    options?: Options,
-  ): void => {
+  testLongText: (algorithm: (opts?: Options) => Algorithm, options?: Options): void => {
     const alg = algorithm(options);
     const longText =
       'Attended no do thoughts me on dissuade scarcely. Own are pretty spring suffer old denote his. By proposal speedily mr striking am. ' +
@@ -64,9 +53,7 @@ const Tester = {
   },
   testTiming: (algorithm: () => Algorithm): void => {
     const alg = algorithm();
-    expect(
-      alg.timedRun('Test text for timing run.', 'Test').time,
-    ).toBeGreaterThan(0);
+    expect(alg.timedRun('Test text for timing run.', 'Test').time).toBeGreaterThan(0);
   },
 };
 

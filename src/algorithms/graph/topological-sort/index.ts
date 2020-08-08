@@ -1,14 +1,10 @@
 import {Graph, Key, Vertex} from '../../../data-structures/graph';
 import depthFirstSearch, {Callback} from '../depth-first-search';
 
-export default function topologicalSort<T>(
-  graph: Graph<T>,
-): Vertex<T>[] | undefined {
+export default function topologicalSort<T>(graph: Graph<T>): Vertex<T>[] | undefined {
   // is undirected
   if (!graph.directed) {
-    throw new Error(
-      'Topological sort algorithms works only for directed graphs.',
-    );
+    throw new Error('Topological sort algorithms works only for directed graphs.');
   }
   // is empty
   if (graph.isEmpty()) return undefined;

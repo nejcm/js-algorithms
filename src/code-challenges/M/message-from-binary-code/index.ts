@@ -8,14 +8,11 @@ export function messageFromBinaryCode(code: string): string {
 
 export function messageFromBinaryCodeV2(code: string): string {
   return (
-    code
-      .match(/.{8}/g)
-      ?.reduce((a, b) => a + String.fromCharCode(parseInt(b, 2)), '') || ''
+    code.match(/.{8}/g)?.reduce((a, b) => a + String.fromCharCode(parseInt(b, 2)), '') ||
+    ''
   );
 }
 
 export function messageFromBinaryCodeV3(code: string): string {
-  return code.replace(/[01]{8}/g, (byte) =>
-    String.fromCharCode(parseInt(byte, 2)),
-  );
+  return code.replace(/[01]{8}/g, (byte) => String.fromCharCode(parseInt(byte, 2)));
 }

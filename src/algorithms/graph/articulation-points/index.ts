@@ -5,9 +5,7 @@ export type VertexMeta = {
   lowDiscoveryTime: number;
 };
 
-export default function articulationPoints<T>(
-  graph: Graph<T>,
-): Vertex<T>[] | undefined {
+export default function articulationPoints<T>(graph: Graph<T>): Vertex<T>[] | undefined {
   // is empty
   if (graph.isEmpty()) return undefined;
 
@@ -47,10 +45,7 @@ export default function articulationPoints<T>(
         const vMeta = visited.get(vertex.key) as VertexMeta;
         const nMeta = visited.get(nKey) as VertexMeta;
         // update current vertex low discovery time
-        vMeta.lowDiscoveryTime = Math.min(
-          vMeta.lowDiscoveryTime,
-          nMeta.lowDiscoveryTime,
-        );
+        vMeta.lowDiscoveryTime = Math.min(vMeta.lowDiscoveryTime, nMeta.lowDiscoveryTime);
         visited.set(vertex.key, vMeta);
 
         // vertex is root and has two or more children
@@ -68,10 +63,7 @@ export default function articulationPoints<T>(
         const vMeta = visited.get(vertex.key) as VertexMeta;
         const nMeta = visited.get(nKey) as VertexMeta;
         // update current vertex low discovery time
-        vMeta.lowDiscoveryTime = Math.min(
-          vMeta.lowDiscoveryTime,
-          nMeta.discoveryTime,
-        );
+        vMeta.lowDiscoveryTime = Math.min(vMeta.lowDiscoveryTime, nMeta.discoveryTime);
         visited.set(vertex.key, vMeta);
       }
     }

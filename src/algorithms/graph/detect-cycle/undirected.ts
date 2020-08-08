@@ -3,9 +3,7 @@ import {Graph, Key, Vertex} from '../../../data-structures/graph';
 export default function detectCycle<T>(graph: Graph<T>): boolean {
   // is directed
   if (graph.directed) {
-    throw new Error(
-      'Detect cycle algorithms works only for undirected graphs.',
-    );
+    throw new Error('Detect cycle algorithms works only for undirected graphs.');
   }
   // is empty
   if (graph.isEmpty()) return false;

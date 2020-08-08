@@ -1,5 +1,4 @@
-Given an array of strings, return another array containing all of its longest
-strings.
+Given an array of strings, return another array containing all of its longest strings.
 
 Example
 
@@ -20,8 +19,7 @@ Input/Output
 
 - **\[output\] array.string**
 
-  - Array of the longest strings, stored in the same order as in the
-    `inputArray`.
+  - Array of the longest strings, stored in the same order as in the `inputArray`.
 
 **\[JavaScript (ES6)\] Syntax Tips**
 

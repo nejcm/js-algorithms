@@ -65,10 +65,7 @@ describe('AStar', () => {
     const getHeuristic: HeuristicCallbackKeys = (i, j) =>
       (graph.getVertex(i)?.value || 0) + (graph.getVertex(j)?.value || 0);
 
-    expect(aStarGraph(graph, 'A', 'H', getHeuristic)).toEqual([
-      ['A', 'C', 'G', 'H'],
-      10,
-    ]);
+    expect(aStarGraph(graph, 'A', 'H', getHeuristic)).toEqual([['A', 'C', 'G', 'H'], 10]);
   });
 
   it('should find shortest path between vertices in matrix', () => {

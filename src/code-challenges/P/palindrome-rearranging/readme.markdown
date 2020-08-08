@@ -21,8 +21,8 @@ Input/Output
 
 - **\[output\] boolean**
 
-  - `true` if the characters of the `inputString` can be rearranged to form a
-    palindrome, `false` otherwise.
+  - `true` if the characters of the `inputString` can be rearranged to form a palindrome,
+    `false` otherwise.
 
 **\[JavaScript (ES6)\] Syntax Tips**
 

@@ -1,8 +1,4 @@
-export function depositProfit(
-  deposit: number,
-  rate: number,
-  threshold: number,
-): number {
+export function depositProfit(deposit: number, rate: number, threshold: number): number {
   let curr = deposit;
   let i = 0;
   while (curr < threshold) {

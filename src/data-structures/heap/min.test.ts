@@ -62,19 +62,7 @@ describe('MinHeap', () => {
     heap.add(14);
 
     expect(heap.items).toEqual([0, 4, 10, 8, 5, 14, 10, 15, 10, 14, 9, 15]);
-    expect(heap.remove(9).items).toEqual([
-      0,
-      4,
-      10,
-      8,
-      5,
-      14,
-      10,
-      15,
-      10,
-      15,
-      9,
-    ]);
+    expect(heap.remove(9).items).toEqual([0, 4, 10, 8, 5, 14, 10, 15, 10, 15, 9]);
     expect(heap.remove(6).items).toEqual([0, 4, 9, 8, 5, 14, 10, 15, 10, 15]);
     expect(heap.remove(2).items).toEqual([0, 4, 10, 8, 5, 14, 15, 15, 10]);
     expect(heap.remove(8).items).toEqual([0, 4, 10, 8, 5, 14, 15, 15]);
@@ -105,10 +93,7 @@ describe('MinHeap', () => {
     expect(heap.find(15)).toEqual([5, 7]);
 
     expect(
-      heap.find(
-        10,
-        (heapItem, searched) => (heapItem as number) < (searched as number),
-      ),
+      heap.find(10, (heapItem, searched) => (heapItem as number) < (searched as number)),
     ).toEqual([0, 1, 3]);
   });
 

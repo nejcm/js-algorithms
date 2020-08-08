@@ -36,11 +36,7 @@ export interface Heap<T> {
   heapifyUp(this: Heap<T>, startIndex?: number): Heap<T>;
   heapifyDown(this: Heap<T>, startIndex?: number): Heap<T>;
   isEmpty(this: Heap<T>): boolean;
-  toString(
-    this: Heap<T>,
-    callback?: ToStringCallback<T>,
-    separator?: string,
-  ): string;
+  toString(this: Heap<T>, callback?: ToStringCallback<T>, separator?: string): string;
 }
 
 const heap = <T>(options?: Options<T>): Heap<T> => {
@@ -218,10 +214,7 @@ const heap = <T>(options?: Options<T>): Heap<T> => {
         let nextIndex = this.leftChildIndex(index);
         if (
           this.hasRightChild(index) &&
-          opts.compareFunction(
-            this.rightChild(index) as T,
-            this.leftChild(index) as T,
-          )
+          opts.compareFunction(this.rightChild(index) as T, this.leftChild(index) as T)
         ) {
           nextIndex = this.rightChildIndex(index);
         }

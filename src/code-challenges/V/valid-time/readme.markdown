@@ -15,8 +15,8 @@ Input/Output
 
 - **\[input\] string time**
 
-  A string representing time in `HH:MM` format. It is guaranteed that the first
-  two characters, as well as the last two characters, are digits.
+  A string representing time in `HH:MM` format. It is guaranteed that the first two
+  characters, as well as the last two characters, are digits.
 
 - **\[output\] boolean**
 

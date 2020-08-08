@@ -1,5 +1,5 @@
-Given a string, output its longest [prefix](keyword://string-prefix) which
-contains only digits.
+Given a string, output its longest [prefix](keyword://string-prefix) which contains only
+digits.
 
 Example
 

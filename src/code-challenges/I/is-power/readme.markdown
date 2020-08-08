@@ -20,9 +20,8 @@ Input/Output
 
 - **\[output\] boolean**
 
-  - `true` if `n` can be represented in the form `ab` (`a` to the power of `b`)
-    where `a` and `b` are some non-negative integers and `b ≥ 2`, false
-    otherwise.
+  - `true` if `n` can be represented in the form `ab` (`a` to the power of `b`) where `a`
+    and `b` are some non-negative integers and `b ≥ 2`, false otherwise.
 
 **\[JavaScript (ES6)\] Syntax Tips**
 

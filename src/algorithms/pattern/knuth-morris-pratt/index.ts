@@ -46,9 +46,7 @@ const knuthMorrisPratt = (options?: Options): Algorithm => {
     const patternTable = buildPatternTable(seek);
 
     while (textIndex < n) {
-      if (
-        run(algoOptions.compareFunction, [text[textIndex], seek[seekIndex]])
-      ) {
+      if (run(algoOptions.compareFunction, [text[textIndex], seek[seekIndex]])) {
         if (seekIndex === m - 1) {
           // match found
           return textIndex - m + 1;

@@ -1,7 +1,7 @@
-In the popular **Minesweeper** game you have a board with some mines and those
-cells that don't contain a mine have a number in it that indicates the total
-number of mines in the neighboring cells. Starting off with some arrangement of
-mines we want to create a **Minesweeper** game setup.
+In the popular **Minesweeper** game you have a board with some mines and those cells that
+don't contain a mine have a number in it that indicates the total number of mines in the
+neighboring cells. Starting off with some arrangement of mines we want to create a
+**Minesweeper** game setup.
 
 Example
 
@@ -36,9 +36,9 @@ Input/Output
 
 - **\[output\] array.array.integer**
 
-  - Rectangular matrix of the same size as `matrix` each cell of which contains
-    an integer equal to the number of mines in the neighboring cells. Two cells
-    are called neighboring if they share at least one corner.
+  - Rectangular matrix of the same size as `matrix` each cell of which contains an integer
+    equal to the number of mines in the neighboring cells. Two cells are called
+    neighboring if they share at least one corner.
 
 **\[JavaScript (ES6)\] Syntax Tips**
 

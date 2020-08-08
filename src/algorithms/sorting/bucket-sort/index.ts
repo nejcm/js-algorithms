@@ -24,9 +24,7 @@ const bucketSort = (options?: bucketSortOptions): Algorithm<number> => {
     // put elements into buckets
     for (let i = 0; i < len; i++) {
       run(algoOptions.visitingCallback, [array[i]]);
-      buckets[Math.floor((array[i] - min) / algoOptions.bucketSize)].push(
-        array[i],
-      );
+      buckets[Math.floor((array[i] - min) / algoOptions.bucketSize)].push(array[i]);
     }
     // sort each bucket
     for (let i = 0; i < bucketCount; i++) {

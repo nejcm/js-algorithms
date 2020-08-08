@@ -1,5 +1,5 @@
-Given a character, check if it represents an odd digit, an even digit or not a
-digit at all.
+Given a character, check if it represents an odd digit, an even digit or not a digit at
+all.
 
 Example
 

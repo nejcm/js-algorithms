@@ -5,9 +5,7 @@ export default function travellingSalesman<T>(
 ): [Key[], number] | undefined {
   // is directed
   if (graph.directed) {
-    throw new Error(
-      'Travelling salesman algorithms works only for undirected graphs.',
-    );
+    throw new Error('Travelling salesman algorithms works only for undirected graphs.');
   }
   // is empty
   if (graph.isEmpty()) return undefined;
@@ -55,12 +53,7 @@ export default function travellingSalesman<T>(
     return second;
   };
 
-  const tsp = (
-    cycle: number[],
-    cost: number,
-    bound: number,
-    result?: Result,
-  ): Result => {
+  const tsp = (cycle: number[], cost: number, bound: number, result?: Result): Result => {
     // clone current cyle
     // for tsp recursion
     const currentCycle = [...cycle];
@@ -104,12 +97,7 @@ export default function travellingSalesman<T>(
           // add index to cycle
           currentCycle.push(i);
           // call tsp
-          result = tsp(
-            currentCycle,
-            cost + adjacencyMatrix[current][i],
-            bound,
-            result,
-          );
+          result = tsp(currentCycle, cost + adjacencyMatrix[current][i], bound, result);
         }
 
         // reset bound, visited and cycle for backtracking
@@ -131,9 +119,7 @@ export default function travellingSalesman<T>(
     initialBound += getFirstMin(i) + getSecondMin(i);
   }
   // round it to integer
-  initialBound = Math.round(
-    initialBound === 1 ? initialBound / 2 + 1 : initialBound / 2,
-  );
+  initialBound = Math.round(initialBound === 1 ? initialBound / 2 + 1 : initialBound / 2);
 
   // run tsp
   // start with vertex 0 and cost 0

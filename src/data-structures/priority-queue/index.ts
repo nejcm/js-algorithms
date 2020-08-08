@@ -8,11 +8,7 @@ export interface Item<T> {
 export interface PriorityQueue<T> {
   items: Heap<Item<T>>;
   size(this: PriorityQueue<T>): number;
-  enqueue(
-    this: PriorityQueue<T>,
-    value: T,
-    priority?: number,
-  ): PriorityQueue<T>;
+  enqueue(this: PriorityQueue<T>, value: T, priority?: number): PriorityQueue<T>;
   dequeue(this: PriorityQueue<T>): Item<T> | undefined;
   remove(this: PriorityQueue<T>, item: T): void;
   changePriority(this: PriorityQueue<T>, item: T, priority: number): void;

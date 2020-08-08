@@ -1,9 +1,8 @@
-You are given two strings `s` and `t` of the same length, consisting of
-uppercase English letters. Your task is to find the minimum number of
-_"replacement operations"_ needed to get some [anagram](keyword://anagram) of
-the string `t` from the string `s`. A replacement operation is performed by
-picking exactly one character from the string `s` and replacing it by some other
-character.
+You are given two strings `s` and `t` of the same length, consisting of uppercase English
+letters. Your task is to find the minimum number of _"replacement operations"_ needed to
+get some [anagram](keyword://anagram) of the string `t` from the string `s`. A replacement
+operation is performed by picking exactly one character from the string `s` and replacing
+it by some other character.
 
 Example
 
@@ -28,8 +27,8 @@ Input/Output
 
 - **\[output\] integer**
 
-  - The minimum number of replacement operations needed to get an anagram of the
-    string `t` from the string `s`.
+  - The minimum number of replacement operations needed to get an anagram of the string
+    `t` from the string `s`.
 
 **\[JavaScript (ES6)\] Syntax Tips**
 

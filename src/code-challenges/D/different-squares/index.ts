@@ -3,9 +3,7 @@ export function differentSquares(matrix: number[][]): number {
   for (let i = 1; i < matrix.length; i++) {
     for (let j = 1; j < matrix[i].length; j++) {
       s[
-        `${matrix[i][j]},${matrix[i][j - 1]},${matrix[i - 1][j]},${
-          matrix[i - 1][j - 1]
-        }`
+        `${matrix[i][j]},${matrix[i][j - 1]},${matrix[i - 1][j]},${matrix[i - 1][j - 1]}`
       ] = true;
     }
   }

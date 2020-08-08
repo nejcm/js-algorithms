@@ -33,9 +33,7 @@ const linkedList = <T>(): LinkedList<T> => {
       value,
       next,
       toString: function toString(callback?) {
-        return typeof callback === 'function'
-          ? callback(this)
-          : String(this.value);
+        return typeof callback === 'function' ? callback(this) : String(this.value);
       },
     };
   };

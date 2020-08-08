@@ -1,5 +1,5 @@
-Determine whether the given string can be obtained by one concatenation of some
-string to itself.
+Determine whether the given string can be obtained by one concatenation of some string to
+itself.
 
 Example
 
@@ -21,8 +21,7 @@ Input/Output
 
 - **\[output\] boolean**
 
-  - `true` if `inputString` represents a string concatenated to itself, `false`
-    otherwise.
+  - `true` if `inputString` represents a string concatenated to itself, `false` otherwise.
 
 **\[JavaScript (ES6)\] Syntax Tips**
 

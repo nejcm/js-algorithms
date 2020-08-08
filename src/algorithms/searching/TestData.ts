@@ -116,12 +116,10 @@ const Tester = {
   ): void => {
     const alg = algorithm(options);
     // This is only to force typescript to accept the parameter to test it
-    expect(
-      alg.run(((null as unknown) as unknown[]) as number[], 0).result,
-    ).toEqual([]);
-    expect(
-      alg.run(((undefined as unknown) as unknown[]) as number[], 1).result,
-    ).toEqual([]);
+    expect(alg.run(((null as unknown) as unknown[]) as number[], 0).result).toEqual([]);
+    expect(alg.run(((undefined as unknown) as unknown[]) as number[], 1).result).toEqual(
+      [],
+    );
   },
   testNumbers: (
     algorithm: (opts?: Options<number>) => Algorithm<number>,
@@ -158,21 +156,21 @@ const Tester = {
     expect(alg.run([2, 6, 8, 8, 10, 10, 10], 5).result).toEqual([]);
     expect(alg.run([2, 6, 8, 8, 10, 10, 10], 7).result).toEqual([]);
     expect(alg.run([2, 6, 8, 8, 10, 10, 10], 6).result).toEqual([1]);
-    expect(
-      alg.run(numbersSortedArray, containedSortedNumber.seek).result,
-    ).toEqual(containedSortedNumber.result);
-    expect(
-      alg.run(numbersSortedArray, containedFirstSortedNumber.seek).result,
-    ).toEqual(containedFirstSortedNumber.result);
-    expect(
-      alg.run(numbersSortedArray, containedLastSortedNumber.seek).result,
-    ).toEqual(containedLastSortedNumber.result);
-    expect(
-      alg.run(numbersSortedArray, notFoundSortedNumber.seek).result,
-    ).toEqual(notFoundSortedNumber.result);
-    expect(
-      alg.run(numbersSortedArray, notFoundAboveSortedNumber.seek).result,
-    ).toEqual(notFoundAboveSortedNumber.result);
+    expect(alg.run(numbersSortedArray, containedSortedNumber.seek).result).toEqual(
+      containedSortedNumber.result,
+    );
+    expect(alg.run(numbersSortedArray, containedFirstSortedNumber.seek).result).toEqual(
+      containedFirstSortedNumber.result,
+    );
+    expect(alg.run(numbersSortedArray, containedLastSortedNumber.seek).result).toEqual(
+      containedLastSortedNumber.result,
+    );
+    expect(alg.run(numbersSortedArray, notFoundSortedNumber.seek).result).toEqual(
+      notFoundSortedNumber.result,
+    );
+    expect(alg.run(numbersSortedArray, notFoundAboveSortedNumber.seek).result).toEqual(
+      notFoundAboveSortedNumber.result,
+    );
     expect(
       alg.run(numbersSortedArray, containedMultipleSortedNumber.seek).result,
     ).toEqual(containedMultipleSortedNumber.result);
@@ -200,8 +198,7 @@ const Tester = {
     options?: Options<string>,
   ): void => {
     const algoOptions = {
-      compareFunction: (val1: string, val2: string): boolean =>
-        val1.length < val2.length,
+      compareFunction: (val1: string, val2: string): boolean => val1.length < val2.length,
       ...options,
     };
     const alg = algorithm(algoOptions);
@@ -211,15 +208,15 @@ const Tester = {
     expect(alg.run(['aa', 'a'], 'aa').result).toEqual([1]);
     expect(alg.run(['aa', 'a'], 'bc').result).toEqual([1]);
     expect(alg.run(['aa', 'aa'], 'bc').result).toEqual([]);
-    expect(
-      alg.run(['aa', 'bbbb', 'cc', 'd', 'eeeee', 'fff'], 'xxx').result,
-    ).toEqual([0, 2, 3]);
+    expect(alg.run(['aa', 'bbbb', 'cc', 'd', 'eeeee', 'fff'], 'xxx').result).toEqual([
+      0,
+      2,
+      3,
+    ]);
   },
   testTiming: (algorithm: () => Algorithm<number>): void => {
     const alg = algorithm();
-    expect(
-      alg.timedRun(numbersArray, notFoundNumber.seek).time,
-    ).toBeGreaterThan(0);
+    expect(alg.timedRun(numbersArray, notFoundNumber.seek).time).toBeGreaterThan(0);
   },
 };
 

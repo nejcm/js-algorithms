@@ -7,11 +7,7 @@ export interface Options {
 export interface SegmentTree {
   values: number[];
   nodes: number[];
-  rangeQuery(
-    this: SegmentTree,
-    left: number,
-    right: number,
-  ): number | undefined;
+  rangeQuery(this: SegmentTree, left: number, right: number): number | undefined;
 }
 
 const segmentTree = (values: number[], options?: Options): SegmentTree => {
@@ -56,8 +52,7 @@ const segmentTree = (values: number[], options?: Options): SegmentTree => {
   if (length > 0) {
     // calculate tree size
     let currentPower = Math.log2(length);
-    currentPower =
-      currentPower % 1 === 0 ? currentPower : Math.floor(currentPower) + 1;
+    currentPower = currentPower % 1 === 0 ? currentPower : Math.floor(currentPower) + 1;
     const power2 = 2 ** currentPower;
     const treeSize = 2 * power2 - 1;
     // build tree

@@ -6,9 +6,6 @@ export function differentSymbolsNaive(s: string): number {
   return Object.keys(
     s
       .split('')
-      .reduce(
-        (acc: {[key: string]: boolean}, curr) => ((acc[curr] = true), acc),
-        {},
-      ),
+      .reduce((acc: {[key: string]: boolean}, curr) => ((acc[curr] = true), acc), {}),
   ).length;
 }

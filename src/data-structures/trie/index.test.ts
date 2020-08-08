@@ -18,15 +18,9 @@ describe('Trie', () => {
     trie.insert('car');
     expect(trie.root.toString()).toBe('*:c');
     expect(trie.root.children.get('c')?.toString()).toBe('c:a');
-    expect(trie.root.children.get('c')?.children.get('a')?.toString()).toBe(
-      'a:r,t',
-    );
+    expect(trie.root.children.get('c')?.children.get('a')?.toString()).toBe('a:r,t');
     expect(
-      trie.root.children
-        .get('c')
-        ?.children.get('a')
-        ?.children.get('t')
-        ?.toString(),
+      trie.root.children.get('c')?.children.get('a')?.children.get('t')?.toString(),
     ).toBe('t*');
   });
 

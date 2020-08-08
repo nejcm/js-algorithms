@@ -1,6 +1,4 @@
-export default function permutationsWithRepetitions<T>(
-  values: T[],
-): T[][] | undefined {
+export default function permutationsWithRepetitions<T>(values: T[]): T[][] | undefined {
   const len = values.length;
   // is empty
   if (!len) return undefined;
@@ -10,9 +8,7 @@ export default function permutationsWithRepetitions<T>(
 
     const perms: T[][] = [];
     const data = createPermutations(vals, r - 1);
-    vals.forEach((value) =>
-      data.forEach((elem) => perms.push([value, ...elem])),
-    );
+    vals.forEach((value) => data.forEach((elem) => perms.push([value, ...elem])));
     return perms;
   };
 

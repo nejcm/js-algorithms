@@ -1,11 +1,7 @@
 import {Graph, Key, Vertex} from '../../../data-structures/graph';
 
 // return data that will be passed to next function call
-export type Callback<T> = (
-  key: Key,
-  vertex: Vertex<T>,
-  data?: unknown,
-) => unknown | void;
+export type Callback<T> = (key: Key, vertex: Vertex<T>, data?: unknown) => unknown | void;
 
 export interface Options<T> {
   visitCallback: Callback<T>;

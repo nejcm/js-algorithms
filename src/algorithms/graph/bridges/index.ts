@@ -43,10 +43,7 @@ export default function bridges<T>(graph: Graph<T>): [Key, Key][] | undefined {
         const vMeta = visited.get(vertex.key) as VertexMeta;
         const nMeta = visited.get(nKey) as VertexMeta;
         // update current vertex low discovery time
-        vMeta.lowDiscoveryTime = Math.min(
-          vMeta.lowDiscoveryTime,
-          nMeta.lowDiscoveryTime,
-        );
+        vMeta.lowDiscoveryTime = Math.min(vMeta.lowDiscoveryTime, nMeta.lowDiscoveryTime);
         visited.set(vertex.key, vMeta);
 
         // vertex is not root and low discovery time of one of its connected vertices
@@ -60,10 +57,7 @@ export default function bridges<T>(graph: Graph<T>): [Key, Key][] | undefined {
         const vMeta = visited.get(vertex.key) as VertexMeta;
         const nMeta = visited.get(nKey) as VertexMeta;
         // update current vertex low discovery time
-        vMeta.lowDiscoveryTime = Math.min(
-          vMeta.lowDiscoveryTime,
-          nMeta.discoveryTime,
-        );
+        vMeta.lowDiscoveryTime = Math.min(vMeta.lowDiscoveryTime, nMeta.discoveryTime);
         visited.set(vertex.key, vMeta);
       }
     }

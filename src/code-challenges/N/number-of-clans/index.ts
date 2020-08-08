@@ -1,8 +1,6 @@
 export function numberOfClans(divisors: number[], k: number): number {
   return new Set(
-    [...Array(k).keys()].map((i) =>
-      divisors.filter((j) => (i + 1) % j === 0).toString(),
-    ),
+    [...Array(k).keys()].map((i) => divisors.filter((j) => (i + 1) % j === 0).toString()),
   ).size;
 }
 

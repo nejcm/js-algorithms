@@ -1,8 +1,7 @@
-An IP address is a numerical label assigned to each device (e.g., computer,
-printer) participating in a computer network that uses the Internet Protocol for
-communication. There are two versions of the Internet protocol, and thus two
-versions of addresses. One of them is the
-[IPv4 address](keyword://ipv4-address).
+An IP address is a numerical label assigned to each device (e.g., computer, printer)
+participating in a computer network that uses the Internet Protocol for communication.
+There are two versions of the Internet protocol, and thus two versions of addresses. One
+of them is the [IPv4 address](keyword://ipv4-address).
 
 Given a string, find out if it satisfies the IPv4 address naming rules.
 
@@ -34,8 +33,7 @@ Input/Output
 
 - **\[output\] boolean**
 
-  - `true` if `inputString` satisfies the IPv4 address naming rules, `false`
-    otherwise.
+  - `true` if `inputString` satisfies the IPv4 address naming rules, `false` otherwise.
 
 **\[JavaScript (ES6)\] Syntax Tips**
 

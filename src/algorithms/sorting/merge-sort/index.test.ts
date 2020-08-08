@@ -1,9 +1,4 @@
-import Tester, {
-  equalArr,
-  notSortedArr,
-  reverseArr,
-  sortedArr,
-} from '../TestData';
+import Tester, {equalArr, notSortedArr, reverseArr, sortedArr} from '../TestData';
 import mergeSort from './index';
 
 // Complexity constants.
@@ -42,18 +37,10 @@ describe('MergeSort', () => {
   });
 
   it('should visit NOT SORTED array element specified number of times', () => {
-    Tester.testComplexity(
-      mergeSort,
-      notSortedArr,
-      NOT_SORTED_ARRAY_VISITING_COUNT,
-    );
+    Tester.testComplexity(mergeSort, notSortedArr, NOT_SORTED_ARRAY_VISITING_COUNT);
   });
 
   it('should visit REVERSE SORTED array element specified number of times', () => {
-    Tester.testComplexity(
-      mergeSort,
-      reverseArr,
-      REVERSE_SORTED_ARRAY_VISITING_COUNT,
-    );
+    Tester.testComplexity(mergeSort, reverseArr, REVERSE_SORTED_ARRAY_VISITING_COUNT);
   });
 });

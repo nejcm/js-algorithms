@@ -7,9 +7,7 @@ export default function travellingSalesman<T>(
 ): [Key[], number] | undefined {
   // is directed
   if (graph.directed) {
-    throw new Error(
-      'Travelling salesman algorithms works only for undirected graphs.',
-    );
+    throw new Error('Travelling salesman algorithms works only for undirected graphs.');
   }
   // is empty
   if (graph.isEmpty()) return undefined;

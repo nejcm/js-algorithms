@@ -7,7 +7,5 @@ export function lateRide(n: number): number {
 export function lateRideV2(n: number): number {
   const hours = (n / 60) | 0;
   const minutes = n % 60;
-  return (
-    ((hours / 10) | 0) + (hours % 10) + ((minutes / 10) | 0) + (minutes % 10)
-  );
+  return ((hours / 10) | 0) + (hours % 10) + ((minutes / 10) | 0) + (minutes % 10);
 }

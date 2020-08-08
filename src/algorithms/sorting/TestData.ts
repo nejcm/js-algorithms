@@ -66,54 +66,11 @@ export const notSortedArr = [
   14,
   19,
 ];
-export const equalArr = [
-  1,
-  1,
-  1,
-  1,
-  1,
-  1,
-  1,
-  1,
-  1,
-  1,
-  1,
-  1,
-  1,
-  1,
-  1,
-  1,
-  1,
-  1,
-  1,
-  1,
-];
+export const equalArr = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1];
 export const negativeArr = [-1, 0, 5, -10, 20, 13, -7, 3, 2, -3];
 export const negativeArrSorted = [-10, -7, -3, -1, 0, 2, 3, 5, 13, 20];
-export const decimalArr = [
-  0.25,
-  -1.89,
-  3.7,
-  0.28,
-  1,
-  -0.98,
-  -3.2,
-  0,
-  0.01,
-  -1.1,
-];
-export const decimalArrSorted = [
-  -3.2,
-  -1.89,
-  -1.1,
-  -0.98,
-  0,
-  0.01,
-  0.25,
-  0.28,
-  1,
-  3.7,
-];
+export const decimalArr = [0.25, -1.89, 3.7, 0.28, 1, -0.98, -3.2, 0, 0.01, -1.1];
+export const decimalArrSorted = [-3.2, -1.89, -1.1, -0.98, 0, 0.01, 0.25, 0.28, 1, 3.7];
 
 const Tester = {
   testNumbers: (
@@ -125,15 +82,7 @@ const Tester = {
     expect(alg.run([1]).result).toEqual([1]);
     expect(alg.run([1, 2]).result).toEqual([1, 2]);
     expect(alg.run([2, 1]).result).toEqual([1, 2]);
-    expect(alg.run([3, 2, 1, 0, 4, 4, 2]).result).toEqual([
-      0,
-      1,
-      2,
-      2,
-      3,
-      4,
-      4,
-    ]);
+    expect(alg.run([3, 2, 1, 0, 4, 4, 2]).result).toEqual([0, 1, 2, 2, 3, 4, 4]);
     expect(alg.run(sortedArr).result).toEqual(sortedArr);
     expect(alg.run(reverseArr).result).toEqual(sortedArr);
     expect(alg.run(notSortedArr).result).toEqual(sortedArr);
@@ -186,8 +135,7 @@ const Tester = {
     options?: Options<string>,
   ): void => {
     const algoOptions = {
-      compareFunction: (val1: string, val2: string): boolean =>
-        val1.length < val2.length,
+      compareFunction: (val1: string, val2: string): boolean => val1.length < val2.length,
       ...options,
     };
     const alg = algorithm(algoOptions);

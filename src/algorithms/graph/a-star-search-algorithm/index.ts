@@ -1,8 +1,6 @@
 // http://theory.stanford.edu/~amitp/GameProgramming/Heuristics.html
 import {Graph, Key} from '../../../data-structures/graph';
-import createPriorityQueue, {
-  Item,
-} from '../../../data-structures/priority-queue';
+import createPriorityQueue, {Item} from '../../../data-structures/priority-queue';
 
 export type HeuristicCallbackIndexes = (i: number, j: number) => number;
 export type HeuristicCallbackKeys = (i: Key, j: Key) => number;
@@ -129,8 +127,7 @@ export default function aStar(
 
       // update distances to every connected vertex
       const distanceToNext = nextData.distance;
-      const completeDistance =
-        currentData.distance + matrix[currentIndex][index];
+      const completeDistance = currentData.distance + matrix[currentIndex][index];
 
       // if the distance is shorter than update it
       if (completeDistance < distanceToNext) {

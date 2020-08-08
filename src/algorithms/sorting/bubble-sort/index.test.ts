@@ -1,9 +1,4 @@
-import Tester, {
-  equalArr,
-  notSortedArr,
-  reverseArr,
-  sortedArr,
-} from '../TestData';
+import Tester, {equalArr, notSortedArr, reverseArr, sortedArr} from '../TestData';
 import bubbleSort from './index';
 
 // Complexity constants.
@@ -42,18 +37,10 @@ describe('BubbleSort', () => {
   });
 
   it('should visit NOT SORTED array element specified number of times', () => {
-    Tester.testComplexity(
-      bubbleSort,
-      notSortedArr,
-      NOT_SORTED_ARRAY_VISITING_COUNT,
-    );
+    Tester.testComplexity(bubbleSort, notSortedArr, NOT_SORTED_ARRAY_VISITING_COUNT);
   });
 
   it('should visit REVERSE SORTED array element specified number of times', () => {
-    Tester.testComplexity(
-      bubbleSort,
-      reverseArr,
-      REVERSE_SORTED_ARRAY_VISITING_COUNT,
-    );
+    Tester.testComplexity(bubbleSort, reverseArr, REVERSE_SORTED_ARRAY_VISITING_COUNT);
   });
 });

@@ -3,7 +3,5 @@ export function arrayReplace(
   elemToReplace: unknown,
   substitutionElem: unknown,
 ): unknown[] {
-  return inputArray.map((curr) =>
-    curr === elemToReplace ? substitutionElem : curr,
-  );
+  return inputArray.map((curr) => (curr === elemToReplace ? substitutionElem : curr));
 }

@@ -4,9 +4,7 @@ export function adaNumber(line: string): boolean {
   const num = line.match(/^(\d{1,2})#([0-9a-f]+)#$/i) || [];
   const base = parseInt(num[1] || '', 10);
   return num
-    ? [...num[2]].every((v) => !isNaN(parseInt(v, base))) &&
-        base >= 2 &&
-        base <= 16
+    ? [...num[2]].every((v) => !isNaN(parseInt(v, base))) && base >= 2 && base <= 16
     : false;
 }
 

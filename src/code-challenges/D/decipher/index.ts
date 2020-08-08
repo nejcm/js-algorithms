@@ -1,7 +1,5 @@
 export function decipher(cipher: string): string {
-  return String.fromCharCode(
-    ...(cipher.match(/1..|../g)?.map((c) => Number(c)) || []),
-  );
+  return String.fromCharCode(...(cipher.match(/1..|../g)?.map((c) => Number(c)) || []));
 }
 
 export function decipherV2(cipher: string): string {

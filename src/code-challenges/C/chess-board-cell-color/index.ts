@@ -7,10 +7,7 @@ export function chessBoardCellColor(cell1: string, cell2: string): boolean {
 
 export function chessBoardCellColorV2(cell1: string, cell2: string): boolean {
   return (
-    (cell1.charCodeAt(0) +
-      Number(cell1[1]) +
-      cell2.charCodeAt(0) +
-      Number(cell2[1])) %
+    (cell1.charCodeAt(0) + Number(cell1[1]) + cell2.charCodeAt(0) + Number(cell2[1])) %
       2 ==
     0
   );

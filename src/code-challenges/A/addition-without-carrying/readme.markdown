@@ -1,13 +1,12 @@
-A little boy is studying arithmetics. He has just learned how to add two
-integers, written one below another, column by column. But he always forgets
-about the important part - carrying.
+A little boy is studying arithmetics. He has just learned how to add two integers, written
+one below another, column by column. But he always forgets about the important part -
+carrying.
 
-Given two integers, your task is to find the result which the little boy will
-get.
+Given two integers, your task is to find the result which the little boy will get.
 
 _Note: The boy had learned from
-[this](https://www.mathsisfun.com/numbers/addition-column.html) site, so feel
-free to check it out too if you are not familiar with column addition_.
+[this](https://www.mathsisfun.com/numbers/addition-column.html) site, so feel free to
+check it out too if you are not familiar with column addition_.
 
 Example
 
@@ -21,14 +20,13 @@ For `param1 = 456` and `param2 = 1734`, the output should be
 
 The boy performs the following operations from right to left:
 
-- `6 + 4 = 10` but he forgets about carrying the `1` and just writes down the
-  `0` in the last column
+- `6 + 4 = 10` but he forgets about carrying the `1` and just writes down the `0` in the
+  last column
 - `5 + 3 = 8`
-- `4 + 7 = 11` but he forgets about the leading `1` and just writes down `1`
-  under `4` and `7`.
-- There is no digit in the first number corresponding to the leading digit of
-  the second one, so the boy imagines that `0` is written before `456`. Thus, he
-  gets `0 + 1 = 1`.
+- `4 + 7 = 11` but he forgets about the leading `1` and just writes down `1` under `4` and
+  `7`.
+- There is no digit in the first number corresponding to the leading digit of the second
+  one, so the boy imagines that `0` is written before `456`. Thus, he gets `0 + 1 = 1`.
 
 Input/Output
 
@@ -50,8 +48,7 @@ Input/Output
 
 - **\[output\] integer**
 
-  - The result that the little boy will get by using column addition without
-    carrying.
+  - The result that the little boy will get by using column addition without carrying.
 
 **\[JavaScript (ES6)\] Syntax Tips**
 

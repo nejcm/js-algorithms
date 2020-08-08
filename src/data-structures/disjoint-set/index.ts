@@ -13,12 +13,7 @@ export interface DisjointSet<T> {
   add(this: DisjointSet<T>, ...values: (ItemParam<T> | Key)[]): boolean;
   find(this: DisjointSet<T>, key: Key): Key | undefined;
   union(this: DisjointSet<T>, key1: Key, key2: Key): DisjointSet<T>;
-  isSameSet(
-    this: DisjointSet<T>,
-    key1: Key,
-    key2: Key,
-    ...rest: Key[]
-  ): boolean;
+  isSameSet(this: DisjointSet<T>, key1: Key, key2: Key, ...rest: Key[]): boolean;
 }
 
 const disjointSet = <T>(): DisjointSet<T> => {
@@ -102,10 +97,7 @@ const disjointSet = <T>(): DisjointSet<T> => {
     isSameSet: function isSameSet(...keys) {
       const key1 = this.find(keys[0]);
       // check if all keys have same root as first
-      return (
-        key1 !== undefined &&
-        keys.splice(1).every((key) => key1 === this.find(key))
-      );
+      return key1 !== undefined && keys.splice(1).every((key) => key1 === this.find(key));
     },
   };
 

@@ -1,6 +1,6 @@
-Some people are standing in a row in a park. There are trees between them which
-cannot be moved. Your task is to rearrange the people by their heights in a
-non-descending order without moving the trees. People can be very tall!
+Some people are standing in a row in a park. There are trees between them which cannot be
+moved. Your task is to rearrange the people by their heights in a non-descending order
+without moving the trees. People can be very tall!
 
 Example
 
@@ -13,8 +13,8 @@ Input/Output
 
 - **\[input\] array.integer a**
 
-  If `a[i] = -1`, then the `ith` position is occupied by a tree. Otherwise
-  `a[i]` is the height of a person standing in the `ith` position.
+  If `a[i] = -1`, then the `ith` position is occupied by a tree. Otherwise `a[i]` is the
+  height of a person standing in the `ith` position.
 
   _Guaranteed constraints:_  
   `1 ≤ a.length ≤ 1000`,  

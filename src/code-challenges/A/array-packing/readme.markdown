@@ -1,5 +1,4 @@
-You are given an array of up to four non-negative integers, each less than
-`256`.
+You are given an array of up to four non-negative integers, each less than `256`.
 
 Your task is to pack these integers into one number `M` in the following way:
 
@@ -8,9 +7,8 @@ Your task is to pack these integers into one number `M` in the following way:
 
 Return the obtained integer `M`.
 
-Note: the phrase _"first bits of `M`"_ refers to the _least significant bits_ of
-`M` - the right-most bits of an integer. For further clarification see the
-following example.
+Note: the phrase _"first bits of `M`"_ refers to the _least significant bits_ of `M` - the
+right-most bits of an integer. For further clarification see the following example.
 
 Example
 
@@ -18,8 +16,8 @@ For `a = [24, 85, 0]`, the output should be
 `arrayPacking(a) = 21784`.
 
 An array `[24, 85, 0]` looks like `[00011000, 01010101, 00000000]` in binary.  
-After packing these into one number we get `00000000 01010101 00011000` (spaces
-are placed for convenience), which equals to `21784`.
+After packing these into one number we get `00000000 01010101 00011000` (spaces are placed
+for convenience), which equals to `21784`.
 
 Input/Output
 

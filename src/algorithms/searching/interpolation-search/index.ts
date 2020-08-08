@@ -19,9 +19,7 @@ const interpolationSearch = (options?: Options<number>): Algorithm<number> => {
     while (start <= end && seek >= values[start] && seek <= values[end]) {
       // interpolation of the middle index.
       let pos = Math.floor(
-        start +
-          ((end - start) / (values[end] - values[start])) *
-            (seek - values[start]),
+        start + ((end - start) / (values[end] - values[start])) * (seek - values[start]),
       );
 
       // if all elements are same then we'll have divide by 0 or 0/0

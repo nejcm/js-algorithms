@@ -23,8 +23,7 @@ Input/Output
 
 - **\[output\] boolean**
 
-  - `true` if the given string is a _subsequence_ of the _alphabet_, `false`
-    otherwise.
+  - `true` if the given string is a _subsequence_ of the _alphabet_, `false` otherwise.
 
 **\[JavaScript (ES6)\] Syntax Tips**
 

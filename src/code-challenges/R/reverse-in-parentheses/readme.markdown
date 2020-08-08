@@ -1,5 +1,5 @@
-Write a function that reverses characters in (possibly nested) parentheses in
-the input string.
+Write a function that reverses characters in (possibly nested) parentheses in the input
+string.
 
 Input strings will always be well-formed with matching `()`s.
 
@@ -13,8 +13,7 @@ Example
   `reverseInParentheses(inputString) = "foorabbazmilb"`;
 - For `inputString = "foo(bar(baz))blim"`, the output should be  
   `reverseInParentheses(inputString) = "foobazrabblim"`.  
-  Because `"foo(bar(baz))blim"` becomes `"foo(barzab)blim"` and then
-  `"foobazrabblim"`.
+  Because `"foo(bar(baz))blim"` becomes `"foo(barzab)blim"` and then `"foobazrabblim"`.
 
 Input/Output
 
@@ -22,8 +21,8 @@ Input/Output
 
 - **\[input\] string inputString**
 
-  A string consisting of lowercase English letters and the characters `(` and
-  `)`. It is guaranteed that all parentheses in `inputString` form a
+  A string consisting of lowercase English letters and the characters `(` and `)`. It is
+  guaranteed that all parentheses in `inputString` form a
   [regular bracket sequence](keyword://regular-bracket-sequence).
 
   _Guaranteed constraints:_  
@@ -31,8 +30,7 @@ Input/Output
 
 - **\[output\] string**
 
-  - Return `inputString`, with all the characters that were in parentheses
-    reversed.
+  - Return `inputString`, with all the characters that were in parentheses reversed.
 
 **\[JavaScript (ES6)\] Syntax Tips**
 

@@ -18,18 +18,14 @@ export function sudoku(grid: number[][]): boolean {
 }
 
 export function sudokuV2(grid: number[][]): boolean {
-  const prod = (arr: number[]): boolean =>
-    arr.reduce((a, c) => a * c, 1) === 362880; // product of numbers
+  const prod = (arr: number[]): boolean => arr.reduce((a, c) => a * c, 1) === 362880; // product of numbers
 
   return grid.every(
     (r, i) =>
       prod(r) &&
       prod(grid.map((x) => x[i])) &&
       prod(
-        r.map(
-          (_, j) =>
-            grid[3 * ((i / 3) | 0) + ((j / 3) | 0)][3 * (i % 3) + (j % 3)],
-        ),
+        r.map((_, j) => grid[3 * ((i / 3) | 0) + ((j / 3) | 0)][3 * (i % 3) + (j % 3)]),
       ),
   );
 }

@@ -1,7 +1,6 @@
 export function isSmooth(arr: number[]): boolean {
   const len = arr.length;
-  const mid =
-    len % 2 ? arr[Math.floor(len / 2)] : arr[len / 2] + arr[len / 2 - 1];
+  const mid = len % 2 ? arr[Math.floor(len / 2)] : arr[len / 2] + arr[len / 2 - 1];
   return mid === arr[0] && mid === arr[len - 1];
 }
 

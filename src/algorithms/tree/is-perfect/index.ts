@@ -17,8 +17,7 @@ export default function isPerfectTree<T>(tree: BinaryTree<T>): boolean {
     currentDepth: number,
   ): boolean => {
     if (node === null) return true;
-    if (node.left === null && node.right === null)
-      return depth === currentDepth;
+    if (node.left === null && node.right === null) return depth === currentDepth;
     if (node.left && node.right) {
       return (
         isPerfect(node.left, depth, currentDepth + 1) &&

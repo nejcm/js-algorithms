@@ -1,7 +1,5 @@
 import {Edge, Graph, Key} from '../../../data-structures/graph';
-import createPriorityQueue, {
-  Item,
-} from '../../../data-structures/priority-queue';
+import createPriorityQueue, {Item} from '../../../data-structures/priority-queue';
 
 export default function dijkstra<T>(
   graph: Graph<T>,

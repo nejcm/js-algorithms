@@ -6,9 +6,7 @@ export default function hamiltonianCycle<T>(
 ): Key[][] | undefined {
   // is directed
   if (graph.directed) {
-    throw new Error(
-      'Hamiltonian cycle algorithms works only for undirected graphs.',
-    );
+    throw new Error('Hamiltonian cycle algorithms works only for undirected graphs.');
   }
   // is empty
   if (graph.isEmpty()) return undefined;

@@ -16,11 +16,7 @@ export default function isBalancedTree<T>(tree: BinaryTree<T>): boolean {
     const lh = height(node.left);
     // right height
     const rh = height(node.right);
-    if (
-      Math.abs(lh - rh) <= 1 &&
-      isBalanced(node.left) &&
-      isBalanced(node.right)
-    ) {
+    if (Math.abs(lh - rh) <= 1 && isBalanced(node.left) && isBalanced(node.right)) {
       return true;
     }
 

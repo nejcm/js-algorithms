@@ -1,6 +1,6 @@
-You are given an array of integers. On each move you are allowed to increase
-exactly one of its element by one. Find the minimal number of moves required to
-obtain a strictly increasing sequence from the input.
+You are given an array of integers. On each move you are allowed to increase exactly one
+of its element by one. Find the minimal number of moves required to obtain a strictly
+increasing sequence from the input.
 
 Example
 
@@ -19,10 +19,10 @@ Input/Output
 
 - **\[output\] integer**
 
-  - The minimal number of moves needed to obtain a strictly increasing sequence
-    from `inputArray`.  
-    It's guaranteed that for the given test cases the answer always fits signed
-    `32`\-bit integer type.
+  - The minimal number of moves needed to obtain a strictly increasing sequence from
+    `inputArray`.  
+    It's guaranteed that for the given test cases the answer always fits signed `32`\-bit
+    integer type.
 
 **\[JavaScript (ES6)\] Syntax Tips**
 

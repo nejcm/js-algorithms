@@ -6,20 +6,19 @@ menu: Sorting
 
 # Tim Sort
 
-Timsort is a hybrid stable sorting algorithm, derived from merge sort and
-insertion sort, designed to perform well on many kinds of real-world data. It
-was implemented by Tim Peters in 2002 for use in the Python programming
-language. The algorithm finds subsequences of the data that are already ordered
-(runs) and uses them to sort the remainder more efficiently. This is done by
-merging runs until certain criteria are fulfilled. (Source: Wikipedia)
+Timsort is a hybrid stable sorting algorithm, derived from merge sort and insertion sort,
+designed to perform well on many kinds of real-world data. It was implemented by Tim
+Peters in 2002 for use in the Python programming language. The algorithm finds
+subsequences of the data that are already ordered (runs) and uses them to sort the
+remainder more efficiently. This is done by merging runs until certain criteria are
+fulfilled. (Source: Wikipedia)
 
-We divide the Array into blocks known as Run. We sort those runs using insertion
-sort one by one and then merge those runs using combine function used in merge
-sort. If the size of Array is less than run, then Array get sorted just by using
-Insertion Sort. The size of run may vary from 32 to 64 depending upon the size
-of the array. Note that merge function performs well when sizes subarrays are
-powers of 2. The idea is based on the fact that insertion sort performs well for
-small arrays. (Source: Geeksforgeeks)
+We divide the Array into blocks known as Run. We sort those runs using insertion sort one
+by one and then merge those runs using combine function used in merge sort. If the size of
+Array is less than run, then Array get sorted just by using Insertion Sort. The size of
+run may vary from 32 to 64 depending upon the size of the array. Note that merge function
+performs well when sizes subarrays are powers of 2. The idea is based on the fact that
+insertion sort performs well for small arrays. (Source: Geeksforgeeks)
 
 ![Algorithm Visualization](https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Copy_galloping_mode_timsort%282%29.svg/560px-Copy_galloping_mode_timsort%282%29.svg.png)
 

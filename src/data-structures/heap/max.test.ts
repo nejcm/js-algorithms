@@ -62,19 +62,7 @@ describe('MaxHeap', () => {
     heap.add(14);
 
     expect(heap.items).toEqual([15, 14, 15, 10, 9, 14, 10, 0, 4, 5, 8, 10]);
-    expect(heap.remove(9).items).toEqual([
-      15,
-      14,
-      15,
-      10,
-      10,
-      14,
-      10,
-      0,
-      4,
-      9,
-      8,
-    ]);
+    expect(heap.remove(9).items).toEqual([15, 14, 15, 10, 10, 14, 10, 0, 4, 9, 8]);
     expect(heap.remove(6).items).toEqual([15, 14, 15, 10, 10, 14, 8, 0, 4, 9]);
     expect(heap.remove(2).items).toEqual([15, 14, 14, 10, 10, 9, 8, 0, 4]);
     expect(heap.remove(8).items).toEqual([15, 14, 14, 10, 10, 9, 8, 0]);
@@ -105,10 +93,7 @@ describe('MaxHeap', () => {
     expect(heap.find(15)).toEqual([0, 2]);
 
     expect(
-      heap.find(
-        10,
-        (heapItem, searched) => (heapItem as number) < (searched as number),
-      ),
+      heap.find(10, (heapItem, searched) => (heapItem as number) < (searched as number)),
     ).toEqual([3, 4, 7]);
   });
 

@@ -6,7 +6,5 @@ export function arrayMaximalAdjacentDifference(inputArray: number[]): number {
 }
 
 export function arrayMaximalAdjacentDifferenceV2(inputArray: number[]): number {
-  return Math.max(
-    ...inputArray.slice(1).map((x, i) => Math.abs(x - inputArray[i])),
-  );
+  return Math.max(...inputArray.slice(1).map((x, i) => Math.abs(x - inputArray[i])));
 }

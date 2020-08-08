@@ -1,12 +1,5 @@
-import createGraph, {
-  Edge,
-  Graph,
-  Key,
-  Vertex,
-} from '../../../data-structures/graph';
-import createPriorityQueue, {
-  Item,
-} from '../../../data-structures/priority-queue';
+import createGraph, {Edge, Graph, Key, Vertex} from '../../../data-structures/graph';
+import createPriorityQueue, {Item} from '../../../data-structures/priority-queue';
 
 export default function prim<T>(graph: Graph<T>): Graph<T> | undefined {
   // is directed

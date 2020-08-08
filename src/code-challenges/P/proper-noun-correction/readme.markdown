@@ -15,8 +15,7 @@ Input/Output
 
 - **\[input\] string noun**
 
-  A string representing a proper noun with a mix of capital and small English
-  letters.
+  A string representing a proper noun with a mix of capital and small English letters.
 
   _Guaranteed constraints:_  
   `1 ≤ noun.length ≤ 10`.

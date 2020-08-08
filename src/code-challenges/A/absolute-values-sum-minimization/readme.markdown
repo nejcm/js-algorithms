@@ -1,6 +1,6 @@
-Given a sorted array of integers `a`, your task is to determine which element of
-`a` is _closest_ to all other values of `a`. In other words, find the element
-`x` in `a`, which minimizes the following sum:
+Given a sorted array of integers `a`, your task is to determine which element of `a` is
+_closest_ to all other values of `a`. In other words, find the element `x` in `a`, which
+minimizes the following sum:
 
     abs(a[0] - x) + abs(a[1] - x) + ... + abs(a[a.length - 1] - x)
 
@@ -10,8 +10,7 @@ If there are several possible answers, output the _smallest_ one.
 
 Example
 
-- For `a = [2, 4, 7]`, the output should be
-  `absoluteValuesSumMinimization(a) = 4`.
+- For `a = [2, 4, 7]`, the output should be `absoluteValuesSumMinimization(a) = 4`.
 
   - for `x = 2`, the value will be `abs(2 - 2) + abs(4 - 2) + abs(7 - 2) = 7`.
   - for `x = 4`, the value will be `abs(2 - 4) + abs(4 - 4) + abs(7 - 4) = 5`.
@@ -24,8 +23,7 @@ Example
   - for `x = 2`, the value will be `abs(2 - 2) + abs(3 - 2) = 1`.
   - for `x = 3`, the value will be `abs(2 - 3) + abs(3 - 3) = 1`.
 
-  Because there is a tie, the smallest `x` between `x = 2` and `x = 3` is the
-  answer.
+  Because there is a tie, the smallest `x` between `x = 2` and `x = 3` is the answer.
 
 Input/Output
 
@@ -41,8 +39,8 @@ Input/Output
 
 - **\[output\] integer**
 
-  - An integer representing the element from `a` that minimizes the sum of its
-    absolute differences with all other elements.
+  - An integer representing the element from `a` that minimizes the sum of its absolute
+    differences with all other elements.
 
 **\[JavaScript (ES6)\] Syntax Tips**
 

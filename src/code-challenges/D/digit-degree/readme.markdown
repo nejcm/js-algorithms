@@ -1,6 +1,5 @@
-Let's define _digit degree_ of some positive integer as the number of times we
-need to replace this number with the sum of its digits until we get to a one
-digit number.
+Let's define _digit degree_ of some positive integer as the number of times we need to
+replace this number with the sum of its digits until we get to a one digit number.
 
 Given an integer, find its digit degree.
 

@@ -8,11 +8,7 @@ export interface RedBlackTree<T> extends BinaryTree<T> {
     value?: T,
   ): Node<T> | null;
   insert(this: RedBlackTree<T>, key: Key, value?: T): RedBlackTree<T>;
-  _removeNode(
-    this: RedBlackTree<T>,
-    node: Node<T> | null,
-    key: Key,
-  ): Node<T> | null;
+  _removeNode(this: RedBlackTree<T>, node: Node<T> | null, key: Key): Node<T> | null;
   remove(this: RedBlackTree<T>, key: Key): RedBlackTree<T>;
   get(this: RedBlackTree<T>, key: Key): Node<T> | undefined;
   has(this: RedBlackTree<T>, key: Key): boolean;
