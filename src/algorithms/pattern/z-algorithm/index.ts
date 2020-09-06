@@ -66,19 +66,13 @@ const zAlgorithm = (options?: Options): Algorithm => {
   };
 
   const search = (text: string, seek: string): number | null => {
-    if (!text || !seek) {
-      return -1;
-    }
-
+    if (!text || !seek) return -1;
     const n = text.length;
     const m = seek.length;
-    if (n === 0 || m === 0 || m > n) {
-      return -1;
-    }
+    if (n === 0 || m === 0 || m > n) return -1;
 
     const zString = `${seek}${algoOptions.separator}${text}`;
     const zArray = buildZArray(zString);
-
     for (let i = 1; i < zArray.length; i += 1) {
       if (zArray[i] === m) {
         // match found
@@ -86,7 +80,6 @@ const zAlgorithm = (options?: Options): Algorithm => {
         return i - m - (algoOptions.separator as string).length;
       }
     }
-
     return -1;
   };
 
@@ -98,7 +91,6 @@ const zAlgorithm = (options?: Options): Algorithm => {
       };
     },
   };
-
   return algorithm(algoProps);
 };
 

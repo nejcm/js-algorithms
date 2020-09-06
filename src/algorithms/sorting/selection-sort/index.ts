@@ -1,9 +1,9 @@
-import {run} from '../../../helpers';
 import {lessThan} from '../../../helpers/comparator';
 import algorithm, {Algorithm, AlgorithmProps, Options} from '../Algorithm';
 
 const selectionSort = <T>(options?: Options<T>): Algorithm<T> => {
   const algoOptions: Options<T> = {
+    visitingCallback: () => undefined,
     compareFunction: lessThan,
     ...options,
   };
@@ -20,13 +20,13 @@ const selectionSort = <T>(options?: Options<T>): Algorithm<T> => {
 
       for (let i = 0; i < len - 1; i++) {
         let minIndex = i;
-        run(algoOptions.visitingCallback, [array[i]]);
+        algoOptions.visitingCallback!(array[i]);
 
         // find minimum in the rest of array
         for (let j = i + 1; j < len; j++) {
-          run(algoOptions.visitingCallback, [array[j]]);
+          algoOptions.visitingCallback!(array[j]);
 
-          if (run(algoOptions.compareFunction, [array[j], array[minIndex]])) {
+          if (algoOptions.compareFunction!(array[j], array[minIndex])) {
             minIndex = j;
           }
         }

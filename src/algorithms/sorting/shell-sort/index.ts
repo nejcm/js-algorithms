@@ -1,9 +1,9 @@
-import {run} from '../../../helpers';
 import {lessThan} from '../../../helpers/comparator';
 import algorithm, {Algorithm, AlgorithmProps, Options} from '../Algorithm';
 
 const shellSort = <T>(options?: Options<T>): Algorithm<T> => {
   const algoOptions: Options<T> = {
+    visitingCallback: () => undefined,
     compareFunction: lessThan,
     ...options,
   };
@@ -18,17 +18,17 @@ const shellSort = <T>(options?: Options<T>): Algorithm<T> => {
     for (let gap = Math.floor(len / 2); gap > 0; gap = Math.floor(gap / 2)) {
       // loop elements in gap
       for (let i = gap; i < len; i++) {
-        run(algoOptions.visitingCallback, [array[i]]);
+        algoOptions.visitingCallback!(array[i]);
         const temp = array[i];
         // shift earlier gap-sorted elements up until
         // the correct location for a[i] is found
         let j;
         for (
           j = i;
-          j >= gap && run(algoOptions.compareFunction, [temp, array[j - gap]]);
+          j >= gap && algoOptions.compareFunction!(temp, array[j - gap]);
           j -= gap
         ) {
-          run(algoOptions.visitingCallback, [array[j - gap]]);
+          algoOptions.visitingCallback!(array[j - gap]);
           array[j] = array[j - gap];
         }
         // put temp (the original a[i]) in its correct location

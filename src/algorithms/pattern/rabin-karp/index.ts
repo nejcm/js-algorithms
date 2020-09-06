@@ -1,4 +1,3 @@
-import {run} from '../../../helpers';
 import {equalThan} from '../../../helpers/comparator';
 import polyHasher from '../../cryptography/polynomial-hash';
 import algorithm, {Algorithm, AlgorithmProps, Options} from '../Algorithm';
@@ -11,18 +10,12 @@ const rabinKarp = (options?: Options): Algorithm => {
   };
 
   const search = (text: string, seek: string): number | null => {
-    if (!text || !seek) {
-      return -1;
-    }
-
+    if (!text || !seek) return -1;
     const n = text.length;
     const m = seek.length;
-    if (n === 0 || m === 0 || m > n) {
-      return -1;
-    }
+    if (n === 0 || m === 0 || m > n) return -1;
 
     const seekHash = hasher.hash(seek);
-
     let prevFrame = null;
     let currentFrameHash = null;
     for (let i = 0; i <= n - m; i++) {
@@ -37,11 +30,9 @@ const rabinKarp = (options?: Options): Algorithm => {
       prevFrame = currentFrame;
 
       // if hashes match check if the strings match
-      if (run(algoOptions.compareFunction, [seekHash, currentFrameHash])) {
+      if (algoOptions.compareFunction!(seekHash, currentFrameHash)) {
         for (let j = 0; j < m; j++) {
-          if (text[i + j] !== seek[j]) {
-            break;
-          }
+          if (text[i + j] !== seek[j]) break;
           if (j === m - 1) {
             // match found
             return i;

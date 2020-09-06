@@ -1,10 +1,10 @@
-import {run} from '../../../helpers';
 import {lessThan} from '../../../helpers/comparator';
 import algorithm, {Algorithm, AlgorithmProps, Options} from '../Algorithm';
 
 const bubbleSort = <T>(options?: Options<T>): Algorithm<T> => {
   const algoOptions: Options<T> = {
     compareFunction: lessThan,
+    visitingCallback: () => undefined,
     ...options,
   };
 
@@ -12,21 +12,17 @@ const bubbleSort = <T>(options?: Options<T>): Algorithm<T> => {
     run: (values) => {
       const array = [...values];
       const len = array.length;
-      if (len <= 1) {
-        return {
-          result: values,
-        };
-      }
+      if (len <= 1) return {result: values};
 
       let swapped = false;
       for (let i = 1; i < len; i++) {
         swapped = false;
-        run(algoOptions.visitingCallback, [array[i]]);
+        algoOptions.visitingCallback!(array[i]);
 
         for (let j = 0; j < len - i; j++) {
-          run(algoOptions.visitingCallback, [array[j]]);
+          algoOptions.visitingCallback!(array[j]);
           // compare elements
-          if (run(algoOptions.compareFunction, [array[j + 1], array[j]])) {
+          if (algoOptions.compareFunction!(array[j + 1], array[j])) {
             [array[j], array[j + 1]] = [array[j + 1], array[j]];
             swapped = true;
           }
@@ -35,10 +31,7 @@ const bubbleSort = <T>(options?: Options<T>): Algorithm<T> => {
         // the array is already sorted
         if (!swapped) break;
       }
-
-      return {
-        result: array,
-      };
+      return {result: array};
     },
   };
 

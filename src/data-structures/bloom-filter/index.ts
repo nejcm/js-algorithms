@@ -57,6 +57,7 @@ const bloomFilter = <T>(options?: Options): BloomFilter<T> => {
     return [hash1(value), hash2(value), hash3(value), hash4(value)];
   };
 
+  // main
   const filter: BloomFilter<T> = {
     storage: Array(size).fill(false),
 
@@ -75,7 +76,6 @@ const bloomFilter = <T>(options?: Options): BloomFilter<T> => {
       return !hashes.some((i) => !this.storage[i]);
     },
   };
-
   return filter;
 };
 

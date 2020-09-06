@@ -8,27 +8,27 @@ export interface PolynomialHash {
   roll: (prevHash: number, prevWindow: string, newWindow: string) => number;
 }
 
+// get char number value
+function char2Number(char: string): number {
+  let code = char.codePointAt(0) as number;
+  const surrogate = char.codePointAt(1);
+  // surrogate pair
+  if (surrogate !== undefined) {
+    const surrogateShift = 2 ** 16;
+    code += surrogate * surrogateShift;
+  }
+  return code;
+}
+
 const PolynomialHash = ({
   base = 37,
   modulus = 101,
 }: PolynomialHashProps = {}): PolynomialHash => {
-  // get char number value
-  const charToNumber = (char: string): number => {
-    let code = char.codePointAt(0) as number;
-    const surrogate = char.codePointAt(1);
-    // surrogate pair
-    if (surrogate !== undefined) {
-      const surrogateShift = 2 ** 16;
-      code += surrogate * surrogateShift;
-    }
-    return code;
-  };
-
   return {
     // calculate hash for a string
     hash: (window: string) => {
       // all character codes
-      const codes = Array.from(window).map((char) => charToNumber(char));
+      const codes = Array.from(window).map((char) => char2Number(char));
 
       let hash = 0;
       // calculate hash
@@ -43,8 +43,8 @@ const PolynomialHash = ({
     roll(prevHash: number, prevWindow: string, newWindow: string): number {
       let hash = prevHash;
 
-      const prevValue = charToNumber(prevWindow[0]);
-      const newValue = charToNumber(newWindow[newWindow.length - 1]);
+      const prevValue = char2Number(prevWindow[0]);
+      const newValue = char2Number(newWindow[newWindow.length - 1]);
 
       let multiplier = 1;
       for (let i = 1; i < prevWindow.length; i += 1) {

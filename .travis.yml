@@ -19,7 +19,7 @@ branches:
 jobs:
   include:
     - stage: deploy
-      if: branch = master
+      if: branch = master AND type != pull_request
       node_js: lts/*
       env:
         - PRODUCTION=production

@@ -4,6 +4,7 @@ import algorithm, {Algorithm, AlgorithmProps, Options} from '../Algorithm';
 
 const insertionSort = <T>(options?: Options<T>): Algorithm<T> => {
   const algoOptions: Options<T> = {
+    visitingCallback: () => undefined,
     compareFunction: lessThan,
     ...options,
   };
@@ -25,9 +26,9 @@ const insertionSort = <T>(options?: Options<T>): Algorithm<T> => {
         let j = i;
         // loop back until element at the right position
         while (j > 0) {
-          run(algoOptions.visitingCallback, [array[j - 1]]);
+          algoOptions.visitingCallback!(array[j - 1]);
           // if condition not meet no swap needed
-          if (!run(algoOptions.compareFunction, [array[j], array[j - 1]])) {
+          if (!algoOptions.compareFunction!(array[j], array[j - 1])) {
             break;
           }
           // swap elements

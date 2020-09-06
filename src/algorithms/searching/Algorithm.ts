@@ -1,5 +1,5 @@
 export interface Options<T> {
-  visitingCallback?: (val: T) => void;
+  visitingCallback?: (val?: T) => void;
   compareFunction?: (val1: T, val2: T) => boolean;
   [key: string]: unknown;
 }

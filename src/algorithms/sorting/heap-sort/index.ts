@@ -1,10 +1,10 @@
 import createHeap from '../../../data-structures/heap';
-import {run} from '../../../helpers';
 import {lessThan} from '../../../helpers/comparator';
 import algorithm, {Algorithm, AlgorithmProps, Options} from '../Algorithm';
 
 const mergeSort = <T>(options?: Options<T>): Algorithm<T> => {
   const algoOptions: Options<T> = {
+    visitingCallback: () => undefined,
     compareFunction: lessThan,
     ...options,
   };
@@ -18,15 +18,15 @@ const mergeSort = <T>(options?: Options<T>): Algorithm<T> => {
     const sorted = [];
     const minHeap = createHeap(algoOptions as Options<T>);
 
-    // Add all elements to the heap
+    // add all elements to the heap
     array.forEach((element) => {
       minHeap.add(element);
     });
 
-    // Shift elements from min heap
+    // shift elements from min heap
     while (!minHeap.isEmpty()) {
       const element = minHeap.shift() as T;
-      run(algoOptions.visitingCallback, [element]);
+      algoOptions.visitingCallback!(element);
       sorted.push(element);
     }
     return sorted;

@@ -24,15 +24,15 @@ export interface PriorityQueue<T> {
   ): string;
 }
 
-// custom compare function for the min heap
-const compareFunction = <T>(item1: Item<T>, item2: Item<T>): boolean =>
-  lessOrEqualThan(item1.priority, item2.priority);
-// custom toString function
-const convertToString = <T>(item: Item<T>) => String(item.value);
-
 const queue = <T>(): PriorityQueue<T> => {
+  // custom compare function for the min heap
+  const compareFunction = <T>(item1: Item<T>, item2: Item<T>): boolean =>
+    lessOrEqualThan(item1.priority, item2.priority);
+
   const queueList: PriorityQueue<T> = {
-    items: createHeap<Item<T>>({compareFunction}), // linked list for the queue
+    items: createHeap<Item<T>>({
+      compareFunction,
+    }), // linked list for the queue
 
     // add item to the end of the queue
     enqueue: function enqueue(value, priority = 0) {
@@ -100,8 +100,11 @@ const queue = <T>(): PriorityQueue<T> => {
     },
 
     // convert queue to string
-    toString: function toString(callback, separator = ', ') {
-      return this.items.toString(callback || convertToString, separator);
+    toString: function toString(
+      callback = (item: Item<T>) => String(item.value),
+      separator = ', ',
+    ) {
+      return this.items.toString(callback, separator);
     },
   };
 

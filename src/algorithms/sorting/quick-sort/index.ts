@@ -1,4 +1,3 @@
-import {run} from '../../../helpers';
 import {equalThan, lessThan} from '../../../helpers/comparator';
 import algorithm, {Algorithm, AlgorithmProps, Options} from '../Algorithm';
 
@@ -31,6 +30,7 @@ const getPivotFunction = <T>(option?: PivotMode): ((array: T[]) => T) => {
 
 const quickSort = <T>(options?: QuickSortOptions<T>): Algorithm<T> => {
   const algoOptions: QuickSortOptions<T> & {getPivot: (array: T[]) => T} = {
+    visitingCallback: () => undefined,
     compareFunction: lessThan,
     ...options,
     // Last as we do not allow overriding this prop
@@ -39,9 +39,7 @@ const quickSort = <T>(options?: QuickSortOptions<T>): Algorithm<T> => {
 
   function sort(array: T[]): T[] {
     const len = array.length;
-    if (len <= 1) {
-      return array;
-    }
+    if (len <= 1) return array;
 
     const lArray = [];
     const rArray = [];
@@ -49,10 +47,10 @@ const quickSort = <T>(options?: QuickSortOptions<T>): Algorithm<T> => {
     const cArray = [pivot];
     // split array based on a pivot
     for (let i = 0; i < len - 1; i++) {
-      run(algoOptions.visitingCallback, [array[i]]);
+      algoOptions.visitingCallback!(array[i]);
       if (equalThan(array[i], pivot)) {
         cArray.push(array[i]);
-      } else if (run(algoOptions.compareFunction, [array[i], pivot])) {
+      } else if (algoOptions.compareFunction!(array[i], pivot)) {
         lArray.push(array[i]);
       } else {
         rArray.push(array[i]);

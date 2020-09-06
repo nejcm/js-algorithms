@@ -1,4 +1,3 @@
-import {run} from '../../../helpers';
 import {equalThan} from '../../../helpers/comparator';
 import algorithm, {Algorithm, AlgorithmProps, Options} from '../Algorithm';
 
@@ -26,27 +25,20 @@ const knuthMorrisPratt = (options?: Options): Algorithm => {
         prefixIndex = table[prefixIndex - 1];
       }
     }
-
     return table;
   };
 
   const search = (text: string, seek: string): number | null => {
-    if (!text || !seek) {
-      return -1;
-    }
-
+    if (!text || !seek) return -1;
     const n = text.length;
     const m = seek.length;
-    if (n === 0 || m === 0 || m > n) {
-      return -1;
-    }
+    if (n === 0 || m === 0 || m > n) return -1;
 
     let textIndex = 0;
     let seekIndex = 0;
     const patternTable = buildPatternTable(seek);
-
     while (textIndex < n) {
-      if (run(algoOptions.compareFunction, [text[textIndex], seek[seekIndex]])) {
+      if (algoOptions.compareFunction!(text[textIndex], seek[seekIndex])) {
         if (seekIndex === m - 1) {
           // match found
           return textIndex - m + 1;
@@ -61,7 +53,6 @@ const knuthMorrisPratt = (options?: Options): Algorithm => {
         textIndex++;
       }
     }
-
     return -1;
   };
 

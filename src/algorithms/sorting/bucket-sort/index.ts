@@ -1,4 +1,4 @@
-import {getMinMax, run} from '../../../helpers';
+import {getMinMax} from '../../../helpers';
 import {lessThan} from '../../../helpers/comparator';
 import algorithm, {Algorithm, AlgorithmProps, Options} from '../Algorithm';
 
@@ -8,6 +8,7 @@ export interface bucketSortOptions extends Options<number> {
 
 const bucketSort = (options?: bucketSortOptions): Algorithm<number> => {
   const algoOptions: bucketSortOptions & {bucketSize: number} = {
+    visitingCallback: () => undefined,
     compareFunction: lessThan,
     bucketSize: 1,
     ...options,
@@ -23,7 +24,7 @@ const bucketSort = (options?: bucketSortOptions): Algorithm<number> => {
 
     // put elements into buckets
     for (let i = 0; i < len; i++) {
-      run(algoOptions.visitingCallback, [array[i]]);
+      algoOptions.visitingCallback!(array[i]);
       buckets[Math.floor((array[i] - min) / algoOptions.bucketSize)].push(array[i]);
     }
     // sort each bucket

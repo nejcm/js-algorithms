@@ -1,6 +1,8 @@
+import {CompareType} from '../../helpers/comparator';
+
 export interface Options {
-  visitingCallback?: (val: string) => void;
-  compareFunction?: (val1: string, val2: string) => boolean;
+  visitingCallback?: (val?: CompareType) => void;
+  compareFunction?: (val1: CompareType, val2: CompareType) => boolean;
   [key: string]: unknown;
 }
 

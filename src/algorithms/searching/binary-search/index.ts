@@ -1,4 +1,4 @@
-import {findAllNearby, run} from '../../../helpers';
+import {findAllNearby} from '../../../helpers';
 import {equalThan} from '../../../helpers/comparator';
 import algorithm, {Algorithm, AlgorithmProps, Options} from '../Algorithm';
 
@@ -9,18 +9,16 @@ const binarySearch = (options?: Options<number>): Algorithm<number> => {
   };
 
   const search = (values: number[], seek: number): number[] => {
-    if (!values) {
-      return [];
-    }
+    if (!values) return [];
+
     let start = 0;
     let end = values.length - 1;
-
     // split array until they meet and can not be split anymore
     while (start <= end) {
       const mid = Math.floor((start + end) / 2);
       // check if we found a match
       // otherwise find out which half should be searched next
-      if (run(algoOptions.compareFunction, [values[mid], seek])) {
+      if (algoOptions.compareFunction!(values[mid], seek)) {
         return findAllNearby(values, seek, mid, algoOptions.compareFunction);
       } else if (values[mid] < seek) {
         start = mid + 1;
@@ -28,7 +26,6 @@ const binarySearch = (options?: Options<number>): Algorithm<number> => {
         end = mid - 1;
       }
     }
-
     return [];
   };
 
@@ -40,7 +37,6 @@ const binarySearch = (options?: Options<number>): Algorithm<number> => {
       };
     },
   };
-
   return algorithm(algoProps);
 };
 

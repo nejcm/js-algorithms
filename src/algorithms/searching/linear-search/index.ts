@@ -1,23 +1,21 @@
-import {run} from '../../../helpers';
 import {equalThan} from '../../../helpers/comparator';
 import algorithm, {Algorithm, AlgorithmProps, Options} from '../Algorithm';
 
 const linearSearch = <T>(options?: Options<T>): Algorithm<T> => {
   const algoOptions: Options<T> = {
+    visitingCallback: () => undefined,
     compareFunction: equalThan,
     ...options,
   };
 
   const search = (values: T[], seek: T): number[] => {
-    if (!values) {
-      return [];
-    }
+    if (!values) return [];
 
     const found = [];
     // loop
     for (let i = 0; i < values.length; i++) {
-      run(algoOptions.visitingCallback, [values[i]]);
-      if (run(algoOptions.compareFunction, [values[i], seek])) {
+      algoOptions.visitingCallback!(values[i]);
+      if (algoOptions.compareFunction!(values[i], seek)) {
         // return all found instances
         found.push(i);
       }
@@ -33,7 +31,6 @@ const linearSearch = <T>(options?: Options<T>): Algorithm<T> => {
       };
     },
   };
-
   return algorithm(algoProps);
 };
 

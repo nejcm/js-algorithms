@@ -9,13 +9,11 @@ const jumpSearch = (options?: Options<number>): Algorithm<number> => {
   };
 
   const search = (values: number[], seek: number): number[] => {
-    if (!values) {
-      return [];
-    }
+    if (!values) return [];
+
     const len = values.length;
     const step = Math.floor(Math.sqrt(len));
     let current = step - 1;
-
     // finding the block where element is present
     while (current < len && values[current] < seek) {
       current += step;
@@ -26,7 +24,6 @@ const jumpSearch = (options?: Options<number>): Algorithm<number> => {
         return findAllNearby(values, seek, i, algoOptions.compareFunction);
       }
     }
-
     return [];
   };
 
@@ -38,7 +35,6 @@ const jumpSearch = (options?: Options<number>): Algorithm<number> => {
       };
     },
   };
-
   return algorithm(algoProps);
 };
 

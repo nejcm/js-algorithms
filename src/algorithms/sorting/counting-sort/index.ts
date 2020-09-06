@@ -1,9 +1,10 @@
-import {getMinMax, run} from '../../../helpers';
+import {getMinMax} from '../../../helpers';
 import {lessThan} from '../../../helpers/comparator';
 import algorithm, {Algorithm, AlgorithmProps, Options} from '../Algorithm';
 
 const countingSort = (options?: Options<number>): Algorithm<number> => {
   const algoOptions: Options<number> = {
+    visitingCallback: () => undefined,
     compareFunction: lessThan,
     ...options,
   };
@@ -20,16 +21,15 @@ const countingSort = (options?: Options<number>): Algorithm<number> => {
 
       // get min and max of array
       const [min, max] = getMinMax(array);
-
       const count = [];
       // fill count array with 0
       for (let i = min; i <= max; i++) {
-        run(algoOptions.visitingCallback, [array[i]]);
+        algoOptions.visitingCallback!(array[i]);
         count[i] = 0;
       }
       // store count of each character
       for (let i = 0; i < array.length; i++) {
-        run(algoOptions.visitingCallback, [array[i]]);
+        algoOptions.visitingCallback!(array[i]);
         count[array[i]]++;
       }
       let z = 0;

@@ -1,4 +1,4 @@
-import {findAllNearby, run} from '../../../helpers';
+import {findAllNearby} from '../../../helpers';
 import {equalThan} from '../../../helpers/comparator';
 import algorithm, {Algorithm, AlgorithmProps, Options} from '../Algorithm';
 
@@ -9,12 +9,10 @@ const interpolationSearch = (options?: Options<number>): Algorithm<number> => {
   };
 
   const search = (values: number[], seek: number): number[] => {
-    if (!values) {
-      return [];
-    }
+    if (!values) return [];
+
     let start = 0;
     let end = values.length - 1;
-
     // loop between
     while (start <= end && seek >= values[start] && seek <= values[end]) {
       // interpolation of the middle index.
@@ -26,7 +24,7 @@ const interpolationSearch = (options?: Options<number>): Algorithm<number> => {
       // which may cause NaN
       pos = Number.isNaN(pos) ? start : pos;
 
-      if (run(algoOptions.compareFunction, [values[pos], seek])) {
+      if (algoOptions.compareFunction!(values[pos], seek)) {
         // match found
         return findAllNearby(values, seek, pos, algoOptions.compareFunction);
       }
@@ -40,7 +38,6 @@ const interpolationSearch = (options?: Options<number>): Algorithm<number> => {
         end = pos - 1;
       }
     }
-
     return [];
   };
 
@@ -52,7 +49,6 @@ const interpolationSearch = (options?: Options<number>): Algorithm<number> => {
       };
     },
   };
-
   return algorithm(algoProps);
 };
 

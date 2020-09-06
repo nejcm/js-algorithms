@@ -31,7 +31,7 @@ const trie = (): Trie => {
     };
   };
 
-  const t: Trie = {
+  const trieObj: Trie = {
     root: createNode('*'),
 
     // add a new word
@@ -102,7 +102,7 @@ const trie = (): Trie => {
     },
   };
 
-  return t;
+  return trieObj;
 };
 
 export default trie;

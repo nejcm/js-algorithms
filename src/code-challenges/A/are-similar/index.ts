@@ -1,7 +1,7 @@
 export function areSimilar(a: number[], b: number[]): boolean {
   const ad = a.filter((v, i) => v !== b[i]);
   const bd = b.filter((v, i) => v !== a[i]);
-  return ad.length == 0 || (ad.length == 2 && ad.join('') === bd.reverse().join(''));
+  return ad.length === 0 || (ad.length === 2 && ad.join('') === bd.reverse().join(''));
 }
 
 export function areSimilarV2(a: number[], b: number[]): boolean {
@@ -9,7 +9,7 @@ export function areSimilarV2(a: number[], b: number[]): boolean {
   for (let i = 0; i < a.length; i++) {
     if (a[i] !== b[i]) arr.push(a[i], b[i]);
   }
-  return arr.length < 5 && new Set(arr).size < 3;
+  return arr.length <= 4 && new Set(arr).size <= 2;
 }
 
 export function areSimilarV3(a: number[], b: number[]): boolean {
