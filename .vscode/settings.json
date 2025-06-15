@@ -7,5 +7,4 @@
     "titleBar.inactiveForeground": "#ffffff" // change this color!
   },
   "editor.fontSize": 13,
-  "jestrunner.jestCommand": "npm run test:nocov"
 }

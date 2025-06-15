@@ -25,30 +25,7 @@ export const notFoundAboveSortedNumber = {
   result: [],
 };
 export const numbersSortedArray = [
-  1,
-  2,
-  3,
-  4,
-  5,
-  6,
-  7,
-  8,
-  9,
-  10,
-  11,
-  12,
-  13,
-  14,
-  15,
-  16,
-  16,
-  16,
-  16,
-  16,
-  17,
-  18,
-  18,
-  19,
+  1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 16, 16, 16, 16, 17, 18, 18, 19,
   20,
 ];
 export const containedNumber = {
@@ -64,24 +41,7 @@ export const notFoundNumber = {
   result: [],
 };
 export const numbersArray = [
-  20,
-  15,
-  1,
-  8,
-  7,
-  12,
-  11,
-  5,
-  15,
-  9,
-  7,
-  -19,
-  -2,
-  18,
-  3,
-  -4,
-  4,
-  0,
+  20, 15, 1, 8, 7, 12, 11, 5, 15, 9, 7, -19, -2, 18, 3, -4, 4, 0,
 ];
 
 export const containedString = {
@@ -116,10 +76,8 @@ const Tester = {
   ): void => {
     const alg = algorithm(options);
     // This is only to force typescript to accept the parameter to test it
-    expect(alg.run(((null as unknown) as unknown[]) as number[], 0).result).toEqual([]);
-    expect(alg.run(((undefined as unknown) as unknown[]) as number[], 1).result).toEqual(
-      [],
-    );
+    expect(alg.run(null as unknown as unknown[] as number[], 0).result).toEqual([]);
+    expect(alg.run(undefined as unknown as unknown[] as number[], 1).result).toEqual([]);
   },
   testNumbers: (
     algorithm: (opts?: Options<number>) => Algorithm<number>,
@@ -209,9 +167,7 @@ const Tester = {
     expect(alg.run(['aa', 'a'], 'bc').result).toEqual([1]);
     expect(alg.run(['aa', 'aa'], 'bc').result).toEqual([]);
     expect(alg.run(['aa', 'bbbb', 'cc', 'd', 'eeeee', 'fff'], 'xxx').result).toEqual([
-      0,
-      2,
-      3,
+      0, 2, 3,
     ]);
   },
   testTiming: (algorithm: () => Algorithm<number>): void => {

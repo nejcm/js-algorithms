@@ -95,7 +95,7 @@ filing an issue on GitHub.
 
 ## Authors
 
-- Nejc Muršič ( [GitHub][github], [LinkedIn][linkedin] )
+- Nejc M. ( [GitHub][github], [LinkedIn][linkedin] )
 
 ## Contributors
 
@@ -104,7 +104,7 @@ filing an issue on GitHub.
 <!-- markdownlint-disable -->
 <table>
   <tr>
-    <td align="center"><a href="https://github.com/nejcm"><img src="https://avatars3.githubusercontent.com/u/1865210?v=4" width="100px" alt="Nejc"/><br /><sub><b>Nejc Muršič</b></sub></a><br /><a href="https://github.com/nejcm/js-algorithms/commits?author=nejcm" title="Code">💻</a> <a href="https://github.com/nejcm/js-algorithms/commits?author=nejcm" title="Documentation">📖</a> <a href="#infra" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a> <a href="https://github.com/nejcm/js-algorithms/commits?author=nejcm" title="Tests">⚠️</a></td>
+    <td align="center"><a href="https://github.com/nejcm"><img src="https://avatars3.githubusercontent.com/u/1865210?v=4" width="100px" alt="Nejc"/><br /><sub><b>Nejc M.</b></sub></a><br /><a href="https://github.com/nejcm/js-algorithms/commits?author=nejcm" title="Code">💻</a> <a href="https://github.com/nejcm/js-algorithms/commits?author=nejcm" title="Documentation">📖</a> <a href="#infra" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a> <a href="https://github.com/nejcm/js-algorithms/commits?author=nejcm" title="Tests">⚠️</a></td>
   </tr>
 </table>
 

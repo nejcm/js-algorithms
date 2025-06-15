@@ -4,9 +4,9 @@ const Tester = {
   testWrong: (algorithm: (opts?: Options) => Algorithm, options?: Options): void => {
     const alg = algorithm(options);
     // This is only to force typescript to accept the parameter to test it
-    expect(alg.run((null as unknown) as string, '').result).toEqual(-1);
-    expect(alg.run((undefined as unknown) as string, '0').result).toEqual(-1);
-    expect(alg.run('Test', (undefined as unknown) as string).result).toEqual(-1);
+    expect(alg.run(null as unknown as string, '').result).toEqual(-1);
+    expect(alg.run(undefined as unknown as string, '0').result).toEqual(-1);
+    expect(alg.run('Test', undefined as unknown as string).result).toEqual(-1);
   },
   testStrings: (algorithm: (opts?: Options) => Algorithm, options?: Options): void => {
     const alg = algorithm(options);

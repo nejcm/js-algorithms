@@ -257,7 +257,7 @@ const binaryTree = <T>(): BinaryTree<T> => {
 
     // get array of all node values in order with custom callback
     toArray: function toArray<K>(
-      callback: ToArrayCallback<T, K> = (node) => (node.key as unknown) as K,
+      callback: ToArrayCallback<T, K> = (node) => node.key as unknown as K,
     ) {
       const result: K[] = [];
 

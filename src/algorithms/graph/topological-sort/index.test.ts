@@ -45,15 +45,7 @@ describe('TopologicalSort', () => {
     graph.addEdge(6, 8);
 
     expect(topologicalSort(graph)?.map((v) => v.key)).toEqual([
-      0,
-      1,
-      4,
-      3,
-      5,
-      6,
-      8,
-      7,
-      2,
+      0, 1, 4, 3, 5, 6, 8, 7, 2,
     ]);
   });
 });
