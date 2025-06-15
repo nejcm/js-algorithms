@@ -20,7 +20,7 @@ yarn start
 
 ## Contributing
 
-Read [CONTRIBUTING.md](../CONTRIBUTING.md) for more info.
+Read CONTRIBUTING.md for more info.
 
 > Submit a [Pull request](https://github.com/nejcm/js-algorithms/pulls) to include your algorithm.
 

@@ -36,7 +36,7 @@ that can be applied to the data. (Source: Wikipedia)
   [[Code](https://github.com/nejcm/js-algorithms/blob/master/src/data-structures/queue/index.ts)]
 - `B` [Stack](./stack)
   [[Code](https://github.com/nejcm/js-algorithms/blob/master/src/data-structures/stack/index.ts)]
-- `A` [Trees](./trees)
+- `A` [Trees](./tree)
   - `A` AVL tree
     [[Code](https://github.com/nejcm/js-algorithms/blob/master/src/data-structures/tree/avl-tree/index.ts)]
   - `A` Binary search tree
