@@ -1,0 +1,44 @@
+---
+name: Topological sort
+route: /algorithms/graph/topological-sort
+menu: Graph
+---
+
+# Topological Sort
+
+[View the implementation](https://github.com/nejcm/js-algorithms/blob/master/src/algorithms/graph/topological-sort/index.ts)
+
+Or topological ordering of a directed graph is a linear ordering of its vertices such that
+for every directed edge uv from vertex u to vertex v, u comes before v in the ordering.
+For instance, the vertices of the graph may represent tasks to be performed, and the edges
+may represent constraints that one task must be performed before another; in this
+application, a topological ordering is just a valid sequence for the tasks. A topological
+ordering is possible if and only if the graph has no directed cycles, that is, if it is a
+directed acyclic graph (DAG). Any DAG has at least one topological ordering, and
+algorithms are known for constructing a topological ordering of any DAG in linear time.
+[Source: Wikipedia]
+
+![Topologic sorting](https://upload.wikimedia.org/wikipedia/commons/0/03/Directed_acyclic_graph_2.svg)
+
+The graph shown above has many valid topological sorts:
+
+- `5, 7, 3, 11, 8, 2, 9, 10` (visual left-to-right, top-to-bottom)
+- `3, 5, 7, 8, 11, 2, 9, 10` (smallest-numbered available vertex first)
+- `5, 7, 3, 8, 11, 10, 9, 2` (fewest edges first)
+- `7, 5, 11, 3, 10, 8, 9, 2` (largest-numbered available vertex first)
+- `5, 7, 11, 2, 3, 8, 9, 10` (attempting top-to-bottom, left-to-right)
+- `3, 7, 8, 5, 11, 10, 2, 9` (arbitrary)
+
+## Complexity
+
+| Name             | Best time | Comments                     |
+| :--------------- | :-------: | :--------------------------- |
+| Topological sort |   v + e   | Based on the algorithm used. |
+
+\* Where v = number of vertices; e = number of edges
+
+## References
+
+- [Geeksforgeeks](https://www.geeksforgeeks.org/topological-sorting/)
+- [Wikipedia](https://en.wikipedia.org/wiki/Topological_sorting)
+- [Hackerearth](https://www.hackerearth.com/practice/algorithms/graphs/topological-sort/tutorial/)

@@ -1,0 +1,52 @@
+---
+name: Bellman ford
+route: /algorithms/graph/bellman-ford
+menu: Graph
+---
+
+# Bellman Ford
+
+[View the implementation](https://github.com/nejcm/js-algorithms/blob/master/src/algorithms/graph/bellman-ford/index.ts)
+
+It is an algorithm that computes shortest paths from a single source vertex to all of the
+other vertices in a weighted digraph. It is slower than Dijkstra's algorithm for the same
+problem, but more versatile, as it is capable of handling graphs in which some of the edge
+weights are negative numbers.
+
+Negative edge weights are found in various applications of graphs, hence the usefulness of
+this algorithm. If a graph contains a "negative cycle" (i.e. a cycle whose edges sum to a
+negative value) that is reachable from the source, then there is no cheapest path: any
+path that has a point on the negative cycle can be made cheaper by one more walk around
+the negative cycle. In such a case, the Bellman–Ford algorithm can detect and report the
+negative cycle.
+
+Like Dijkstra's algorithm, Bellman–Ford proceeds by relaxation, in which approximations to
+the correct distance are replaced by better ones until they eventually reach the solution.
+In both algorithms, the approximate distance to each vertex is always an overestimate of
+the true distance, and is replaced by the minimum of its old value and the length of a
+newly found path. However, Dijkstra's algorithm uses a priority queue to greedily select
+the closest vertex that has not yet been processed, and performs this relaxation process
+on all of its outgoing edges; by contrast, the Bellman–Ford algorithm simply relaxes all
+the edges. In each of these repetitions, the number of vertices with correctly calculated
+distances grows, from which it follows that eventually all vertices will have their
+correct distances. This method allows the Bellman–Ford algorithm to be applied to a wider
+class of inputs than Dijkstra. [Source: Wikipedia]
+
+![Bellman-Ford](https://upload.wikimedia.org/wikipedia/commons/2/2e/Shortest_path_Dijkstra_vs_BellmanFord.gif)
+
+## Complexity
+
+| Name         | Worst time | Best time | Comments |
+| :----------- | :--------: | :-------: | :------- |
+| Bellman ford |   v \* e   |     e     |          |
+
+\* Where v = number of vertices; e = number of edges
+
+## References
+
+- [Geeksforgeeks](https://www.geeksforgeeks.org/bellman-ford-algorithm-dp-23/)
+- [Wikipedia](https://en.wikipedia.org/wiki/Bellman%E2%80%93Ford_algorithm)
+- [YouTube](https://www.youtube.com/watch?v=FtN3BYH2Zes&ab_channel=AbdulBari)
+- [Programiz](https://www.programiz.com/dsa/bellman-ford-algorithm)
+- [cp-algorithms](https://cp-algorithms.com/graph/bellman_ford.html)
+- [Tutorialspoint](https://www.tutorialspoint.com/Bellman-Ford-Algorithm-for-Shortest-Paths)

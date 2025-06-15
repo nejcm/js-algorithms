@@ -1,0 +1,40 @@
+---
+name: Bridges
+route: /algorithms/graph/bridges
+menu: Graph
+---
+
+# Bridges
+
+[View the implementation](https://github.com/nejcm/js-algorithms/blob/master/src/algorithms/graph/bridges/index.ts)
+
+In graph theory, a bridge, isthmus, cut-edge, or cut arc is an edge of a graph whose
+deletion increases its number of connected components. Equivalently, an edge is a bridge
+if and only if it is not contained in any cycle. For a connected graph, a bridge can
+uniquely determine a cut. A graph is said to be bridgeless or isthmus-free if it contains
+no bridges.
+
+Another meaning of "bridge" appears in the term bridge of a subgraph. If H is a subgraph
+of G, a bridge of H in G is a maximal subgraph of G that is not contained in H and is not
+separated by H. [Source: Wikipedia]
+
+![Bridges in graph](https://upload.wikimedia.org/wikipedia/commons/d/df/Graph_cut_edges.svg)
+
+A graph with 16 vertices and 6 bridges (highlighted in red).
+
+## Complexity
+
+| Name    | Best time | Comments                     |
+| :------ | :-------: | :--------------------------- |
+| Bridges |   v + e   | Based on the algorithm used. |
+
+\* Where v = number of vertices; e = number of edges
+
+## References
+
+- [Geeksforgeeks](https://www.geeksforgeeks.org/bridge-in-a-graph/)
+- [Wikipedia](<https://en.wikipedia.org/wiki/Bridge_(graph_theory)>)
+- [YouTube](https://www.youtube.com/watch?v=thLQYBlz2DM&ab_channel=GeeksforGeeks)
+- [Hackerearth](https://www.hackerearth.com/practice/algorithms/graphs/articulation-points-and-bridges/tutorial/)
+- [cp-algorithms](https://cp-algorithms.com/graph/bridge-searching.html)
+- [Tutorialspoint](https://www.tutorialspoint.com/Bridges-in-a-Graph)

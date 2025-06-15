@@ -1,3 +1,41 @@
+# Docusaurus
+.docusaurus
+build
+docs
+src
+static
+docusaurus.config.js
+sidebars.js
+
+# Development
+.github
+.vscode
+coverage
+.nyc_output
+.eslintrc
+.eslintignore
+.prettierrc
+.prettierignore
+.editorconfig
+jest.config.js
+babel.config.js
+tsconfig.json
+
+# Misc
+.git
+.gitignore
+.gitattributes
+.npmrc
+.nvmrc
+.travis.yml
+CHANGELOG.md
+CONTRIBUTING.md
+CODE_OF_CONDUCT.md
+LICENSE
+README.md
+*.log
+.DS_Store
+
 # dependencies
 /node_modules
 
@@ -23,9 +61,7 @@ yarn-error.log*
 
 # Development folders and files
 public
-src
 scripts
 config
-.travis.yml
 CHANGELOG.md
 README.md

@@ -33,7 +33,8 @@ ones refactored to improve code quality.
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
 - [Installation](#installation)
-- [Docs & Examples](#docs--examples)
+- [Documentation](#documentation)
+- [Development](#development)
 - [Issues](#issues)
   - [🐛 Bugs](#-bugs)
   - [💡 Feature Requests](#-feature-requests)
@@ -48,28 +49,41 @@ ones refactored to improve code quality.
 ## Installation
 
 ```shell
-
 # Clone repo
 $ git clone https://github.com/nejcm/js-algorithms.git my-project
 
-# Install dependencies, run lint and tests
-$ yarn setup
+# Install dependencies
+$ yarn install
 
-# Run project docs
+# Start development server
 $ yarn start
-
 ```
 
-### Issues
+## Documentation
 
-Sometimes npm has some issues with running docs. Try using yarn instead for installing the
-deps and running tasks.
+The documentation is built with Docusaurus and includes:
+- Detailed explanations of algorithms and data structures
+- Code examples and implementations
+- Interactive examples
+- Search functionality
 
-## Docs & Examples
+Visit the [documentation website][docs-link] to learn more.
 
-Each algorithm is described on the docs website.
+## Development
 
-> [**Docs website**][docs-link]
+```shell
+# Run tests
+$ yarn test
+
+# Run tests with coverage
+$ yarn test:cov
+
+# Build documentation
+$ yarn build
+
+# Serve built documentation
+$ yarn serve
+```
 
 ## Issues
 
@@ -131,14 +145,13 @@ Reach out to us at one of the following places:
 
 [all-contributors]: https://github.com/all-contributors/all-contributors
 [bugs]: https://github.com/nejcm/js-algorithms/issues?q=is%3Aissue+is%3Aopen+label%3Abug+sort%3Acreated-desc
-[build-badge]: https://img.shields.io/travis/com/nejcm/js-algorithms.svg
-[build]: https://travis-ci.com/nejcm/js-algorithms
+[build-badge]: https://img.shields.io/github/actions/workflow/status/nejcm/js-algorithms/ci.yml?branch=master
+[build]: https://github.com/nejcm/js-algorithms/actions
 [coc-badge]: https://img.shields.io/badge/code%20of-conduct-ff69b4.svg
 [coc]: https://github.com/nejcm/js-algorithms/blob/master/CODE_OF_CONDUCT.md
 [coverage-badge]: https://img.shields.io/codecov/c/github/nejcm/js-algorithms.svg
 [coverage]: https://codecov.io/github/nejcm/js-algorithms
 [docs-link]: https://nejcm.github.io/js-algorithms/
-[downloads-badge]: https://img.shields.io/npm/dm/@nejcm/js-algorithms.svg
 [email]: nmursi2@gmail.com
 [emojis]: https://github.com/all-contributors/all-contributors#emoji-key
 [github]: https://github.com/nejcm
@@ -159,13 +172,8 @@ Reach out to us at one of the following places:
 [prs-badge]: https://img.shields.io/badge/PRs-welcome-brightgreen.svg
 [prs]: http://makeapullrequest.com
 [requests]: https://github.com/nejcm/js-algorithms/issues?q=is%3Aissue+sort%3Areactions-%2B1-desc+label%3Aenhancement+is%3Aopen
-[semantic-release-badge]: https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg
-[semantic-release]: https://github.com/semantic-release/semantic-release
-[storybook-badge]: https://nejcmursic.netlify.com/assets/storybook.svg
-[storybook]: https://storybook.js.org/
 [style-guide-badge]: https://img.shields.io/badge/code_style-standard-brightgreen.svg
 [style-guide]: https://standardjs.com
-[version-badge]: https://img.shields.io/npm/v/@nejcm/js-algorithms.svg
 [website]: https://nejcmursic.com/
 
 <!-- prettier-ignore-end -->

@@ -1,0 +1,57 @@
+---
+name: Prim
+route: /algorithms/graph/prim
+menu: Graph
+---
+
+# Prim's Algorithm
+
+[View the implementation](https://github.com/nejcm/js-algorithms/blob/master/src/algorithms/graph/prim/index.ts)
+
+Prim's (also known as Jarník's) algorithm is a greedy algorithm that finds a minimum
+spanning tree for a weighted undirected graph. This means it finds a subset of the edges
+that forms a tree that includes every vertex, where the total weight of all the edges in
+the tree is minimized. The algorithm operates by building this tree one vertex at a time,
+from an arbitrary starting vertex, at each step adding the cheapest possible connection
+from the tree to another vertex.
+
+Other well-known algorithms for this problem include Kruskal's algorithm and Borůvka's
+algorithm. These algorithms find the minimum spanning forest in a possibly disconnected
+graph; in contrast, the most basic form of Prim's algorithm only finds minimum spanning
+trees in connected graphs. However, running Prim's algorithm separately for each connected
+component of the graph, it can also be used to find the minimum spanning forest. In terms
+of their asymptotic time complexity, these three algorithms are equally fast for sparse
+graphs, but slower than other more sophisticated algorithms. However, for graphs that are
+sufficiently dense, Prim's algorithm can be made to run in linear time, meeting or
+improving the time bounds for other algorithms. [Source: Wikipedia]
+
+![Prim's Algorithm](https://upload.wikimedia.org/wikipedia/commons/f/f7/Prim%27s_algorithm.svg)
+
+## Minimum Spanning Tree
+
+A minimum spanning tree (MST) or minimum weight spanning tree is a subset of the edges of
+a connected, edge-weighted undirected graph that connects all the vertices together,
+without any cycles and with the minimum possible total edge weight. That is, it is a
+spanning tree whose sum of edge weights is as small as possible. More generally, any
+edge-weighted undirected graph (not necessarily connected) has a minimum spanning forest,
+which is a union of the minimum spanning trees for its connected components. [Source:
+Wikipedia]
+
+![Minimum Spanning Tree](https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Minimum_spanning_tree.svg/600px-Minimum_spanning_tree.svg.png)
+
+## Complexity
+
+| Name |   Best time   | Comments                                                                   |
+| :--- | :-----------: | :------------------------------------------------------------------------- |
+| Prim | v<sup>2</sup> | The time complexity can be reduced to log(v) with the help of binary heap. |
+
+\* Where v = number of vertices; e = number of edges
+
+## References
+
+- [Geeksforgeeks](https://www.geeksforgeeks.org/prims-minimum-spanning-tree-mst-greedy-algo-5/)
+- [Wikipedia](https://en.wikipedia.org/wiki/Prim%27s_algorithm)
+- [YouTube](https://www.youtube.com/watch?v=4ZlRH0eK-qQ&ab_channel=AbdulBari)
+- [Programiz](https://www.programiz.com/dsa/prim-algorithm)
+- [cp-algorithms](https://cp-algorithms.com/graph/mst_prim.html)
+- [Tutorialspoint](https://www.tutorialspoint.com/data_structures_algorithms/prims_spanning_tree_algorithm.htm)

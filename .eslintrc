@@ -3,7 +3,6 @@
   "extends": [
     "eslint:recommended",
     "react-app",
-    "kentcdodds",
     "plugin:@typescript-eslint/eslint-recommended",
     "plugin:@typescript-eslint/recommended"
   ],
@@ -13,7 +12,6 @@
     "jest": true
   },
   "ignorePatterns": ["dist/", "build/"],
-  "plugins": ["@typescript-eslint"],
   "parserOptions": {
     "sourceType": "module",
     "ecmaFeatures": {

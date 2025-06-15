@@ -1,0 +1,35 @@
+---
+name: Shell sort
+route: /algorithms/sorting/shell-sort
+menu: Sorting
+---
+
+# Shell Sort
+
+[View the implementation](https://github.com/nejcm/js-algorithms/blob/master/src/algorithms/sorting/shell-sort/index.ts)
+
+Also known as Shell sort or Shell's method, is an in-place comparison sort. It can be seen
+as either a generalization of sorting by exchange (bubble sort) or sorting by insertion
+(insertion sort). The method starts by sorting pairs of elements far apart from each
+other, then progressively reducing the gap between elements to be compared. By starting
+with far apart elements, it can move some out-of-place elements into position faster than
+a simple nearest neighbor exchange. Donald Shell published the first version of this sort
+in 1959. The running time of Shellsort is heavily dependent on the gap sequence it uses.
+For many practical variants, determining their time complexity remains an open problem.
+(Source: Wikipedia)
+
+![Algorithm Visualization](https://www.tutorialspoint.com/data_structures_algorithms/images/shell_sort.jpg)
+
+## Complexity
+
+| Name       |   Best    |  Average  |          Worst          | Memory | Stable | Comments |
+| ---------- | :-------: | :-------: | :---------------------: | :----: | :----: | :------- |
+| Shell sort | n\*log(n) | n\*log(n) | n\*(log(n))<sup>2</sup> |   1    |   No   |          |
+
+## References
+
+- [Geeksforgeeks](https://www.geeksforgeeks.org/shellsort/)
+- [Wikipedia](https://en.wikipedia.org/wiki/Shellsort)
+- [YouTube](https://www.youtube.com/watch?v=ddeLSDsYVp8)
+- [Programiz](https://www.programiz.com/dsa/shell-sort)
+- [Tutorialspoint](https://www.tutorialspoint.com/data_structures_algorithms/shell_sort_algorithm.htm)
