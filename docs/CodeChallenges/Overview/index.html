@@ -1,0 +1,524 @@
+<!doctype html>
+<html lang="en" dir="ltr" class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-CodeChallenges/Overview" data-has-hydrated="false">
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="Docusaurus v3.8.1">
+<title data-rh="true">Other programming challenges | 🔥 js-algorithms</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:url" content="https://nejcm.github.io/js-algorithms/docs/CodeChallenges/Overview"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Other programming challenges | 🔥 js-algorithms"><meta data-rh="true" name="description" content="Other programming challenges and problems from codesignal and leetcode sorted by"><meta data-rh="true" property="og:description" content="Other programming challenges and problems from codesignal and leetcode sorted by"><link data-rh="true" rel="canonical" href="https://nejcm.github.io/js-algorithms/docs/CodeChallenges/Overview"><link data-rh="true" rel="alternate" href="https://nejcm.github.io/js-algorithms/docs/CodeChallenges/Overview" hreflang="en"><link data-rh="true" rel="alternate" href="https://nejcm.github.io/js-algorithms/docs/CodeChallenges/Overview" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Other programming challenges","item":"https://nejcm.github.io/js-algorithms/docs/CodeChallenges/Overview"}]}</script><link rel="stylesheet" href="/js-algorithms/assets/css/styles.d55367c7.css">
+<script src="/js-algorithms/assets/js/runtime~main.5907199e.js" defer="defer"></script>
+<script src="/js-algorithms/assets/js/main.5b5a9959.js" defer="defer"></script>
+</head>
+<body class="navigation-with-keyboard">
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;"><defs>
+<symbol id="theme-svg-external-link" viewBox="0 0 24 24"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></symbol>
+</defs></svg>
+<script>!function(){var t="dark";var e=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();document.documentElement.setAttribute("data-theme",e||t),document.documentElement.setAttribute("data-theme-choice",e||t)}(),function(){try{const c=new URLSearchParams(window.location.search).entries();for(var[t,e]of c)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><div role="region" aria-label="Skip to main content"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><nav aria-label="Main" class="theme-layout-navbar navbar navbar--fixed-top"><div class="navbar__inner"><div class="theme-layout-navbar-left navbar__items"><button aria-label="Toggle navigation bar" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand" href="/js-algorithms/"><b class="navbar__title text--truncate">🔥 js-algorithms</b></a><a aria-current="page" class="navbar__item navbar__link navbar__link--active" href="/js-algorithms/docs/intro">Documentation</a></div><div class="theme-layout-navbar-right navbar__items navbar__items--right"><a href="https://github.com/nejcm/js-algorithms" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link">GitHub<svg width="13.5" height="13.5" aria-hidden="true" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="system mode" aria-label="Switch between dark and light mode (currently system mode)"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP systemToggleIcon_QzmC"><path fill="currentColor" d="m12 21c4.971 0 9-4.029 9-9s-4.029-9-9-9-9 4.029-9 9 4.029 9 9 9zm4.95-13.95c1.313 1.313 2.05 3.093 2.05 4.95s-0.738 3.637-2.05 4.95c-1.313 1.313-3.093 2.05-4.95 2.05v-14c1.857 0 3.637 0.737 4.95 2.05z"></path></svg></button></div><div class="navbarSearchContainer_Bca1"></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="theme-layout-main main-wrapper mainWrapper_z2l0"><div class="docsWrapper_hBAB"><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type="button"></button><div class="docRoot_UBD9"><aside class="theme-doc-sidebar-container docSidebarContainer_YfHR"><div class="sidebarViewport_aRkj"><div class="sidebar_njMd"><nav aria-label="Docs sidebar" class="menu thin-scrollbar menu_SIkG"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/js-algorithms/docs/intro">Introduction</a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/js-algorithms/docs/data-structures/overview">Data Structures</a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/js-algorithms/docs/Algorithms/Overview">Algorithms</a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret menu__link--active" role="button" aria-expanded="true" href="/js-algorithms/docs/CodeChallenges/Overview">Code Challenges</a></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" tabindex="0" href="/js-algorithms/docs/CodeChallenges/Overview">Other programming challenges</a></li></ul></li></ul></nav></div></div></aside><main class="docMainContainer_TBSr"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_VOVn"><div class="docItemContainer_Djhp"><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_Z_bl" aria-label="Breadcrumbs"><ul class="breadcrumbs"><li class="breadcrumbs__item"><a aria-label="Home page" class="breadcrumbs__link" href="/js-algorithms/"><svg viewBox="0 0 24 24" class="breadcrumbHomeIcon_YNFT"><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" fill="currentColor"></path></svg></a></li><li class="breadcrumbs__item"><span class="breadcrumbs__link">Code Challenges</span></li><li class="breadcrumbs__item breadcrumbs__item--active"><span class="breadcrumbs__link">Other programming challenges</span></li></ul></nav><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><div class="theme-doc-markdown markdown"><header><h1>Other programming challenges</h1></header>
+<p>Other programming challenges and problems from <strong>codesignal</strong> and <strong>leetcode</strong> sorted by
+first letter/number (did not find a better way to sort/group them 😊).</p>
+<p>Some have multiple solutions with different approaches.</p>
+<p><code>B</code> - Beginner, <code>I</code> - Intermediate, <code>A</code> - Advanced</p>
+<ul>
+<li>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="a">A<a href="#a" class="hash-link" aria-label="Direct link to A" title="Direct link to A">​</a></h2>
+<ul>
+<li><code>I</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/A/ada-number" target="_blank" rel="noopener noreferrer"> absoluteValuesSumMinimization </a></li>
+<li><code>I</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/A/absolute-values-sum-minimization" target="_blank" rel="noopener noreferrer"> adaNumber </a></li>
+<li><code>B</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/A/add-border" target="_blank" rel="noopener noreferrer"> addBorder </a></li>
+<li><code>B</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/A/add-two-digits" target="_blank" rel="noopener noreferrer"> addTwoDigits </a></li>
+<li><code>B</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/A/add-two-numbers-list" target="_blank" rel="noopener noreferrer"> addTwoNumbersList </a></li>
+<li><code>B</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/A/addition-without-carrying" target="_blank" rel="noopener noreferrer"> additionWithoutCarrying </a></li>
+<li><code>B</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/A/adjacent-elements-product" target="_blank" rel="noopener noreferrer"> adjacentElementsProduct </a></li>
+<li><code>B</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/A/all-longest-strings" target="_blank" rel="noopener noreferrer"> allLongestStrings </a></li>
+<li><code>B</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/A/almost-increasing-sequence" target="_blank" rel="noopener noreferrer"> almostIncreasingSequence </a></li>
+<li><code>B</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/A/alphabet-subsequence" target="_blank" rel="noopener noreferrer"> alphabetSubsequence </a></li>
+<li><code>B</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/A/alphabetic-shift" target="_blank" rel="noopener noreferrer"> alphabeticShift </a></li>
+<li><code>I</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/A/alphanumeric-less" target="_blank" rel="noopener noreferrer"> alphanumericLess </a></li>
+<li><code>B</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/A/alternating-sums" target="_blank" rel="noopener noreferrer"> alternatingSums </a></li>
+<li><code>B</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/A/apple-boxes" target="_blank" rel="noopener noreferrer"> appleBoxes </a></li>
+<li><code>B</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/A/are-equally-strong" target="_blank" rel="noopener noreferrer"> areEquallyStrong </a></li>
+<li><code>I</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/A/are-similar" target="_blank" rel="noopener noreferrer"> areSimilar </a></li>
+<li><code>B</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/A/arithmetic-expression" target="_blank" rel="noopener noreferrer"> arithmeticExpression </a></li>
+<li><code>B</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/A/array-change" target="_blank" rel="noopener noreferrer"> arrayChange </a></li>
+<li><code>I</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/A/array-conversion" target="_blank" rel="noopener noreferrer"> arrayConversion </a></li>
+<li><code>B</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/A/array-max-consecutive-sum" target="_blank" rel="noopener noreferrer"> arrayMaxConsecutiveSum </a></li>
+<li><code>B</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/A/array-maximal-adjacent-difference" target="_blank" rel="noopener noreferrer"> arrayMaximalAdjacentDifference </a></li>
+<li><code>I</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/A/array-packing" target="_blank" rel="noopener noreferrer"> arrayPacking </a></li>
+<li><code>I</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/A/array-previous-less" target="_blank" rel="noopener noreferrer"> arrayPreviousLess </a></li>
+<li><code>B</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/A/avoid-obstacles" target="_blank" rel="noopener noreferrer"> avoidObstacles </a></li>
+<li><code>B</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/A/array-replace" target="_blank" rel="noopener noreferrer"> arrayReplace </a></li>
+</ul>
+</li>
+<li>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="b">B<a href="#b" class="hash-link" aria-label="Direct link to B" title="Direct link to B">​</a></h2>
+<ul>
+<li><code>B</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/B/bishop-and-pawn" target="_blank" rel="noopener noreferrer"> bishopAndPawn </a></li>
+<li><code>I</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/B/box-blur" target="_blank" rel="noopener noreferrer"> boxBlur </a></li>
+<li><code>I</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/B/build-palindrome" target="_blank" rel="noopener noreferrer"> buildPalindrome </a></li>
+</ul>
+</li>
+<li>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="c">C<a href="#c" class="hash-link" aria-label="Direct link to C" title="Direct link to C">​</a></h2>
+<ul>
+<li><code>B</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/C/candies" target="_blank" rel="noopener noreferrer"> candies </a></li>
+<li><code>B</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/C/candles" target="_blank" rel="noopener noreferrer"> candles </a></li>
+<li><code>B</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/C/century-from-year" target="_blank" rel="noopener noreferrer"> centuryFromYear </a></li>
+<li><code>B</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/C/character-parity" target="_blank" rel="noopener noreferrer"> characterParity </a></li>
+<li><code>B</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/C/check-if-double-exists" target="_blank" rel="noopener noreferrer"> checkIfDoubleExists </a></li>
+<li><code>B</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/C/check-palindrome" target="_blank" rel="noopener noreferrer"> checkPalindrome </a></li>
+<li><code>B</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/C/chess-board-cell-color" target="_blank" rel="noopener noreferrer"> chessBoardCellColor </a></li>
+<li><code>I</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/C/chess-knight" target="_blank" rel="noopener noreferrer"> chessKnight </a></li>
+<li><code>B</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/C/cipher26" target="_blank" rel="noopener noreferrer"> cipher26 </a></li>
+<li><code>B</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/C/circle-of-numbers" target="_blank" rel="noopener noreferrer"> circleOfNumbers </a></li>
+<li><code>I</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/C/combs" target="_blank" rel="noopener noreferrer"> combs </a></li>
+<li><code>B</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/C/comfortable-numbers" target="_blank" rel="noopener noreferrer"> comfortableNumbers </a></li>
+<li><code>B</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/C/common-character-count" target="_blank" rel="noopener noreferrer"> commonCharacterCount </a></li>
+<li><code>B</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/C/concatenate-arrays" target="_blank" rel="noopener noreferrer"> concatenateArrays </a></li>
+<li><code>I</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/C/construct-square" target="_blank" rel="noopener noreferrer"> constructSquare </a></li>
+<li><code>B</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/C/contains-duplicate" target="_blank" rel="noopener noreferrer"> containsDuplicate </a></li>
+<li><code>B</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/C/copy-random-list" target="_blank" rel="noopener noreferrer"> copyRandomList </a></li>
+<li><code>I</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/C/count-black-cells" target="_blank" rel="noopener noreferrer"> countBlackCells </a></li>
+<li><code>I</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/C/count-rectangles" target="_blank" rel="noopener noreferrer"> countRectangles </a></li>
+<li><code>B</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/C/count-sum-of-two-representations2" target="_blank" rel="noopener noreferrer"> countSumOfTwoRepresentations2 </a></li>
+<li><code>B</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/C/create-anagram" target="_blank" rel="noopener noreferrer"> createAnagram </a></li>
+<li><code>I</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/C/crossword-formation" target="_blank" rel="noopener noreferrer"> crosswordFormation </a></li>
+</ul>
+</li>
+<li>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="d">D<a href="#d" class="hash-link" aria-label="Direct link to D" title="Direct link to D">​</a></h2>
+<ul>
+<li><code>B</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/D/decipher" target="_blank" rel="noopener noreferrer"> decipher </a></li>
+<li><code>I</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/D/delete-digit" target="_blank" rel="noopener noreferrer"> deleteDigit </a></li>
+<li><code>I</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/D/deposit-profit" target="_blank" rel="noopener noreferrer"> depositProfit </a></li>
+<li><code>B</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/D/di-string-match" target="_blank" rel="noopener noreferrer"> diStringMatch </a></li>
+<li><code>I</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/D/different-rightmost-bit" target="_blank" rel="noopener noreferrer"> differentRightmostBit </a></li>
+<li><code>I</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/D/different-squares" target="_blank" rel="noopener noreferrer"> differentSquares </a></li>
+<li><code>B</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/D/different-symbols-naive" target="_blank" rel="noopener noreferrer"> differentSymbolsNaive </a></li>
+<li><code>I</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/D/digit-degree" target="_blank" rel="noopener noreferrer"> digitDegree </a></li>
+<li><code>I</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/D/digits-product" target="_blank" rel="noopener noreferrer"> digitsProduct </a></li>
+<li><code>B</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/D/duplicate-zeros" target="_blank" rel="noopener noreferrer"> duplicateZeros </a></li>
+</ul>
+</li>
+<li>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="e">E<a href="#e" class="hash-link" aria-label="Direct link to E" title="Direct link to E">​</a></h2>
+<ul>
+<li><code>I</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/E/elections-winners" target="_blank" rel="noopener noreferrer"> electionsWinners </a></li>
+<li><code>B</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/E/equal-digit-sum" target="_blank" rel="noopener noreferrer"> equalDigitSum </a></li>
+<li><code>I</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/E/equal-pair-of-bits" target="_blank" rel="noopener noreferrer"> equalPairOfBits </a></li>
+<li><code>B</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/E/even-digits-only" target="_blank" rel="noopener noreferrer"> evenDigitsOnly </a></li>
+<li><code>B</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/E/even-number-digits" target="_blank" rel="noopener noreferrer"> evenNumberDigits </a></li>
+<li><code>B</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/E/extra-number" target="_blank" rel="noopener noreferrer"> extraNumber </a></li>
+<li><code>B</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/E/extract-each-kth" target="_blank" rel="noopener noreferrer"> extractEachKth </a></li>
+</ul>
+</li>
+<li>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="f">F<a href="#f" class="hash-link" aria-label="Direct link to F" title="Direct link to F">​</a></h2>
+<ul>
+<li><code>I</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/F/file-naming" target="_blank" rel="noopener noreferrer"> fileNaming </a></li>
+<li><code>B</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/F/find-disappeared-numbers" target="_blank" rel="noopener noreferrer"> findDisappearedNumbers </a></li>
+<li><code>I</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/F/find-email-domain" target="_blank" rel="noopener noreferrer"> findEmailDomain </a></li>
+<li><code>B</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/F/find-max-consecutive-ones" target="_blank" rel="noopener noreferrer"> findMaxConsecutiveOnes </a></li>
+<li><code>B</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/F/first-digit" target="_blank" rel="noopener noreferrer"> firstDigit </a></li>
+<li><code>I</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/F/first-duplicate" target="_blank" rel="noopener noreferrer"> firstDuplicate </a></li>
+<li><code>B</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/F/first-reverse-try" target="_blank" rel="noopener noreferrer"> firstReverseTry </a></li>
+<li><code>B</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/F/flatten-linked-list" target="_blank" rel="noopener noreferrer"> flattenLinkedList </a></li>
+</ul>
+</li>
+<li>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="g">G<a href="#g" class="hash-link" aria-label="Direct link to G" title="Direct link to G">​</a></h2>
+<ul>
+<li><code>B</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/G/growing-plant" target="_blank" rel="noopener noreferrer"> growingPlant </a></li>
+<li><code>B</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/G/get-intersection-node" target="_blank" rel="noopener noreferrer"> getIntersectionNode </a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="h">H<a href="#h" class="hash-link" aria-label="Direct link to H" title="Direct link to H">​</a></h2>
+<ul>
+<li><code>B</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/H/has-cycle" target="_blank" rel="noopener noreferrer"> hasCycle </a></li>
+<li><code>I</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/H/higher-version" target="_blank" rel="noopener noreferrer"> higherVersion </a></li>
+<li><code>B</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/H/house-numbers-sum" target="_blank" rel="noopener noreferrer"> houseNumbersSum </a></li>
+<li><code>B</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/H/house-of-cats" target="_blank" rel="noopener noreferrer"> houseOfCats </a></li>
+<li><code>B</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/H/html-end-tag-by-start-tag" target="_blank" rel="noopener noreferrer"> htmlEndTagByStartTag </a></li>
+</ul>
+</li>
+<li>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="i">I<a href="#i" class="hash-link" aria-label="Direct link to I" title="Direct link to I">​</a></h2>
+<ul>
+<li><code>B</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/I/increase-number-roundness" target="_blank" rel="noopener noreferrer"> increaseNumberRoundness </a></li>
+<li><code>B</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/I/integer-to-string-of-fixed-width" target="_blank" rel="noopener noreferrer"> integerToStringOfFixedWidth </a></li>
+<li><code>B</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/I/inorder-traversal" target="_blank" rel="noopener noreferrer"> inorderTraversal </a></li>
+<li><code>B</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/I/invert-tree" target="_blank" rel="noopener noreferrer"> invertTree </a></li>
+<li><code>I</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/I/is-beautiful-string" target="_blank" rel="noopener noreferrer"> isBeautifulString </a></li>
+<li><code>B</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/I/is-case-insensitive-palindrome" target="_blank" rel="noopener noreferrer"> isCaseInsensitivePalindrome </a></li>
+<li><code>B</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/I/is-digit" target="_blank" rel="noopener noreferrer"> isDigit </a></li>
+<li><code>B</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/I/is-infinite-process" target="_blank" rel="noopener noreferrer"> isInfiniteProcess </a></li>
+<li><code>I</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/I/is-IP-v4-address" target="_blank" rel="noopener noreferrer"> isIPV4Address </a></li>
+<li><code>B</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/I/is-lucky" target="_blank" rel="noopener noreferrer"> isLucky </a></li>
+<li><code>I</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/I/is-MAC48-address" target="_blank" rel="noopener noreferrer"> isMAC48Address </a></li>
+<li><code>B</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/I/is-palindrome" target="_blank" rel="noopener noreferrer"> isPalindrome </a></li>
+<li><code>B</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/I/is-palindrome-linked-list" target="_blank" rel="noopener noreferrer"> isPalindromeLinkedList </a></li>
+<li><code>B</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/I/is-power" target="_blank" rel="noopener noreferrer"> isPower </a></li>
+<li><code>B</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/I/is-smooth" target="_blank" rel="noopener noreferrer"> isSmooth </a></li>
+<li><code>I</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/I/is-substitution-cipher" target="_blank" rel="noopener noreferrer"> isSubstitutionCipher </a></li>
+<li><code>I</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/I/is-sum-of-consecutive2" target="_blank" rel="noopener noreferrer"> isSumOfConsecutive2 </a></li>
+<li><code>B</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/I/is-tandem-repeat" target="_blank" rel="noopener noreferrer"> isTandemRepeat </a></li>
+<li><code>I</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/I/is-unstable-pair" target="_blank" rel="noopener noreferrer"> isUnstablePair </a></li>
+</ul>
+</li>
+<li>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="j">J<a href="#j" class="hash-link" aria-label="Direct link to J" title="Direct link to J">​</a></h2>
+</li>
+<li>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="k">K<a href="#k" class="hash-link" aria-label="Direct link to K" title="Direct link to K">​</a></h2>
+<ul>
+<li><code>B</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/K/kill-kth-bit" target="_blank" rel="noopener noreferrer"> killKthBit </a></li>
+<li><code>B</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/K/knapsack-light" target="_blank" rel="noopener noreferrer"> knapsackLight </a></li>
+</ul>
+</li>
+<li>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="l">L<a href="#l" class="hash-link" aria-label="Direct link to L" title="Direct link to L">​</a></h2>
+<ul>
+<li><code>B</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/L/largest-number" target="_blank" rel="noopener noreferrer"> largestNumber </a></li>
+<li><code>A</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/L/largest-rectangle-area" target="_blank" rel="noopener noreferrer"> largestRectangleArea </a></li>
+<li><code>B</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/L/late-ride" target="_blank" rel="noopener noreferrer"> lateRide </a></li>
+<li><code>B</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/L/least-factorial" target="_blank" rel="noopener noreferrer"> leastFactorial </a></li>
+<li><code>B</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/L/levelorder-traversal" target="_blank" rel="noopener noreferrer"> levelorderTraversal </a></li>
+<li><code>I</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/L/line-encoding" target="_blank" rel="noopener noreferrer"> lineEncoding </a></li>
+<li><code>B</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/L/line-up" target="_blank" rel="noopener noreferrer"> lineUp </a></li>
+<li><code>B</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/L/longest-digits-prefix" target="_blank" rel="noopener noreferrer"> longestDigitsPrefix </a></li>
+<li><code>B</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/L/longest-word" target="_blank" rel="noopener noreferrer"> longestWord </a></li>
+</ul>
+</li>
+<li>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="m">M<a href="#m" class="hash-link" aria-label="Direct link to M" title="Direct link to M">​</a></h2>
+<ul>
+<li><code>B</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/M/magic-well" target="_blank" rel="noopener noreferrer"> magicalWell </a></li>
+<li><code>B</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/M/make-array-consecutive2" target="_blank" rel="noopener noreferrer"> makeArrayConsecutive2 </a></li>
+<li><code>B</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/M/matrix-elements-sum" target="_blank" rel="noopener noreferrer"> matrixElementsSum </a></li>
+<li><code>B</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/M/max-multiple" target="_blank" rel="noopener noreferrer"> maxMultiple </a></li>
+<li><code>B</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/M/max-profit2" target="_blank" rel="noopener noreferrer"> maxProfit2 </a></li>
+<li><code>B</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/M/merge" target="_blank" rel="noopener noreferrer"> merge </a></li>
+<li><code>B</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/M/max-depth" target="_blank" rel="noopener noreferrer"> maxDepth </a></li>
+<li><code>B</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/M/merge-trees" target="_blank" rel="noopener noreferrer"> mergeTrees </a></li>
+<li><code>B</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/M/merge-two-lists" target="_blank" rel="noopener noreferrer"> mergeTwoLists </a></li>
+<li><code>I</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/M/message-from-binary-code" target="_blank" rel="noopener noreferrer"> messageFromBinaryCode </a></li>
+<li><code>B</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/M/metro-card" target="_blank" rel="noopener noreferrer"> metroCard </a></li>
+<li><code>I</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/M/mine-sweeper" target="_blank" rel="noopener noreferrer"> mineSweeper </a></li>
+<li><code>I</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/M/minimal-number-of-coins" target="_blank" rel="noopener noreferrer"> minimalNumberOfCoins </a></li>
+<li><code>B</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/M/mirror-bits" target="_blank" rel="noopener noreferrer"> mirrorBits </a></li>
+<li><code>I</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/M/most-frequent-digit-sum" target="_blank" rel="noopener noreferrer"> mostFrequentDigitSum </a></li>
+<li><code>B</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/M/move-zeros" target="_blank" rel="noopener noreferrer"> moveZeros </a></li>
+</ul>
+</li>
+<li>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="n">N<a href="#n" class="hash-link" aria-label="Direct link to N" title="Direct link to N">​</a></h2>
+<ul>
+<li><code>B</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/N/new-numeral-system" target="_blank" rel="noopener noreferrer"> newNumeralSystem </a></li>
+<li><code>I</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/N/num-decodings" target="_blank" rel="noopener noreferrer"> numDecodings </a></li>
+<li><code>I</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/N/num-islands" target="_blank" rel="noopener noreferrer"> numIslands </a></li>
+<li><code>I</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/N/number-of-clans" target="_blank" rel="noopener noreferrer"> numberOfClans </a></li>
+<li><code>B</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/N/numbers-grouping" target="_blank" rel="noopener noreferrer"> numbersGrouping </a></li>
+</ul>
+</li>
+<li>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="o">O<a href="#o" class="hash-link" aria-label="Direct link to O" title="Direct link to O">​</a></h2>
+<ul>
+<li><code>B</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/O/odd-even-list" target="_blank" rel="noopener noreferrer"> oddEvenList </a></li>
+</ul>
+</li>
+<li>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="p">P<a href="#p" class="hash-link" aria-label="Direct link to P" title="Direct link to P">​</a></h2>
+<ul>
+<li><code>I</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/P/pages-numbering-with-ink" target="_blank" rel="noopener noreferrer"> pagesNumberingWithInk </a></li>
+<li><code>I</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/P/pair-of-shoes" target="_blank" rel="noopener noreferrer"> pairOfShoes </a></li>
+<li><code>I</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/P/palindrome-rearranging" target="_blank" rel="noopener noreferrer"> palindromeRearranging </a></li>
+<li><code>B</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/P/pascals-triangle" target="_blank" rel="noopener noreferrer"> pascalsTriangle </a></li>
+<li><code>B</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/P/phone-call" target="_blank" rel="noopener noreferrer"> phoneCall </a></li>
+<li><code>B</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/P/postorder" target="_blank" rel="noopener noreferrer"> postorder </a></li>
+<li><code>B</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/P/postorder-traversal" target="_blank" rel="noopener noreferrer"> postorderTraversal </a></li>
+<li><code>B</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/P/preorder" target="_blank" rel="noopener noreferrer"> preorder </a></li>
+<li><code>B</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/P/preorder-traversal" target="_blank" rel="noopener noreferrer"> preorderTraversal </a></li>
+<li><code>B</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/P/proper-noun-correction" target="_blank" rel="noopener noreferrer"> properNounCorrection </a></li>
+</ul>
+</li>
+<li>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="q">Q<a href="#q" class="hash-link" aria-label="Direct link to Q" title="Direct link to Q">​</a></h2>
+</li>
+<li>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="r">R<a href="#r" class="hash-link" aria-label="Direct link to R" title="Direct link to R">​</a></h2>
+<ul>
+<li><code>B</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/R/range-bit-count" target="_blank" rel="noopener noreferrer"> rangeBitCount </a></li>
+<li><code>B</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/R/range-bit-count" target="_blank" rel="noopener noreferrer"> rangeBitCount copy </a></li>
+<li><code>B</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/R/reach-next-level" target="_blank" rel="noopener noreferrer"> reachNextLevel </a></li>
+<li><code>I</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/R/rectangle-rotation" target="_blank" rel="noopener noreferrer"> rectangleRotation </a></li>
+<li><code>B</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/R/reflect-string" target="_blank" rel="noopener noreferrer"> reflectString </a></li>
+<li><code>B</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/R/remove-array-part" target="_blank" rel="noopener noreferrer"> removeArrayPart </a></li>
+<li><code>B</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/R/remove-duplicates" target="_blank" rel="noopener noreferrer"> removeDuplicates </a></li>
+<li><code>B</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/R/remove-elements" target="_blank" rel="noopener noreferrer"> removeElements </a></li>
+<li><code>B</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/R/remove-nth-from-end-of-list" target="_blank" rel="noopener noreferrer"> removeNthFromEndOfOList </a></li>
+<li><code>B</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/R/remove-three-duplicates" target="_blank" rel="noopener noreferrer"> removeThreeDuplicates </a></li>
+<li><code>B</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/R/replace-elements" target="_blank" rel="noopener noreferrer"> replaceElements </a></li>
+<li><code>B</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/R/replace-middle" target="_blank" rel="noopener noreferrer"> replaceMiddle </a></li>
+<li><code>B</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/R/replace-sequence" target="_blank" rel="noopener noreferrer"> replaceSequence </a></li>
+<li><code>B</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/R/reverse" target="_blank" rel="noopener noreferrer"> reverse </a></li>
+<li><code>I</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/R/reverse-in-parentheses" target="_blank" rel="noopener noreferrer"> reverseInParentheses </a></li>
+<li><code>B</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/R/reverse-list" target="_blank" rel="noopener noreferrer"> reverseList </a></li>
+<li><code>B</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/R/rotate-array" target="_blank" rel="noopener noreferrer"> rotateArray </a></li>
+<li><code>B</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/R/rotate-list" target="_blank" rel="noopener noreferrer"> rotateList </a></li>
+<li><code>B</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/R/rounders" target="_blank" rel="noopener noreferrer"> rounders </a></li>
+</ul>
+</li>
+<li>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="s">S<a href="#s" class="hash-link" aria-label="Direct link to S" title="Direct link to S">​</a></h2>
+<ul>
+<li><code>B</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/S/seats-in-theater" target="_blank" rel="noopener noreferrer"> seatsInTheater </a></li>
+<li><code>B</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/S/second-rightmost-zero-bit" target="_blank" rel="noopener noreferrer"> secondRightmostZeroBit </a></li>
+<li><code>B</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/S/shape-area" target="_blank" rel="noopener noreferrer"> shapeArea </a></li>
+<li><code>B</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/S/single-number" target="_blank" rel="noopener noreferrer"> singleNumber </a></li>
+<li><code>B</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/S/sort-array-by-parity" target="_blank" rel="noopener noreferrer"> sortArrayByParity </a></li>
+<li><code>B</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/S/sort-by-height" target="_blank" rel="noopener noreferrer"> sortByHeight </a></li>
+<li><code>B</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/S/sorted-squares" target="_blank" rel="noopener noreferrer"> sortedSquares </a></li>
+<li><code>I</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/S/spiral-numbers" target="_blank" rel="noopener noreferrer"> spiralNumbers </a></li>
+<li><code>I</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/S/square-digits-sequence" target="_blank" rel="noopener noreferrer"> squareDigitsSequence </a></li>
+<li><code>B</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/S/stolen-lunch" target="_blank" rel="noopener noreferrer"> stolenLunch </a></li>
+<li><code>I</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/S/strings-construction" target="_blank" rel="noopener noreferrer"> stringsConstruction </a></li>
+<li><code>I</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/S/strings-rearrangement" target="_blank" rel="noopener noreferrer"> stringsRearrangement </a></li>
+<li><code>I</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/S/sudoku" target="_blank" rel="noopener noreferrer"> sudoku </a></li>
+<li><code>I</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/S/sum-up-numbers" target="_blank" rel="noopener noreferrer"> sumUpNumbers </a></li>
+<li><code>B</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/S/swap-adjacent-bits" target="_blank" rel="noopener noreferrer"> swapAdjacentBits </a></li>
+<li><code>I</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/S/switch-lights" target="_blank" rel="noopener noreferrer"> switchLights </a></li>
+</ul>
+</li>
+<li>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="t">T<a href="#t" class="hash-link" aria-label="Direct link to T" title="Direct link to T">​</a></h2>
+<ul>
+<li><code>B</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/T/tennis-set" target="_blank" rel="noopener noreferrer"> tennisSet </a></li>
+<li><code>B</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/T/third-max" target="_blank" rel="noopener noreferrer"> thirdMax </a></li>
+<li><code>I</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/T/three-split" target="_blank" rel="noopener noreferrer"> threeSplit </a></li>
+<li><code>I</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/T/timed-reading" target="_blank" rel="noopener noreferrer"> timedReading </a></li>
+<li><code>B</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/T/two-sum" target="_blank" rel="noopener noreferrer"> twoSum </a></li>
+<li><code>B</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/T/two-sum-ordered" target="_blank" rel="noopener noreferrer"> twoSumOrdered </a></li>
+</ul>
+</li>
+<li>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="u">U<a href="#u" class="hash-link" aria-label="Direct link to U" title="Direct link to U">​</a></h2>
+</li>
+<li>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="v">V<a href="#v" class="hash-link" aria-label="Direct link to V" title="Direct link to V">​</a></h2>
+<ul>
+<li><code>B</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/V/valid-time" target="_blank" rel="noopener noreferrer"> validTime </a></li>
+<li><code>B</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/V/valid-mountain-array" target="_blank" rel="noopener noreferrer"> validMountainArray </a></li>
+<li><code>B</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/V/variable-name" target="_blank" rel="noopener noreferrer"> variableName </a></li>
+</ul>
+</li>
+<li>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="w">W<a href="#w" class="hash-link" aria-label="Direct link to W" title="Direct link to W">​</a></h2>
+</li>
+</ul>
+<ul>
+<li><code>B</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/W/weak-numbers" target="_blank" rel="noopener noreferrer"> weakNumbers </a></li>
+<li><code>B</code>
+<a href="https://github.com/nejcm/js-algorithms/blob/master/src/code-challenges/W/will-you" target="_blank" rel="noopener noreferrer"> willYou </a></li>
+</ul>
+<ul>
+<li>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="x">X<a href="#x" class="hash-link" aria-label="Direct link to X" title="Direct link to X">​</a></h2>
+</li>
+<li>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="y">Y<a href="#y" class="hash-link" aria-label="Direct link to Y" title="Direct link to Y">​</a></h2>
+</li>
+<li>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="z">Z<a href="#z" class="hash-link" aria-label="Direct link to Z" title="Direct link to Z">​</a></h2>
+</li>
+</ul></div><footer class="theme-doc-footer docusaurus-mt-lg"><div class="row margin-top--sm theme-doc-footer-edit-meta-row"><div class="col"><a href="https://github.com/nejcm/js-algorithms/edit/main/docs/CodeChallenges/Overview.mdx" target="_blank" rel="noopener noreferrer" class="theme-edit-this-page"><svg fill="currentColor" height="20" width="20" viewBox="0 0 40 40" class="iconEdit_Z9Sw" aria-hidden="true"><g><path d="m34.5 11.7l-3 3.1-6.3-6.3 3.1-3q0.5-0.5 1.2-0.5t1.1 0.5l3.9 3.9q0.5 0.4 0.5 1.1t-0.5 1.2z m-29.5 17.1l18.4-18.5 6.3 6.3-18.4 18.4h-6.3v-6.2z"></path></g></svg>Edit this page</a></div><div class="col lastUpdated_JAkA"></div></div></footer></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/js-algorithms/docs/Algorithms/Graph/TravellingSalesman"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">Travelling Salesman Problem</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#a" class="table-of-contents__link toc-highlight">A</a></li><li><a href="#b" class="table-of-contents__link toc-highlight">B</a></li><li><a href="#c" class="table-of-contents__link toc-highlight">C</a></li><li><a href="#d" class="table-of-contents__link toc-highlight">D</a></li><li><a href="#e" class="table-of-contents__link toc-highlight">E</a></li><li><a href="#f" class="table-of-contents__link toc-highlight">F</a></li><li><a href="#g" class="table-of-contents__link toc-highlight">G</a></li><li><a href="#h" class="table-of-contents__link toc-highlight">H</a></li><li><a href="#i" class="table-of-contents__link toc-highlight">I</a></li><li><a href="#j" class="table-of-contents__link toc-highlight">J</a></li><li><a href="#k" class="table-of-contents__link toc-highlight">K</a></li><li><a href="#l" class="table-of-contents__link toc-highlight">L</a></li><li><a href="#m" class="table-of-contents__link toc-highlight">M</a></li><li><a href="#n" class="table-of-contents__link toc-highlight">N</a></li><li><a href="#o" class="table-of-contents__link toc-highlight">O</a></li><li><a href="#p" class="table-of-contents__link toc-highlight">P</a></li><li><a href="#q" class="table-of-contents__link toc-highlight">Q</a></li><li><a href="#r" class="table-of-contents__link toc-highlight">R</a></li><li><a href="#s" class="table-of-contents__link toc-highlight">S</a></li><li><a href="#t" class="table-of-contents__link toc-highlight">T</a></li><li><a href="#u" class="table-of-contents__link toc-highlight">U</a></li><li><a href="#v" class="table-of-contents__link toc-highlight">V</a></li><li><a href="#w" class="table-of-contents__link toc-highlight">W</a></li><li><a href="#x" class="table-of-contents__link toc-highlight">X</a></li><li><a href="#y" class="table-of-contents__link toc-highlight">Y</a></li><li><a href="#z" class="table-of-contents__link toc-highlight">Z</a></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer footer--dark"><div class="container container-fluid"><div class="row footer__links"><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Docs</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/js-algorithms/docs/intro">Introduction</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Community</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://github.com/nejcm/js-algorithms" target="_blank" rel="noopener noreferrer" class="footer__link-item">GitHub<svg width="13.5" height="13.5" aria-hidden="true" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2025 Nejc M. Built with Docusaurus.</div></div></div></footer></div>
+</body>
+</html>
