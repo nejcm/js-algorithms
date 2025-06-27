@@ -20,20 +20,12 @@ export interface DoublyLinkedList<T> {
   reverse(this: DoublyLinkedList<T>): DoublyLinkedList<T>;
   isEmpty(this: DoublyLinkedList<T>): boolean;
   toArray(this: DoublyLinkedList<T>): T[];
-  toString(
-    this: DoublyLinkedList<T>,
-    callback?: ToStringCallback<T>,
-    separator?: string,
-  ): string;
+  toString(this: DoublyLinkedList<T>, callback?: ToStringCallback<T>, separator?: string): string;
 }
 
 const linkedList = <T>(): DoublyLinkedList<T> => {
   // create a node
-  const node = (
-    value: T,
-    next: Node<T> | null = null,
-    prev: Node<T> | null = null,
-  ): Node<T> => {
+  const node = (value: T, next: Node<T> | null = null, prev: Node<T> | null = null): Node<T> => {
     return {
       value,
       next,

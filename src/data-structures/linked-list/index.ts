@@ -20,11 +20,7 @@ export interface LinkedList<T> {
   reverse(this: LinkedList<T>): LinkedList<T>;
   isEmpty(this: LinkedList<T>): boolean;
   toArray(this: LinkedList<T>): T[];
-  toString(
-    this: LinkedList<T>,
-    callback?: ToStringCallback<T>,
-    separator?: string,
-  ): string;
+  toString(this: LinkedList<T>, callback?: ToStringCallback<T>, separator?: string): string;
 }
 
 const linkedList = <T>(): LinkedList<T> => {
